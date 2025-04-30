@@ -1,0 +1,49 @@
+.headcard{
+    background-color: #2D82B5;
+    border-radius: 10px 10px 0px 0px ;
+}
+.btn{
+color:white;
+width: 138px;
+border-radius: 10px;
+background: #017DB5;
+font-size: 13px;
+font-family: Poppins;
+font-weight: 700;
+border-radius: 10px;
+background: #017DB5;
+
+}
+.back-btn{
+    font-size: 16px;
+}
+.card-body{
+    /* position: absolute;
+    top: 0px;
+    left: 40px;*/
+    /* max-height: 400px;  */
+}
+.card-title{
+    color: black;
+}
+.card{
+font-size: 14px;
+font-family: Poppins;
+/* font-weight: 600; */
+
+border-radius: 10px ;
+background: #FFF;
+}
+h1{
+    color: black;
+}
+.picIcon{
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    visibility: hidden;
+    width:0;
+    height:0
+}

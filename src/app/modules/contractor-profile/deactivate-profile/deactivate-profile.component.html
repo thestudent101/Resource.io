@@ -1,0 +1,17 @@
+<div>
+    <h3>Are you sure you want to leave us?</h3>
+    <p>To confirmthe diacivation of your account, please type 'confirm!' into the text feild bellow.</p>
+    <mat-form-field class="col-12">
+        <mat-label>Confirm action</mat-label>
+        <input (keypress)="onKeyPress($event)" matInput type="text" [(ngModel)]="value" placeholder="confirm!">
+    </mat-form-field>
+    <div class="text-right">
+        <button
+            mat-button
+            [disabled] = "btnDisabled"
+            color="primary">
+                DEACTIVATE
+        </button>
+    </div>
+
+</div>

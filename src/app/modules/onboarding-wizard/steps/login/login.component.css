@@ -1,0 +1,200 @@
+.container{
+    height: 100vh;
+    max-width: auto;
+   background: #747f8f; 
+} 
+
+
+.left-side{
+    flex: 1;
+}
+
+.right-side{
+    flex:1;
+    padding-left: 20px;
+}
+
+
+.second-section{
+    background:#E8F1FF;
+}
+
+.registration-buttons {
+    background: #017DB5;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.mat-form-field input {
+    border-radius: 0px;
+    background: #FFF;
+}
+
+.customButton{
+    background-color: #017DB5;
+    color: #FFF;
+    width: 48%;
+    text-decoration: none;
+    padding: 15px;
+    box-shadow: 0px 3px 21px 1.5px rgba(0, 0, 0, 0.06);
+
+}
+
+.col-sm-12 a{
+    text-decoration: none;
+}
+
+.custom-card-log{
+    height: 700px;
+    width: auto;
+
+}
+
+.customPara{
+    font-size: small;
+    font-family: "poppins",sans-serif;
+}
+
+.customButtonLinked{
+    color: white;
+    background-color: #017DB5;
+    box-shadow: 0px 3px 21px 1.5px rgba(0, 0, 0, 0.06);
+}
+
+.linkedinIcon{
+    color: #f5f5f5;
+    margin: 10px;
+}
+
+.forgot{
+    font-size: small;
+    font-family: "poppins",Arial, Helvetica, sans-serif;
+
+}
+
+.Consultant .card{
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 3px 21px 1.5px rgba(0, 0, 0, 0.06);
+
+}
+
+.Client .card{
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 3px 21px 1.5px rgba(0, 0, 0, 0.06);
+
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-decoration: none;
+    margin-left: 20%;
+}
+
+.image {
+    width: auto;
+    height: 125px;
+    margin-bottom: 18px;
+    margin-top: 13px;
+    align-self: center;
+    justify-self: center;
+}
+
+.center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.the_button{
+    width: auto;
+    height: 15px;
+
+}
+
+.images{
+    flex-direction: row;
+
+}
+
+.loginicons img{
+    height: 40px;
+    width: auto;
+
+}
+
+.loginButton .mat-icon{
+    margin: 0px;
+    padding: 0px;
+    width: 20px;
+}
+
+.loginButton{
+    width: 30px;
+    height: auto;
+    
+}
+
+.close{
+    justify-content: flex-end;
+}
+
+.check{
+    margin-left: 90px;
+    align-items: center;
+    color:black;
+}
+
+.check .mat-icon{
+    color: #747f8f;
+}
+
+.check span{
+    color: #3B94C1;
+    font-weight:lighter;
+}
+
+.check span:hover{
+    transition: 0.1;
+}
+
+
+.span{
+    color: blue;
+}
+
+
+.custom-card-body{
+    background: #E8F1FF;
+}
+
+/* Media query for screens smaller than or equal to 768px (adjust as needed) this is to hide and show the close button */
+.hideclose {
+    display: none; 
+  }
+  
+  
+  @media (max-width: 768px) {
+    .hideclose {
+      display: block; 
+    }
+    .hideclose2 {
+        display: none; 
+      }
+  }
+
+
+
+
+

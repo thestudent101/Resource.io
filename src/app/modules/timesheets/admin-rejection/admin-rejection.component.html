@@ -1,0 +1,25 @@
+<!-- title -->
+<h1 mat-dialog-title>Reject Timesheet</h1>
+<!-- content -->
+<div mat-dialog-content>
+    <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+    <p>Are you sure you want to reject this entry?</p>
+    <mat-form-field class="col-md-12">
+        <mat-label>Rejection Reason</mat-label>
+        <textarea matInput [(ngModel)]="reason" rows="4"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button 
+    mat-button color="white"
+        (click) = "onDeny()"
+        mat-button>
+            No
+    </button>
+    <button 
+        mat-button color="white"
+        (click) = "onConfirm()" 
+        cdkFocusInitial>
+            Yes
+    </button>
+</div>

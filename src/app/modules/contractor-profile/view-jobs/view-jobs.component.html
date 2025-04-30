@@ -1,0 +1,44 @@
+<button mat-raised-button color="primary" class="Button mt-3" (click)="goBack()">
+    <i class="fa-sharp fa-solid fa-circle-arrow-left icon"></i> Back
+</button>
+
+<!-- Search Area -->
+<div class="search-container bg-blue mt-4">
+    <div class="input-group mb-3">
+      <input #titleSearchInput type="text" class="form-control search m-1" placeholder="Search for jobs by title or company name..." (input)="searchJobs()">
+      <input #locationSearchInput type="text" class="form-control search" placeholder="Search by location..." (input)="searchJobs()">
+      <button class="btn btn-primary mr-2 searbutton" type="button" (click)="searchJobs()">Find Job</button>
+    </div>
+  </div>
+  <mat-divider class="m-2"></mat-divider>
+  
+  <!-- Jobs Matching Section -->
+  <div class="job-matching-section mt-4">
+    
+    <!-- Display matched job profiles -->
+    <div class="row jobProfiles m-3">
+      <div *ngFor="let jobProf of displayedJobProfiles" class="col-sm-12 col-md-6 col-lg-4 mx-3 my-3 px-3 py-2 job-profile">
+        <!-- Company Logo on top right -->
+      <div class="company-logo d-flex">
+        <img *ngIf="jobProf.company_logo" src="{{ jobProf.company_logo }}" alt="Company Logo">
+        <img *ngIf="!jobProf.company_logo" [src]="defaultCompanyLogoUrl" alt="Default Company Logo">
+        <div class="blue-star" (click)="toggleJobSavedStatus(jobProf)">
+          <mat-icon>{{ jobProf.isJobSaved ? 'star' : 'star_border' }}</mat-icon>
+       </div>
+      </div>
+      <!-- Company Name on its own row -->
+      <div class="company-name">{{jobProf.company.name}}</div>
+      <!-- Job Title -->
+      <h3 class="job-title hoverable" (click)="viewProfile(jobProf)">{{ jobProf.title }}</h3>
+      <!-- Job Description -->
+      <p><span class="job-salary2">{{jobProf.ratePerHour | currency:'R'}}</span></p>
+      <!-- Salary, Location, Start Time on the bottom row -->
+      <div class="bottom-row small-text job-salary">
+      <span>Rate: {{jobProf.ratePerHour | currency:'R'}}</span>
+      <span> <i class="fa-solid fa-location-dot"></i>{{jobProf.jobLocation}}</span>
+      <span> <i class="fa-regular fa-clock"></i>{{jobProf.closingDate | date}}</span>
+      </div>
+      </div>
+    </div>
+</div>
+  

@@ -1,0 +1,398 @@
+<!-- progress bar -->
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<nav class="navbar" style="background: linear-gradient(90deg, #40B9F0 0%, rgba(23, 14, 102, 0.90) 100%);">
+  <div class="container-fluid d-flex justify-content-center">
+      <h4 class="text-white text-weight-bold"><b>Subscriptions</b></h4>
+  </div>
+</nav>
+
+
+<div class="container " style="
+padding-left: 9%;
+padding-right: 9%;
+">
+
+<p class="text-center" style="color: #212B6C; font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;">Pay a Blue Premium once-off, and get a lifetime of benefits</p>
+<div class="row d-flex justify-content-center">
+  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-7 ">
+
+      <div class="card text-light" style="background: linear-gradient(180deg, #333A77 0%, #017DB5 100%);">
+          <div class="card-body mx-3">
+              <p class="card-title"><strong class="fw-bolder fs-3">R200</strong>/once off></p>
+              <p class="text-lead"style="color:  #017DB5"> <b>Premium License </b></p>        
+              <div class="col-12">
+                <p  style="border-radius: 20px;
+                "><b>Subscription</b></p>
+                 <hr>
+               <table style="width:50%">
+                <tr>
+                  <td>Company Name:</td>
+                  <td>{{companyName}}</td> 
+                </tr>
+                <tr>
+                  <td>Blue Licence: </td>
+                  <td>{{licence}}</td> 
+                </tr>
+                <tr>
+                  <td>Payment Method: </td>
+                  <td>{{paymentMethod}}</td> 
+                </tr>
+                <tr>
+                  <td>Subscription Date: </td>
+                  <td>{{joinDate}}</td> 
+                </tr>
+                <tr>
+                  <td>Next Billing Date: </td>
+                  <td>{{nextBillingDate}}</td> 
+                </tr>
+              </table>
+            </div> 
+              <hr>
+              <div class="d-flex justify-content-start"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" id="tick" viewBox="0 0 18 18" fill="none">
+                  <path d="M5.27594 12.5205L1.87177 9.1164L0 10.9882L4.49225 15.4804L4.4974 15.4752L5.31751 16.2953L18 3.61273L16.0919 1.70459L5.27594 12.5205Z" fill="#F3B007"/>
+                  </svg> <p>View basic analytics</p> 
+              </div>
+              <div class="d-flex justify-content-start"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" id="tick" viewBox="0 0 18 18" fill="none">
+                  <path d="M5.27594 12.5205L1.87177 9.1164L0 10.9882L4.49225 15.4804L4.4974 15.4752L5.31751 16.2953L18 3.61273L16.0919 1.70459L5.27594 12.5205Z" fill="#F3B007"/>
+                  </svg>  <p>Unlimited access Licenses</p>
+              </div>
+              <div class="d-flex justify-content-start"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" id="tick" viewBox="0 0 18 18" fill="none">
+                  <path d="M5.27594 12.5205L1.87177 9.1164L0 10.9882L4.49225 15.4804L4.4974 15.4752L5.31751 16.2953L18 3.61273L16.0919 1.70459L5.27594 12.5205Z" fill="#F3B007"/>
+                  </svg> <p>Consultants from anywhere in the world</p> </div>
+                  <hr>
+                  <div class="col-12">
+                    <p>Payment Method</p>
+             
+                    <span class="d-flex justify-content-between">
+                        <p>
+                            Credit Card Payment 
+                        </p>
+                       
+                    </span>
+                    <span class="d-flex justify-content-between">
+                        <p>Date:2021-08-30</p>
+                       
+                    </span>
+                </div>
+                <hr>
+                <div class="container client-profile pt-3">
+    
+                  <!--div class="alert alert-info mt-3 text-center" *ngIf="!hasProfile">
+                      Your profile is not complete. You will not be able to post any job profiles or request interviews with consultants until you complete your profile.
+                  </div>
+                  
+                  <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+                      {{error}}
+                  </div-->
+                  <!-- tabs -->
+                  <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+                      <mat-tab>
+                          <!-- <ng-template mat-tab-label> -->
+                            <!-- <mat-icon class="example-tab-icon">book_online</mat-icon> -->
+                            <!-- <div>Subscription Details</div> -->
+                          <!-- </ng-template> -->
+                          <!-- action buttons -->
+                          <div class="pb-3">
+                              <div class="col-sm-12">
+                                  <button mat-stroked-button (click)="subscribeDialog()" *ngIf="subscription">
+                                    <mat-icon>edit</mat-icon>Edit Subscription
+                                  </button>
+                                  <button mat-stroked-button (click)="subscribeDialog()" *ngIf="!subscription">
+                                    <mat-icon>edit</mat-icon>Subscribe
+                                  </button>
+              
+                              </div>
+                          </div>
+                          <!-- subscription details -->
+                          <div class="col-sm-12 col-md-12">
+                              <mat-card class="h-100">
+                                 
+                                  <mat-card-content class="container">
+                                      <div class="row">
+                                          <div class="col-sm-12">
+                                            <div class="clientDetails">
+                                                  <!--p><strong>Company Name: </strong>XYZ</p>
+                                                  <p><strong>Join Date: </strong>DD-MM-YYYY</p>
+                                                  <p><strong>Payment Method: </strong>EFT</p-->
+                                                 
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </mat-card-content>
+                                    
+                                    <mat-card-content class="container">
+                                          <!-- Charles Attempt -->
+                                      <div class="row">
+                                        <div class="col-sm-12">
+                                          <div [formGroup]="subscriptionForm">
+                                            <mat-radio-group aria-label="Select an option" formControlName="subscriptionRadio">
+                                              <table style="width:100%">
+                                              
+                                                <tr>
+                                                  <td>Blue Premium</td>
+                                                  <td>ZAR 200</td> 
+                                                  <td><mat-radio-button class="white-radio" value="BLUE_APP_PREMIUM_LICENCE_FEE"></mat-radio-button></td>
+                                                </tr>
+                                              </table>
+                                            </mat-radio-group>
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                  </mat-card-content>
+                              </mat-card>
+                          </div>
+                          <br> <!-- Charles must come style here properly-->
+                          <div class="pb-3">
+                            
+                            <div class="col-sm-12 text-light">
+                                <button mat-stroked-button (click)="cancelSubscriptionDialog()" *ngIf="subscription">
+                                  <mat-icon>close</mat-icon>Cancel Subscription
+                                </button>
+                            </div>
+                        </div>
+              
+                      </mat-tab>
+                    
+                      <mat-tab *ngIf=false>
+                          <ng-template mat-tab-label>
+                              <mat-icon class="example-tab-icon">cloud_download</mat-icon>
+                              <div> Download Invoices</div>
+                          </ng-template>
+                          <div class="col-sm-12 col-md-12">
+                              <!-- action buttons -->
+                              <div class="pb-3">
+                                  <div class="col-sm-12">
+                                      <!--button mat-stroked-button [routerLink]="['/main/client-profile/edit']">
+                                          <mat-icon>edit</mat-icon>Edit Profile
+                                      </button-->
+                                  </div>
+                              </div>
+                              <!-- company details -->
+                              <mat-card class="h-100">
+                                  <mat-card-header>
+                                      <mat-card-title>Invoices</mat-card-title>
+                                  </mat-card-header>
+                                  <mat-card-content class="container">
+                                      <div class="row">
+                                          <div class="col-sm-12">
+                                              <div class="clientDetails">
+                                                  <!-- company name -->
+                                                  <p><strong>Invoice: </strong>This will be where they can download their invoices</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </mat-card-content>
+                              </mat-card>
+                          </div>
+                      </mat-tab>
+                    </mat-tab-group>
+              
+              </div>
+              <hr>
+          </div>
+          <div class="d-flex justify-content-center mb-5">
+              <button type="button" class="btn btn-outline-dark " >Your current plan</button>
+          </div>
+      </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- body -->
+<!-- <div class="container client-profile pt-3"> -->
+    
+    <!--div class="alert alert-info mt-3 text-center" *ngIf="!hasProfile">
+        Your profile is not complete. You will not be able to post any job profiles or request interviews with consultants until you complete your profile.
+    </div>
+    
+    <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+        {{error}}
+    </div-->
+    <!-- tabs -->
+    <!-- <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+        <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">book_online</mat-icon>
+              <div>Subscription Details</div>
+            </ng-template>
+             action buttons -->
+            <!-- <div class="pb-3">
+                <div class="col-sm-12">
+                    <button mat-stroked-button (click)="subscribeDialog()" *ngIf="subscription">
+                      <mat-icon>edit</mat-icon>Edit Subscription
+                    </button>
+                    <button mat-stroked-button (click)="subscribeDialog()" *ngIf="!subscription">
+                      <mat-icon>edit</mat-icon>Subscribe
+                    </button>
+
+                </div>
+            </div> -->
+            <!-- subscription details -->
+            <!-- <div class="col-sm-12 col-md-12">
+                <mat-card class="h-100">
+                   
+                    <mat-card-content class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                              <div class="clientDetails"> -->
+                                    <!--p><strong>Company Name: </strong>XYZ</p>
+                                    <p><strong>Join Date: </strong>DD-MM-YYYY</p>
+                                    <p><strong>Payment Method: </strong>EFT</p-->
+                                   
+                              <!-- </div>
+                            </div>
+                        </div>
+                      </mat-card-content>
+                      
+                      <mat-card-content class="container">  -->
+                            <!-- Charles Attempt -->
+                        <!-- <div class="row">
+                          <div class="col-sm-12">
+                            <div [formGroup]="subscriptionForm">
+                              <mat-radio-group aria-label="Select an option" formControlName="subscriptionRadio">
+                                <table style="width:100%">
+                                
+                                  <tr>
+                                    <td>Blue Premium</td>
+                                    <td>ZAR 1000</td> 
+                                    <td><mat-radio-button class="white-radio" value="BLUE_APP_PREMIUM_LICENCE_FEE"></mat-radio-button></td>
+                                  </tr>
+                                </table>
+                              </mat-radio-group>
+                            </div>
+                          </div>
+                          
+                        </div> -->
+                    <!-- </mat-card-content>
+                </mat-card>
+            </div>
+            <br> Charles must come style here properly -->
+            <!-- <div class="pb-3">
+              <div class="col-sm-12">
+                  <button mat-stroked-button (click)="cancelSubscriptionDialog()" *ngIf="subscription">
+                    <mat-icon>close</mat-icon>Cancel Subscription
+                  </button>
+              </div>
+          </div>
+
+        </mat-tab> -->
+      
+        <!-- <mat-tab *ngIf=false>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">cloud_download</mat-icon>
+                <div> Download Invoices</div>
+            </ng-template>
+            <div class="col-sm-12 col-md-12"> -->
+                <!-- action buttons
+                <div class="pb-3">
+                    <div class="col-sm-12"> -->
+                        <!--button mat-stroked-button [routerLink]="['/main/client-profile/edit']">
+                            <mat-icon>edit</mat-icon>Edit Profile
+                        </button-->
+                    <!-- </div>
+                </div> -->
+                <!-- company details -->
+                <!-- <mat-card class="h-100">
+                    <mat-card-header>
+                        <mat-card-title>Invoices</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="clientDetails"> -->
+                                    <!-- company name -->
+                                    <!-- <p><strong>Invoice: </strong>This will be where they can download their invoices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab> -->
+      <!-- </mat-tab-group>  -->
+
+<!-- </div> -->
+
+
+<!-- mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<br>
+<h1 *ngIf="isLoading"> Loading Subscription Details</h1>
+<br>
+<div class="container">
+    
+  <h3 *ngIf="!isLoading && !subscription">{{userMessage}}</h3>
+  <-- h3 *ngIf="!isLoading && subscription">{{userMessage}} <b><i><u>{{subscription}}</u></i></b>...</h3 ->
+  <br>
+
+
+  <div *ngIf="!isLoading">
+    <h2 *ngIf="!subscription">Choose your preferred option</h2>
+    <h2 *ngIf="subscription">Update your subscription</h2>
+    
+    <br>
+    <div [formGroup]="subscriptionForm">
+    <mat-radio-group aria-label="Select an option" formControlName="subscriptionRadio">
+      <table style="width:100%">
+        <tr>
+          <th>Option Plan</th>
+          <th>Price Per Month</th> 
+          <th></th>
+        </tr>
+        <tr>
+          <td>Blue Lite</td>
+          <td>ZAR 300</td> 
+          <td><mat-radio-button class="white-radio" value="BLUE_APP_LITE_LICENCE_FEE"></mat-radio-button></td>
+        </tr>
+        <tr>
+          <td>Blue Plus</td>
+          <td>ZAR 500</td> 
+          <td><mat-radio-button class="white-radio" value="BLUE_APP_PLUS_LICENCE_FEE"></mat-radio-button></td>
+        </tr>
+        <tr>
+          <td>Blue Premium</td>
+          <td>ZAR 1000</td> 
+          <td><mat-radio-button class="white-radio" value="BLUE_APP_PREMIUM_LICENCE_FEE"></mat-radio-button></td>
+        </tr>
+        <tr *ngIf="!subscription">
+          <td>
+            <button (click)="subscribeDialog()" mat-button matTooltip="Subscribe" class="mat-button mat-button-base peach-button">
+              Subscribe <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </td>
+          <td></td>
+          <td></td> 
+        </tr>
+        <tr *ngIf="subscription">
+          <td>
+            <button (click)="subscribeDialog()" mat-button matTooltip="Update Subscription" class="mat-button mat-button-base peach-button">
+              Update Subscription <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </td>
+          <td></td>
+          <td></td> 
+        </tr>
+        <tr *ngIf="subscription">
+          <td>
+            <button (click)="cancelSubscriptionDialog()" mat-button matTooltip="Cancel Subscription" class="mat-button mat-button-base peach-button">
+              Cancel Subscription <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </td>
+          <td></td>
+          <td></td> 
+        </tr>
+      </table>
+    </mat-radio-group>
+    </div>
+    <br>
+
+  </div>
+</div -->

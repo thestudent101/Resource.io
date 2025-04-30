@@ -1,0 +1,131 @@
+.headcard{
+    border-radius: 10px 10px 0px 0px ;
+    background-color: #2D82B5;
+}
+.btn{
+color:white;
+width: 138px;
+border-radius: 10px;
+background: #017DB5;
+font-size: 13px;
+font-family: Poppins;
+font-weight: 700;
+border-radius: 10px;
+background: #017DB5;
+
+}
+.back-btn{
+    font-size: 16px;
+}
+.card{
+color: #FFF;
+font-size: 14px;
+font-family: Poppins;
+/* font-weight: 600; */
+
+border-radius: 10px ;
+background: #FFF;
+}
+.card-body{
+    /* position: absolute;
+    top: 0px;
+    left: 40px;
+    max-height: 500px; */
+}
+.logo{
+    position: absolute;
+    top: 112px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+.limit {
+    /* background: white; */
+    border-radius: 25px;
+    margin: 20px 0;
+  }
+  
+  .limit .images {
+    width: 35px;
+    height: 35px;
+
+  }
+.image{
+    display:6block;
+}
+
+.imagewrapper {
+  display: flex;
+  justify-content: center;
+}
+
+  .limitCotent {
+      /* background-color: #022641; */
+    text-align: center;
+    font-size: 10pt;
+    border-radius: 25px;
+    margin-right: 0;
+    padding: 5px;
+    position: relative;
+    display:inline-block;
+    /* color: #137c9a; */
+  }
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {
+    .float-right{
+        position: fixed;
+        top: 41%;
+        right: 35%;
+    
+        width: 35px;
+        height: 35px;
+      }
+ } */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+    .float-right{
+        position: fixed;
+        top: 43%;
+        right: 35%;
+        width: 35px;
+        height: 35px;
+      }
+ } */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {
+    .float-right{
+        position: fixed;
+        top: 43%;
+        right: 49%;
+        width: 35px;
+        height: 35px;
+      }
+ }
+  */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {
+    .float-right{
+      position: fixed;
+      top: 43%;
+      right: 76%;
+        width: 35px;
+        height: 35px;
+      }
+} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {
+    .float-right{
+        position: fixed;
+        top: 43%;
+        right: 49%;
+        width: 35px;
+        height: 35px;
+        width: 35px;
+        height: 35px;
+      }
+} */

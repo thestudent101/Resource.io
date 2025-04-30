@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Blue Subscription Confirmation</h1>
+<div mat-dialog-content>
+
+  <div [formGroup]="paymentTypeForm">
+    <mat-radio-group aria-label="Select an option" formControlName="paymentTypeRadio">
+      <div>
+        <p>Choose your preferred payment method:</p>
+        <p><mat-radio-button value="EFT">EFT</mat-radio-button></p>
+        <p><mat-radio-button value="CREDIT_CARD">Credit Card</mat-radio-button></p>
+      </div>
+    </mat-radio-group>
+  </div>
+  
+  <div *ngIf="!savedCC">
+    <p>If you choose to pay via <strong>Credit Card</strong>, you will be redirected to capture your card details. Please note that your account will be debited upon subscription. Subscription fees will then be debited monthly, with the first recurring payment starting one month after your subscription join date.</p>
+    <p>If you choose to pay via <strong>EFT</strong>, the Blue Pearl Admin team will get in contact with you shortly.</p>
+    <p>Note that you will be able to update or cancel your subscription at any time.</p>
+    <p>By clicking <b>OK</b> you agree to our <a href={{termsUrl}} target="_blank">terms and conditions.</a></p>
+  </div>
+  
+  <div *ngIf="savedCC"><!-- Also ensure that payment Type is set to CREDIT_CARD -->
+    <p>Please confirm that you agree with updating your subscription.</p>
+    <p>You will be able to update or cancel your subscription at any time.</p>
+    <p>By clicking <b>OK</b> you agree to our <a href={{termsUrl}} target="_blank">terms and conditions.</a></p>
+    <p>If you wish to also change your card details click on <b>Update Subscription and Card Details</b>.</p>
+  </div>
+  
+</div>
+<div mat-dialog-actions class="blue-dialog-button">
+  <button mat-button (click)="onNoClick()" class="peach-button" >No Thanks</button>
+  <button mat-dialog-actions class="blue-dialog-button" mat-button (click)="onOkClick()" class="peach-button" cdkFocusInitial>Ok
+
+  </button>
+  <button *ngIf="savedCC" mat-button (click)="onOKUpdClick()" class="peach-button" >Update Subscription and Card Details</button>
+</div>

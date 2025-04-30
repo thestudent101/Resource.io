@@ -1,0 +1,59 @@
+<!-- My Jobs Heading and Back Button -->
+<div class="my-jobs-heading jsut">
+    <h2 class="my-jobs-title">My Jobs</h2>
+</div>
+
+<!-- Section Selection Buttons -->
+<div class="section-buttons mt-4" [@slide]="activeSection" >
+    <button mat-flat-button (click)="showAppliedJobs()" [ngStyle]="getButtonStyle('applied')">Applied Jobs</button>
+    <button mat-flat-button (click)="showSavedJobs()" [ngStyle]="getButtonStyle('saved')">Saved Jobs</button>
+</div>
+<div class="section-divider" [@slide]="activeSection"></div>
+
+<!-- Applied Jobs Section -->
+<div *ngIf="showApplied" class="applied-jobs-section">
+    <!-- Your applied jobs content goes here -->
+    <p *ngIf="activeJobProfiles && activeJobProfiles.length > 0; else noAppliedJobsMessage">
+        You have no jobs you have applied for!
+    </p>
+</div>
+
+<ng-template #noAppliedJobsMessage class="noApplied">
+    <div class="card">
+        <div class="card-body">
+            <img src="assets/Mail-bro.svg" alt="">
+            <p>No Applied Jobs Here!</p>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Saved Jobs Section -->
+<div *ngIf="showSaved" class="saved-jobs-section">
+    <!-- Your saved jobs content goes here -->
+    <div *ngIf="jobProfiles.length > 0; else noSavedJobsMessage" class="row job-profile-cards ml-1">
+        <!-- Loop through the job profiles -->
+        <div *ngFor="let jobProfile of jobProfiles" class="col-12 mx-3 my-3 px-3 py-2 job-profile-horizontal">
+            <!-- Company Logo on top right -->
+            <div class="company-logo row">
+                <img *ngIf="jobProfile.company_logo" src="{{ jobProfile.company_logo }}" alt="Company Logo">
+                <img *ngIf="!jobProfile.company_logo" [src]="defaultCompanyLogoUrl" alt="Default Company Logo">
+                <!-- Dots icon and Apply Now button -->
+                <div class="dots-icon-and-apply-button">
+                    <button class="apply-button">Apply Now</button>
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+            <!-- Job Title and Location -->
+            <div class="job-title-and-location">
+                <h3 class="job-title">{{ jobProfile.title }}</h3>
+                <span class="job-salary"><mat-icon>location_on</mat-icon>{{ jobProfile.jobLocation }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #noSavedJobsMessage>
+    <p>No Saved Jobs Here!</p>
+</ng-template>

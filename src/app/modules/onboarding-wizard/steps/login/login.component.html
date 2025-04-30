@@ -1,0 +1,121 @@
+<div class="container-lg mt-4 mb-4 log second-section">
+  <div class="row">
+    <!-- First Section (Login Form) -->
+    <div class="col-sm-12 col-md-6">
+      <div class="custom-card-log mt-3">
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <div class="custom-card-body p-3 align-items-center justify-content-center">
+          <div class="p-3 text-dark hideclose">
+            <div class="row align-items-center justify-content-between">
+              <div class="d-flex align-items-center small close">
+                <button mat-button routerLink="/landing" class="ml-2"><mat-icon class="text-muted">close</mat-icon></button>
+              </div>
+            </div>
+          </div>
+          <form class="card-body pt-0 pl-0 pr-0 m-0 login-form align-items-center">
+            <!-- ... (Your login form content) ... -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+              </div>
+            </div>
+            <div class="row small center">
+              <img class="image" src="assets/images/logo_landing.png" alt="Blue logo" srcset="">
+            </div>
+            <div class="row small">
+              <!-- email -->
+              <mat-form-field class="col-sm-12 small" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input required pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" [formControl]="email" matInput placeholder="mail@example.com" type="email" (blur)="emailAddressOnBlur()">
+                <mat-error *ngIf="email.invalid">Your email address is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row small">
+              <!-- password -->
+              <mat-form-field class="col-sm-12 small" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input required pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" [formControl]="password" matInput placeholder="*******" [type]="passwordType">
+                <mat-icon matSuffix (click)="toggleVisibility()" class="password-visibility-toggle-button" *ngIf="!passwordVisible">visibility_off</mat-icon>
+                <mat-icon matSuffix (click)="toggleVisibility()" class="password-visibility-toggle-button" *ngIf="passwordVisible">visibility</mat-icon>
+                <mat-error *ngIf="password.invalid">Password must contain 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and should be at least 8 characters long</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row small mt-3 ml-4 check">
+
+              <p>
+                By signing in you accept Blue's <a href="#" (onclick)="navigateToTermsAndConditions()"><span>Privacy Policy.</span></a>
+              </p> 
+              <!-- <mat-checkbox [formControl]="checkbox">
+                  I Accept Blue's  <a><span (click)="navigateToTermsAndConditions()">Privacy Policy</span></a>
+              </mat-checkbox> -->
+          </div>
+          <div class="col-sm-12 small mt-3 ml-4">
+            <button (click)="login()" mat-button  matTooltip="Sign In" class=" customButton">Sign-in</button>
+          </div>
+          <div *ngIf="checkbox.invalid && !buttonDisabled" class="col-sm-12 small mt-3 ml-4">
+              Please accept the privacy policy to proceed.
+          </div>
+            <div class="col-sm-12 small mt-3 ml-4">
+              <a class='btn btn-link p-0 text-black small forgot' routerLink="/auth/forgot-password">Forgot password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Section (Registration Options) -->
+  <div class="col-sm-12 col-md-6 second-section">
+      <div class="custom-card-body">
+        <div class="p-3 text-dark hideclose2">
+          <div class="row align-items-center justify-content-between">
+            <div class="d-flex align-items-center small close">
+              <button mat-button routerLink="/landing" class="ml-2"><mat-icon class="text-muted">close</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="customPara mt-3 mb-4 small">
+        <h5><strong>Register Your Account</strong></h5>
+      </div>
+      <div class="col-c">
+        <!-- Consultant Card -->
+        <div class="Consultant mt-2">
+          <div class="card">
+            <div class="card-statistic-3 p-3">
+              <h5 class="card-title mb-1">Consultant</h5>
+              <!-- ... (Consultant card content) ... -->
+              <div class="row align-items-center mb-2 d-flex loginicons">
+                <img src="/assets/icons/Group 21009.png" alt="" srcset="">
+                <div class="col-8">
+                  <h6 class="align-items-center mb-0 small text-wrap small customPara">
+                    Looking to sell your hours or apply for an available position, register as a Consultant
+                  </h6>
+                </div>
+                <button mat-button routerLink="/auth/register/consultant" class="mr-0 loginButton"><mat-icon class="text-muted">arrow_forward</mat-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Card -->
+        <div class="Client mt-3">
+          <div class="card">
+            <div class="card-statistic-3 p-3">
+              <h5 class="card-title mb-1">Client</h5>
+              <!-- ... (Client card content) ... -->
+              <div class="row align-items-center mb-2 d-flex loginicons">
+                <img src="/assets/icons/Group 21008.png" alt="" srcset="">
+                <div class="col-8">
+                  <h6 class="align-items-center mb-0 small text-wrap small customPara">
+                    Looking to sell your hours or apply for an available position, register as a Consultant
+                  </h6>
+                </div>
+                <button mat-button routerLink="/auth/register/client" class="mr-0 loginButton"><mat-icon class="text-muted">arrow_forward</mat-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

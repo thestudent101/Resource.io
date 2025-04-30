@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Blue Subscription Cancellation Confirmation</h1>
+<div mat-dialog-content>
+  <p>Please note that the cancellation of your subscription will be effective {{effectiveDate}}.</p>
+  <p>Subscription fees will not be debited after the cancellation effective date.</p>
+  <p>Please refer to the <a href={{termsUrl}} target="_blank">terms and conditions</a> for more details with regards to unsubscribing to this service.</p>
+  <p>Are you sure you want to unsuscribe?</p>
+ </div>
+<div mat-dialog-actions class="blue-dialog-button">
+  <button mat-button (click)="onNoClick()" class="peach-button">No</button>
+  <button mat-button (click)="onYesClick()" class="peach-button" cdkFocusInitial>Yes</button>
+</div>

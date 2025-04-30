@@ -1,0 +1,48 @@
+<div class="register-container mb-2">
+    <div class="left-side">
+        <p><i class="fa-solid fa-quote-left m-1 ml-2"></i>Expand your network. Join BLUE and collaborate with industry-leading consultants<i class="fa-solid fa-quote-right m-1 mr-2"></i></p>
+    </div>
+    
+    <div class="right-side">
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar' mode="indeterminate"></mat-progress-bar>
+        <div class="custom-card-body">
+            <div class="p-3 text-dark top">
+                <button mat-button routerLink="/landing" class="mr-2"><mat-icon class="text-muted">arrow_back</mat-icon>Back</button>
+                <h6 class="text-muted small close">STEP 02/02</h6>
+            </div>
+
+            <form class="card-body pt-0 pl-0 pr-0 m-0 login-form customForm">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>We've sent a verification code through to your email. Please insert the verification code and click on next. If you did not find a verification code, please go back and validate your credentials or click resend code.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Verification Code -->
+                    <mat-form-field class="col-sm-12" appearance="fill">
+                        <mat-label>Verification Code</mat-label>
+                        <input required [formControl]="code" matInput placeholder="123456" type="text">
+                        <mat-error *ngIf="code.invalid">Code is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex align-items-center custom">
+                    <div class="text-dark mt-2">
+                        <div class="text-right col-sm-12">
+                            <button (click)="verify()" mat-button [disabled]="loading" matTooltip="Verify" class="customButon"> Verify</button>
+                        </div>
+                    </div>
+                    <div class="text-dark mt-2 small">
+                        <div class="text-left col-sm-12">
+                            <button (click)="resend()" mat-button [disabled]="loading" matTooltip="Resend" class="customButon"> Resend Code <mat-icon>loop</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

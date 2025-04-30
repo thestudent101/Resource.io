@@ -1,0 +1,16 @@
+<div class="custom-dt-picker">
+    <div class="d-flex flex-row align-items-center justify-content-center clo-12">
+        <mat-form-field class="col-6">
+            <mat-label>Hours</mat-label>
+            <input class="hours" type="number" [(ngModel)]="hours" (change)="inputChanges()" matInput/>
+        </mat-form-field>
+        <label class="time-divider">:</label>
+        <mat-form-field class="col-6">
+            <mat-label>Minutes</mat-label>
+            <input class="hours" type="number" [(ngModel)]="minutes" (change)="inputChanges()" matInput />
+        </mat-form-field>
+    </div>
+    <div class="d-flex flex-row align-items-center justify-content-center" *ngIf="debug">
+        <span class="text-muted">Debug: {{value}}</span>
+    </div>
+</div>

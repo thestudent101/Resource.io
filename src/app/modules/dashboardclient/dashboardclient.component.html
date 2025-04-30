@@ -1,0 +1,82 @@
+<div class="container-fluid ">
+        <nav class="navbar" style="background: linear-gradient(90deg, #40B9F0 0%, rgba(23, 14, 102, 0.90) 100%);">
+            <div class="container-fluid d-flex justify-content-center">
+                <h4 class="text-white text-weight-bold"><b>Dashboard</b></h4>
+            </div>
+        </nav>
+        
+        
+
+          <div class="row mb-4 mt-4">
+            <div class="col">
+                <p class="text-3x">
+                    Hi,<br>
+                    Here's a quick overview of your activities.
+                </p>
+                <div class="row mt-4">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body" style="background-color: #E7F1FF;">
+                                <p><b>You have posted  {{jobProfiles.length || 0}} Jobs </b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body" style="background-color: #E7F1FF;">
+                                <p> <b>You have Hired 38 Consultants</b> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+            </div>
+            <div class="col mt-2">
+                <div class="d-flex justify-content-end">
+                    <a class="custom-card-client text-white text-center mr-3"> 0 </a>
+                    <a class="custom-card-client text-white text-center mr-3"> 0 </a>
+                    <a class="custom-card-client text-white text-center mr-3"> 8 </a>
+                    <a class="custom-card-client text-white text-center mr-3"> 9 </a>
+                    <a class="custom-card-client text-white text-center mr-3"> 0 </a>
+                </div>
+                <p class="text-end">Total Consultant Hours Bought on Blue.</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" style="background-color: #E7F1FF;">
+                        <h6 class="card-title"><b>You have hired Consultants of the following  experience levels:</b></h6>
+                        <app-piechart [data]="statistics" *ngIf="statistics"></app-piechart>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card outline-none">
+                    <div class="card-body ">
+                        <p class="card-text ">With over <b>67,000</b> hours Sold on this application,
+                              it has become a go-to resource for IT professionals seeking employment. What sets it apart is 
+                              its strong client base of leading IT companies, making it a trusted gateway for both job seekers
+                               and employers in the tech sector. Whether you're a skilled IT professional looking for the 
+                               perfect role or an IT company seeking top talent, this platform offers an effective and 
+                               efficient solution for connecting the right people with the right opportunities in the 
+                               ever-evolving world of technology.</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row  mt-5">
+            <div class="d-flex justify-content-between">
+                <p>Previously Posted Jobs</p>   
+                <a href="#" class=""routerLink="/main/job-profiles/view-job-profiles">View all jobs</a>   
+            </div>
+                     <div class="container-fluid">
+                        <app-recent-jobs-view class="row" [jobs]="jobProfiles" *ngIf="jobProfiles.length > 0"></app-recent-jobs-view>
+   
+   
+                     </div>
+            
+          </div>
+</div>

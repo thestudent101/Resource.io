@@ -1,0 +1,4 @@
+<div class="profile-pic mx-auto"  [class.portrait]="isPortrait" [class.landscape]="!isPortrait">
+    <img class="avatar" [src]="avatarSrc" #avatar [class.portrait]="isPortrait" [class.landscape]="!isPortrait" />
+</div>
+<canvas width="300" height="300" class="hidden" #genericImage>Your browser does not support the HTML5 canvas tag.</canvas>

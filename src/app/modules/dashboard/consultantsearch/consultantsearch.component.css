@@ -1,0 +1,11 @@
+mat-card{
+    border-radius: 3.375px;
+border: 1px solid #D9D9D9;
+background: #FCFCFC;
+box-shadow: 0px 7.59375px 24.46875px 6.75px rgba(0, 0, 0, 0.06);
+}
+hr{
+   color: #A3BCF8; 
+   height: 5px;
+}
+

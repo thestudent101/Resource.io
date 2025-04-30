@@ -1,0 +1,158 @@
+<nav class="navbar" style="background: linear-gradient(90deg, #40B9F0 0%, rgba(23, 14, 102, 0.90) 100%);">
+    <div class="container-fluid d-flex justify-content-center">
+        <h4 class="text-white text-weight-bold"><b>Consultants</b></h4>
+    </div>
+  </nav>
+
+
+<hr>
+<div class="container" >
+    <div class="row mt-4">
+        <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-xl-3">
+            <div>
+                <label>Level of skill</label>
+                <span class="overflow-y-scroll mt-3" style="display: inherit; height: 150px;">
+                    <!-- Some borders are removed -->
+                    <ul class="list-group list-group-flush" *ngIf="filters.experience.length > 0">
+                        <li class="list-group-item"  style="background-color: transparent;">
+                            <div class="form-check">
+                                <input class="form-check-input" checked (change)="onClick($event,'experience')" value="ALL" type="radio" name="experience">
+                                <label class="form-check-label" for="experience1">
+                                  ALL
+                                </label>
+                              </div>
+                            <div class="form-check" *ngFor="let exp of filters?.experience">
+                                <input (change)="onClick($event, 'experience')" class="form-check-input" [value]="exp" type="radio" name="experience" >
+                                <label class="form-check-label" for="experience1">
+                                  {{exp}}
+                                </label>
+                              </div>
+                               <!-- <input type="text" placeholder="Pick one" matInput [formControl]="experienceFilter" [matAutocomplete]="experienceauto">
+                              <mat-autocomplete #experienceauto="matAutocomplete">
+                                  <mat-option *ngFor="let option of filteredExperience | async" [value]="option">{{option}}</mat-option>
+                              </mat-autocomplete> -->
+                        </li>
+                      </ul>
+               </span>
+
+            </div>
+            <hr>
+            <div>
+                <label>Skills</label>
+                <!-- [formControl]="skillsFilter" [matAutocomplete]="skillsauto" -->
+                    <input type="text" placeholder="Search" matInput >
+             
+               <span class="overflow-y-scroll mt-3" style="display: inherit; height: 150px;">
+                    <!-- Some borders are removed -->
+                    <ul class="list-group list-group-flush" *ngIf="filters.skills.length > 0">
+                        <li class="list-group-item" style="background-color: transparent;" >
+                                <div class="form-check">
+                                  <input class="form-check-input" checked (change)="onClick($event,'skill')" value="ALL" type="radio" name="skills">
+                                  <label class="form-check-label" for="skills1">
+                                    ALL
+                                  </label>
+                                </div>
+                    
+                            <div class="form-check" *ngFor="let skill of filters?.skills">
+
+                                <input (change)="onClick($event,'skill')" class="form-check-input" [value]="skill" type="radio" name="skills" >
+                                <label class="form-check-label" for="skills1">
+                                  {{skill}}
+                                </label>
+                              </div>
+                             
+                        </li>
+                      </ul>
+               </span>
+
+            </div>
+            <hr>
+            <div>
+                <!-- [formControl]="certificationFilter" [matAutocomplete]="certificationauto" -->
+                <label>Certifications</label>
+                    <input type="text" placeholder="Pick one" matInput >
+                    <span class="overflow-y-scroll mt-3" style="display: inherit; height: 150px;">
+                        <ul class="list-group list-group-flush" *ngIf="filters.certifications.length > 0">
+                            <li class="list-group-item"  style="background-color: transparent;">
+                                <div class="form-check">
+                                    <input class="form-check-input" checked (change)="onClick($event,'certification')" value="ALL" type="radio" name="certification">
+                                    <label class="form-check-label" for="certification1">
+                                      ALL
+                                    </label>
+                                  </div>
+                                <div class="form-check" *ngFor="let cert of filters?.certifications">
+                                    <input (change)="onClick($event, 'certification')" class="form-check-input" [value]="cert" type="radio" name="certification" >
+                                    <label class="form-check-label" for="certification1">
+                                      {{cert}}
+                                    </label>
+                                  </div>
+                            </li>
+                          </ul>
+               </span>
+
+            </div>
+            <!-- <hr>[formControl]="qualificationsFilter" [matAutocomplete]="qualificationauto" -->
+            <div>
+                <label>Qualifications</label>
+                <div>
+                    <input type="text" placeholder="Pick one" matInput >
+                        <span class="overflow-y-scroll mt-3" style="display: inherit; height: 150px;">
+                            <ul class="list-group list-group-flush" *ngIf="filters.qualifications.length > 0">
+                                <li class="list-group-item"  style="background-color: transparent;" >
+                                    <div class="form-check">
+                                        <input class="form-check-input" checked (change)="onClick($event,'qualification')" value="ALL" type="radio" name="qualification">
+                                        <label class="form-check-label" for="qualification1">
+                                          ALL
+                                        </label>
+                                      </div>
+                                    <div class="form-check" *ngFor="let qual of filters?.qualifications">
+                                        <input (change)="onClick($event, 'qualification')" class="form-check-input" [value]="qual" type="radio" name="qualification" >
+                                        <label class="form-check-label" for="qualification1">
+                                          {{qual}}
+                                        </label>
+                                      </div>
+                                </li>
+                              </ul>
+                   </span>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 col-xl-9">
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <!-- no contractors -->
+                    <div class="alert alert-light mt-3" *ngIf="contractors.length == 0 && !loading">
+                        Unfortunately there are no contractors profiles that match your filters
+                    </div>
+                    <!-- loading -->
+                    <mat-card *ngIf="loading" class="w-100">
+                        <mat-card-content>
+                            <p class="text-center">Please Wait: Loading Contractor Profiles</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4 col-xl-4 mb-3" *ngFor="let contractor of contractors">
+
+                    <mat-card>
+                        <mat-card-header style="color: #32449E;"><b>{{contractor.candidateNumber}} </b></mat-card-header>
+                        <mat-card-content class="pt-2 " style="color: var(--neutral-grey-5, #8B8C8C);">
+                            <p *ngIf="contractor.summary.indexOf('null') == -1">{{contractor.summary}}</p>
+                            <p *ngIf="contractor.summary.indexOf('null') > -1">No Location specified</p>
+                            <p>Availability: <strong>{{contractor.availability || 'Not specified'}}</strong></p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <a mat-button routerLink="/main/dashboard/contractor-view/{{contractor.candidateNumber}}" *ngIf="!isAuthenticated">View Profile</a>
+                            <a mat-button routerLink="/main/dashboard/contractor-view/{{contractor.candidateNumber}}/private" *ngIf="isAuthenticated">View Profile</a>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+      
+    </div>
+    </div>
+</div>

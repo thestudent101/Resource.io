@@ -1,0 +1,30 @@
+<div class="mt-3">
+    <mat-card>
+        <mat-card-content>
+            <h4>Hours submitted per contractor for the current billing cycle</h4>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="mt-3" *ngIf="hasSummary">
+        <mat-card-content>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Contractor</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contractor of contractorSummary">
+                        <td>{{contractor.contractorName}}</td>
+                        <td class="text-right"><h5 class="mb-0">{{contractor.totalMinutes | hoursMinutes}}</h5></td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="mt-3" *ngIf="!hasSummary">
+        <mat-card-content>
+            <p class="text-center">No timesheets have been submitted for this billing cycle</p>
+        </mat-card-content>
+    </mat-card>
+</div>

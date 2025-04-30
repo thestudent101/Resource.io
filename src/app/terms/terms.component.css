@@ -1,0 +1,133 @@
+
+h2, h3, h4, h5 {
+    font-weight: bolder;
+}
+
+
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.biggest{
+    font-size: 1.2em;
+}
+
+.bigger{
+    font-size: 1em;
+}
+
+.small {
+    font-size: 0.8em;
+}
+
+.smallest{
+    font-size: 0.9em;
+}
+
+/* To show table of contents -remove "display: none" */
+.tableOfContents{
+  display: none;
+  border-bottom: 2px solid rgba(179, 179, 179, 0.329);
+  border-radius: 5px;
+  margin: auto;
+  width: 50%;
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+.headingTermsAndConditions{
+    text-align: center;
+    
+}
+
+.tableOfContentsHeading{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.textFormating{
+    text-shadow: rgb(0, 0, 0) 0px 0px 1px;
+}
+
+.mat-card {
+    margin-top: 20px;
+    margin-bottom: 20px;    
+}
+
+.custom-card{
+    background-color: #BCE6FF;
+}
+
+/* Active and Inactive Buttons */
+.active-button {
+    background-color: #2D82B5; /* Active button color */
+    color: #2D82B5;
+}
+  
+.inactive-button {
+    background-color: #FFFFFF; /* Inactive button color */
+    color: #2D82B5;
+}
+  
+  /* Text Colors */
+.white-text {
+    color: white;
+}
+  
+.black-text {
+    color: black;
+}
+
+.Buttonterms{
+    background-color: #017DB5;
+    color: white;
+    margin-top: 12px;
+}
+
+
+
+.Buttonterms i {
+    font-size: 20px;
+    margin-left: auto;
+    padding-right: 6px;
+}
+
+
+.section-buttons{
+    margin-left: 50px;
+}
+
+.section-buttons button{
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 60px;
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    flex-shrink: inherit;
+    padding: 10px;
+
+}
+
+.paragrapshs{
+    font-size: small;
+    font-family: 'Poppins',sans-serif;
+}
+
+
+.paragrapshs i {
+
+    font-size: 5px;
+    color: black;
+    padding-left: 7px;
+    padding-right: 7px;
+
+}
+
+

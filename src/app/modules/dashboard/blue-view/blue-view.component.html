@@ -1,0 +1,53 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+ <!-- all jobs -->
+<div class="alert alert-danger mt-3 text-center" *ngIf="error && !loading">
+    Statistics could not be retrieved. Please try again.
+</div>
+ <div class="" *ngIf="!loading">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <simple-summary-card title="Clients" [total]="statistics.totalClients" route="/main/dashboard/client-view" info="Total number of clients"></simple-summary-card>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <simple-summary-card title="Online Consultants" [total]="statistics.totalContractors" route="/main/dashboard/contractor-view" info="Total number of online contractors"></simple-summary-card>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <simple-summary-card title="Total Consultant Hours Sold" [total]="statistics.totalHoursSold" info="Hours sold by consultants to client"></simple-summary-card>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <simple-summary-card title="Total Job Profiles" [total]="statistics.totalJobProfiles" info="Total number of job profiles"></simple-summary-card>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <simple-summary-card title="Total Years Of Experience" [total]="statistics.totalYearsOfExperience" info="Total years of experience"></simple-summary-card>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <simple-summary-card title="Total Skills" [total]="statistics.totalUniqueContractorSkills" info="Total number of skills"></simple-summary-card>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-sm-12">  
+                <bar-chart-card title="Number Of Consultants Per Category" info="Top 10 skills on BLUE" [data]="statistics.topSkills"></bar-chart-card>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-6 col-lg-4">
+            <two-row-summary-card title="Total Senior Consultants" [summary]="statistics.summarySeniorContractors" info="Total no. of senior contractors " route="/main/dashboard/senior/contractor-view"></two-row-summary-card>
+        </div>
+    
+        <div class="col-md-6 col-lg-4">
+            <two-row-summary-card title="Total Intermediate Consultants" [summary]="statistics.summaryIntermediateContractors" info="Total no. of intermediate consultants" route="/main/dashboard/intermediate/contractor-view"></two-row-summary-card>
+        </div>
+    
+        <div class="col-md-6 col-lg-4">
+            <two-row-summary-card title="Total Junior Consultants" [summary]="statistics.summaryJuniorContractors" info="Total no. of junior consultants" route="/main/dashboard/junior/contractor-view"></two-row-summary-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,644 @@
+<div class="mt-0 container" id="Home">
+    <div class="customHero mt-5 py-5">
+        <div class="mx-auto mt-4">
+            <img class="col-12 col-sm-6 mt-3" src="assets/images/logo_landing.png" alt="Blueapp">
+        </div>
+        <p class="h4 text-center mx-auto text-dark mt-4">An excellent portal for both clients and,</p>
+        <p class="h4 text-center mx-auto text-dark mt-4">developer consultants in the technology industry</p>
+    </div>
+    
+
+
+
+    <div class="bg-white mt-5 py-5" id="About">
+
+        <div class="text-muted text-center p-5 my-5 container">
+            <div class="d-flex flex-column-reverse flex-md-row justify-content-around align-items-center gap-3">
+                <div class="col-md-6">
+                    <p class="text-black text-left text-wrap">
+                        We understand the importance of having access to the right IT skills and resources to stay competitive in today's fast-paced business environment.
+                    </p>
+                    <p class="text-black text-left text-wrap">
+                        Whether you're a small business looking for a developer or a seasoned IT professional looking for your next project, BLUEAPP has everything you need to succeed.
+                    </p>
+                </div>
+        
+                <div class="col-md-6 m-2">
+                    <img src="/assets/images/Group 21006Blue_About_us.png" class="img-fluid" alt="Blue Logo">
+                </div>
+            </div>
+        
+            <div class="row mt-5 justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <button class="btn btn-primary customColorAButton btn-block" routerLink="/auth/register/client">Hire a Talent</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary customColorAButton btn-block" routerLink="/auth/register/consultant">Find a Contract</button>
+                </div>
+            </div>
+        
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <p class="h4 text-dark fw-bold text-left">Our Clients</p>
+                    <p class="small text-left">Several selected clients, who already believe in our service.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row align-items-center">
+                        <div class="col-4 col-md-2 d-flex align-items-center">
+                            <img src="../../assets/images/discovery_logo_0-removebg-preview 1.png" class="img-fluid" alt="Blue Logo">
+                        </div>
+                        <div class="col-4 col-md-2 d-flex align-items-center">
+                            <img src="../../assets/images/Group 20805.png" class="img-fluid" alt="Blue Logo">
+                        </div>
+                        <div class="col-4 col-md-2 d-flex align-items-center">
+                            <img src="../../assets/images/kyndryl_NRF_400x400_103987 2.png" class="img-fluid" alt="Blue Logo">
+                        </div>
+                        <div class="col-4 col-md-2 d-flex align-items-center">
+                            <img src="../../assets/images/download__1_-removebg-preview 1.png" class="img-fluid" alt="Blue Logo">
+                        </div>
+                        <div class="col-4 col-md-2 d-flex align-items-center">
+                            <img src="../../assets/images/png-transparent-amazon-com-amazon-web-services-logo-cloud-computing-cloud-computing-text-service-logo-removebg-preview 1AWS.png" class="img-fluid" alt="Blue Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        
+
+
+        <div class="text-muted text-center md-5 p-5 pt-2 pb-3 container cardsection" id="section1">
+            <div class="d-flex flex-column flex-md-row align-items-center mt-4">
+                <div class="col-md-6 text-center">
+                    <p class="text-black text-wrap text-left custompara">Thinking of joining Blue<br> <span class="_customColorSpan">today!</span></p>
+                    <p class="text-black text-wrap text-left custompara2">View contracts <span class="_customColorSpan">offered!</span></p>
+                </div>
+        
+                <div class="col-md-6">
+                    <div *ngIf="teamNumber == 1" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/discovery_logo_0-removebg-preview 1.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-left ">
+                            <h5 class="card-title mt-4">Discovery</h5>
+                            <p class="card-text mt-2">Practice Lead</p>
+                            <p class="card-text mt-2">R 300/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>1</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 2" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Group 20805.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">IBM</h5>
+                            <p class="card-text mt-2">Technical Architect - Radio / Wireless</p>
+                            <p class="card-text mt-2">R 400/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>2</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 3" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/discovery_logo_0-removebg-preview 1.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">N.A.K Cloud</h5>
+                            <p class="card-text mt-2">Dev OPS</p>
+                            <p class="card-text mt-2">R 600/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>3</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 4" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 5" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 6" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 7" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 8" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 9" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <div *ngIf="teamNumber == 10" class="custom-card m-2">
+                        <div class="row align-items-stretch justify-content-center mt-4">
+                            <img src="../../assets/images/Adpt-04-2021.png" class="card-img-top" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mt-4">ADAPT IT</h5>
+                            <p class="card-text mt-2">Technical Writter</p>
+                            <p class="card-text mt-2">R 700/hr</p>
+                        </div>
+                        <p class="text-white text-center mt-2"><small><strong>4</strong>/10</small></p>
+                    </div>
+
+                    <!-- Add more sections for different teamNumbers as needed -->
+                    <!-- Repeat the above structure for teamNumber 2 to 10 with different job details -->
+                </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="text-center md-5 p-5 md-5 p-5 bg-white" id="Benefits">
+        <div class="container">
+            <h2 class="h1 text-dark display-4 mb-2 text-wrap">The benefits of <span class="_customColorSpan">Blue!</span></h2>
+    
+            <div class="md-5 p-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-sm-6 m-2 text-center">
+                        <div>
+                            <img src="/assets/icons/client.png" alt="" class="cusotmImgB">
+                        </div>
+                        <p class="text-dark text-wrap">Easily accessible job opportunities</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 m-2 text-center">
+                        <div>
+                            <img src="/assets/icons/verified.png" alt="" class="cusotmImgB">
+                        </div>
+                        <p class="text-dark text-wrap">Access database of highly qualified consultants</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 m-2 text-center">
+                        <div>
+                            <img src="/assets/icons/freelance.png" alt="" class="cusotmImgB">
+                        </div>
+                        <p class="text-dark text-wrap">Free to sell hours to either one client or multiple clients</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 m-2 text-center">
+                        <div class="mt-5">
+                            <img src="/assets/icons/gig-economy.png" alt="" class="cusotmImgB">
+                        </div>
+                        <p class="text-dark text-wrap">Consultants are hired per the number of <br>hours a client requires</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 m-2 text-center">
+                        <div class="mt-5">
+                            <img src="/assets/icons/finger-print.png" alt="" class="cusotmImgB">
+                        </div>
+                        <p class="text-dark text-wrap">We do all background checks for you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <div class="text-center md-5 p-5 bg-white pt-2 pb-3 " id="Testimonial">
+        <div class="container">
+            <h2 class="h2 text-dark display-5">What our <span class="_customColorSpan">clients say.</span></h2>
+            <hr>
+
+            <div class="col-12 container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 d-none d-lg-block">
+                        <div *ngIf="prevTestimonials === 1" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>1</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;" class="text-dark testimonial-text"><small>Blue has an awesome matching engine that simplified my job search. The application matched all the jobs related to my profile and all I had to do was to select my desired jobs and apply. I would highly recommend this application to all ICT professionals</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>A Lekota</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>Technical Manager</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="prevTestimonials === 2" class="col-12 p-3 rounded prev-testimonial _testimonial-card" style="display: none;">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>2</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;"  class="text-dark testimonial-text"><small>It was a great experience using Blue and will partner with them again. I have used the App for a couple of months, and feel satisfied with the way they handled my projects. Blue accurately matches my profile with current job roles.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class=" text-white mb-0"><strong><small>D Siziba</small></strong></p>
+                                <p class=" text-white mb-0"><strong><small>Senior Solutions Architect</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="prevTestimonials === 3" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>3</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;"  class="text-dark testimonial-text"><small>Blue is on top of their game, they go above and beyond, and leave no stone unturned. It was easy to navigate through the skills area and it accurately matched a role related to my job profile. I followed the process and I was successfully placed for the Cloud Architecture Position.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p  class="text-white mb-0"><strong><small>D Kollu</small></strong></p>
+                                <p class=" text-white mb-0"><strong><small>Android / iOS Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="prevTestimonials === 4" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>4</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-dark testimonial-text"><small>Blue is highly recommended. I did experience technical issues but the great thing was, they are very responsive and did not delay in resolving my query. Their team is very polite and paid attention to my problem. The approach they follow is completely different from other matching engine apps, keeping everything transparent and if you ever have any issues you can be sure they will decisively resolve them.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="prevTestimonials === 5" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>5</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-dark testimonial-text"><small>I chose Blue app because I simply could not find any other provider that offered all the tools I needed under one platform, auto responders, and self-hosted sign up, easily accessible and easy to navigate. Such a great platform, I would definitely use it again.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p  class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="prevTestimonials === 6" class="col-12 p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>6</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-dark testimonial-text"><small>Their website and social marketing has made a significant difference in my career. Within a week, I was able to easily register as a consultant and I was called for an interview and the rest is history.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p  class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="prevTestimonials === 7" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>7</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>The phone and messaging conversations I had with the Admin team was nothing short of amazing. The whole process of navigating around the app was explained to me and that really helped.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div *ngIf="testimonial === 1" class="col-12  p-3 rounded _testimonial-card _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>1</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;"  class="text-white testimonial-text"><small>Blue has an awesome matching engine that simplified my job search. The application matched all the jobs related to my profile and all I had to do was to select my desired jobs and apply. I would highly recommend this application to all ICT professionals</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>A Lekota</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>Technical Manager</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-dark float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-dark float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="testimonial === 2" class="col-12  p-3 rounded _testimonial-card _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>2</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;" class="text-white testimonial-text"><small>It was a great experience using Blue and will partner with them again. I have used the App for a couple of months, and feel satisfied with the way they handled my projects. Blue accurately matches my profile with current job roles.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>D Siziba</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>Senior Solutions Architect</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-dark float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-dark float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="testimonial === 3" class="col-12  p-3 rounded _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>3</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;" class="text-white testimonial-text"><small>Blue is on top of their game, they go above and beyond, and leave no stone unturned. It was easy to navigate through the skills area and it accurately matched a role related to my job profile. I followed the process and I was successfully placed for the Cloud Architecture Position.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p  class="text-white mb-0"><strong><small>D Kollu</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>Android / iOS Developer</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-dark float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-dark float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="testimonial === 4" class="col-12 p-3 rounded _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>4</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>Blue is highly recommended. I did experience technical issues but the great thing was, they are very responsive and did not delay in resolving my query. Their team is very polite and paid attention to my problem. The approach they follow is completely different from other matching engine apps, keeping everything transparent and if you ever have any issues you can be sure they will decisively resolve them.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-dark float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-dark float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="testimonial === 5" class="col-12 p-3 rounded _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>5</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>I chose Blue app because I simply could not find any other provider that offered all the tools I needed under one platform, auto responders, and self-hosted sign up, easily accessible and easy to navigate. Such a great platform, I would definitely use it again!</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-white float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-white float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="testimonial === 6" class="col-12 p-3 rounded _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>6</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>Their website and social marketing has made a significant difference in my career. Within a week, I was able to easily register as a consultant and I was called for an interview and the rest is history. </small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-white float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-white float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="testimonial === 7" class="col-12  p-3 rounded _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>7</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>3.	The phone and messaging conversations I had with the Admin team was nothing short of amazing. The whole process of navigating around the app was explained to me and that really helped. </small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 mb-4 pt-2">
+                                <div class="col-12">
+                                    <button (click)="prevTestimonial()" class="text-white float-left" mat-button>Previous</button>
+                                </div>
+                                <div class="col-12">
+                                    <button (click)="nextTestimonial()" class="text-white float-right" mat-button>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-none d-md-block">
+                        <div *ngIf="nextTestimonials === 1" class="col-12 p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>1</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;"  class="text-white testimonial-text"><small>Blue has an awesome matching engine that simplified my job search. The application matched all the jobs related to my profile and all I had to do was to select my desired jobs and apply. I would highly recommend this application to all ICT professionals</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p  class="text-black mb-0"><strong><small>A Lekota</small></strong></p>
+                                <p class="text-black mb-0"><strong><small>Technical Manager</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="nextTestimonials === 2" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>2</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;"  class="text-white testimonial-text"><small>It was a great experience using Blue and will partner with them again. I have used the App for a couple of months, and feel satisfied with the way they handled my projects. Blue accurately matches my profile with current job roles.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p  class="text-black mb-0"><strong><small>D Siziba</small></strong></p>
+                                <p class="text-black mb-0"><strong><small>Senior Solutions Architect</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="nextTestimonials === 3" class="col-12 p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>3</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 275px;"  class="text-white testimonial-text"><small>Blue is on top of their game, they go above and beyond, and leave no stone unturned. It was easy to navigate through the skills area and it accurately matched a role related to my job profile. I followed the process and I was successfully placed for the Cloud Architecture Position.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>D Kollu</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>Android / iOS Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="nextTestimonials === 4" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>4</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>Blue is highly recommended. I did experience technical issues but the great thing was, they are very responsive and did not delay in resolving my query. Their team is very polite and paid attention to my problem. The approach they follow is completely different from other matching engine apps, keeping everything transparent and if you ever have any issues you can be sure they will decisively resolve them.</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="nextTestimonials === 5" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>5</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>I chose Blue app because I simply could not find any other provider that offered all the tools I needed under one platform, auto responders, and self-hosted sign up, easily accessible and easy to navigate. Such a great platform, I would definitely use it again!</small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="nextTestimonials === 6" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>6</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>Their website and social marketing has made a significant difference in my career. Within a week, I was able to easily register as a consultant and I was called for an interview and the rest is history. </small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white mb-0"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white mb-0"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                        <div *ngIf="nextTestimonials === 7" class="col-12  p-3 rounded prev-testimonial _testimonial-card">
+                            <div>
+                                <p class="text-muted float-left d-none"><small><strong>7</strong>/7</small></p>
+                            </div>
+                            <mat-divider class="mt-3"></mat-divider>
+                            <div class="col-12 my-3">
+                                <p style="height: 305px;"  class="text-white testimonial-text"><small>The phone and messaging conversations I had with the Admin team was nothing short of amazing. The whole process of navigating around the app was explained to me and that really helped. </small></p>
+                                <mat-divider class="mt-3"></mat-divider>
+                                <p class="text-white"><strong><small>I Tafadzwa</small></strong></p>
+                                <p class="text-white"><strong><small>iOS/Android Developer</small></strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        
+
+        <div class="text-center md-5 p-5 mt-5">
+            <h2 class="h2 text-dark text-wrap">Find developers specializing in any of these<br><span class="_customColorSpan">technologies</span></h2>
+            <hr>
+            <div class="gridLanguage align-items-center justify-content-center">
+                <div class="item"><img src="/assets/icons/html.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/azure.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/ai.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/c-logo.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/css-file.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/java.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/python.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/java-script.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/windows.png" alt=""></div>
+                <div class="item"><i class="fab fa-php"></i></div>
+                <div class="item"><i class="fab fa-aws"></i></div>
+                <div class="item"><i class="fa-brands fa-node"></i></div>
+                <div class="item"><i class="fa-solid fa-cloud"></i></div>
+                <div class="item"><img src="/assets/icons/android.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/r.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/docker.png" alt=""></div>
+                <div class="item"><i class="fa-solid fa-code"></i></div>
+                <div class="item"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="item"><img src="/assets/icons/salesforce.png" alt=""></div>
+                <div class="item"><i class="fa-brands fa-linux"></i></div>
+                <div class="item"><img src="/assets/icons/mysql.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/gitlab.png" alt=""></div>
+                <div class="item"><i class="fa-brands fa-hubspot"></i></div>
+                <div class="item"><img src="/assets/icons/google-analytics.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/illustrator.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/ruby.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/github.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/sap.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/swift.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/visual-basic.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/typescript.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/xd.png" alt=""></div>
+                <div class="item"><img src="/assets/icons/social.png" alt=""></div>
+            </div>
+            
+        </div>
+        <button mat-fab class="back-to-top-button" (click)="scrollToTop()" [class.show]="showBackToTopButton">
+            <i class="fa-solid fa-circle-chevron-up"></i> 
+        </button>
+
+        
+    
+    
+    </div>
+
+</div>
+
+<script>
+
+
+</script>

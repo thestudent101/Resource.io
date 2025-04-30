@@ -1,0 +1,65 @@
+.dashboardDiv {
+    height: 100%;
+  }
+
+  .dashboard-board-bg {
+    background-color: #022641;
+  }
+
+  .dashboard-chart-bg {
+    background-color: #006698;
+  }
+
+  mat-tab-group {
+    color: white;
+}
+
+.mat-tab-label {
+    padding: 5px;
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+}
+
+mat-label {
+  padding: 5px;
+  background-color: transparent;
+  color: white;
+  font-weight: 70;
+  margin: 10;
+}
+
+.mat-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    color: rgba(255,255,255,.87);
+}
+
+
+
+.mat-paginator {
+    background-color: #137c9a;
+    opacity: 0.95;
+    color: white;
+
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger, .mat-select-trigger .mat-select-value {
+    color: rgba(255,255,255,.87);
+}
+
+.mat-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+.apply-filters-button {
+    height: 56px;
+}
+
+.clearFilters{
+  color: white !important;
+}

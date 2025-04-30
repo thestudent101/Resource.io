@@ -1,0 +1,17 @@
+<div class="candidateCv container pt-3">    
+    
+    <div class="row pb-3">
+        <div class="col-sm-12">
+            <button
+            mat-stroked-button 
+            (click) = "goBack()">
+                <mat-icon>arrow_back</mat-icon> Back </button>
+        </div>
+    </div>
+
+    <div class="alert alert-light mt-3" *ngIf="noProfilesAvailable">
+        No data is available, most likely you have refreshed this page. please click back and reselect a candidate to try again.
+    </div>
+   
+    <app-candidate-profile [candidate]="candidate" [clientEmail]="clientEmail" [jobIdentifier]="jobIdentifier"></app-candidate-profile>
+</div>

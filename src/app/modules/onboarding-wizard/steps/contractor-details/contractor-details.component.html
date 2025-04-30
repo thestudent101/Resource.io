@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="custom-card-log p-0 my-3 col-sm-12 col-md-8 col-lg-6 mx-auto">
+      <div class="custom-card-header-log text-white p-3">
+        <div class="row">
+          <button mat-button routerLink = "/landing"><mat-icon>arrow_back</mat-icon></button>
+          <h5 class="mt-2"><strong>Consultant Profile</strong></h5>
+        </div>
+      </div>
+      <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar' mode="indeterminate"></mat-progress-bar>
+      <div class="custom-card-body p-3">
+        <div class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <p>We require some basic information to allow us to determine your ability and find job matches. If you would like to provide this later, you can click skip</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- step 1 -->
+            <div *ngIf="step === 1" class="col-md-6">
+              <p class="text-white">Tell us about your desired hourly rate</p>
+              <mat-form-field class="col-md-12" appearance="fill">
+                <mat-label>Rate Per Hour in Rands</mat-label>
+                <input [formControl]="ratePerHour" matInput placeholder="250.00" step="50" max="10000" type="number">
+              </mat-form-field>
+            </div>
+            <!-- Picture Here -->
+            <div class="col-md-6">
+              <img src="your-image-url.jpg" alt="Consultant Image" class="img-fluid">
+            </div>
+            <!-- step 2 -->
+            <div *ngIf="step === 2" class="col-md-6">
+              <p class="text-white">Tell us about your skills you possess</p>
+              <!-- Rest of Step 2 code here -->
+            </div>
+            <!-- Picture Here -->
+            <div class="col-md-6">
+              <img src="your-image-url.jpg" alt="Consultant Image" class="img-fluid">
+            </div>
+            <!-- step 3 -->
+            <div *ngIf="step === 3" class="col-md-6">
+              <p class="text-white">Tell us about your experience</p>
+              <!-- Rest of Step 3 code here -->
+            </div>
+            <!-- Picture Here -->
+            <div class="col-md-6">
+              <img src="your-image-url.jpg" alt="Consultant Image" class="img-fluid">
+            </div>
+          </div>
+          <!-- Rest of your code here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,20 @@
+<mat-progress-bar *ngIf = "loading"  mode="indeterminate"></mat-progress-bar>
+<div class="candidate-cv container pt-3">        
+    <div class="row pb-3">
+        <div class="col-sm-12">
+            <a mat-stroked-button routerLink="/main/dashboard"><mat-icon>arrow_back</mat-icon> Back </a>
+        </div>
+    </div>
+
+    <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+        Profile Could not be loaded. Please try again
+    </div>
+
+    <mat-card *ngIf="loading">
+        <mat-card-content>
+            <p class="text-center">Please Wait: Loading Profile</p>
+        </mat-card-content>
+    </mat-card>
+
+    <app-candidate-profile [candidate]="candidate" [clientEmail]="clientEmail" jobIdentifier="" *ngIf="!loading"></app-candidate-profile>
+</div>

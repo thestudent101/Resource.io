@@ -1,0 +1,273 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    width: 100%; 
+    margin: 0;  
+    font-family: "Poppins", sans-serif !important; 
+    background-image: url("./assets/backgrounddd.svg");
+    background : url(assets/backgrounddd.svg) center center/cover no-repeat fixed !important;
+    /* background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; 
+    /* font-size: 1.2em; */ 
+}
+
+::-webkit-scrollbar {
+    /* width: 12px;               width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #D9D9D9;        /* color of the tracking area */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    /* background-color: #017DB5;    color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #D9D9D9;  /* creates padding around scroll thumb */
+  }
+
+
+.image{
+  margin-top: 10px;
+  border-radius: 50%;
+  display: block;
+  width: 140px;
+  position: relative;
+  margin: 0 auto;
+  text-align: left;
+  clear: left;
+  height: auto;
+  z-index: 0;
+  }
+
+  .mat-mdc-form-field {
+    /* height: 80%; */
+    /* width:70%; */
+    justify-self: center;
+}
+
+input.ng-invalid.ng-touch{
+    border: red 1px solid;
+}
+
+.error-msg{
+    font-size: 13px;
+    color: red;
+}
+
+ .active {
+    color: white !important;
+    text-decoration: none;
+    background: #017DB5 !important;
+    border-radius: 10px;
+
+    & .mat-icon {
+        color: white !important;
+    }
+ }
+  
+.pageHeaders {
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+.homeCompNav button {
+    margin: 0px 5px 0px 0px;
+}
+
+.mat-flat-button {
+    background: #134a77;
+}
+
+.mat-card {
+    background: #137c9a;
+    opacity: 0.95;
+}
+
+.mat-card input {
+    color: white;
+}
+
+.mat-expansion-panel {
+    background-color: transparent;
+    opacity: 0.95;
+    border: transparent !important;
+}
+
+.mat-stroked-button {
+    color: white;
+}
+
+.mat-vertical-stepper {
+    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        font-size: 0.9em !important;
+    }
+    .pageHeaders {
+        margin: 20px 0 20px 50px;
+        text-transform: uppercase;
+    }
+}
+.matInput {
+    /* color: white; */
+    /* border-color: white; */
+}
+.mat-select {
+    color: white !important;
+}
+
+.mat-stroked-button:not([disabled]) {
+    color: white;
+    border-color: white !important;
+}
+.button{
+    background: #017DB5;
+    border-radius: 10px;
+}
+
+.mat-button {
+    /* color: white; */
+}
+.mat-calendar-period-button.mat-button.mat-button-base {
+    color: black;
+}
+
+.icon-bad {
+    color: red;
+}
+.icon-good {
+    color: greenyellow;
+}
+.error-alert {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 0.5rem;
+    width: 100%;
+    height: 0;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-transition: 0.3s ease-out;
+    transition: all ease-out 0.3s;
+    margin-bottom: 1rem;
+    visibility: hidden;
+}
+
+.error-alert.active {
+    height: 4rem;
+    visibility: visible;
+}
+
+.onboarding-card {
+    margin-top: 5rem;
+    background: linear-gradient(90deg,rgb(54, 139, 230) 0,rgb(64, 203, 206) 100%);
+}
+
+@media only screen and (max-width: 600px) {
+    .onboarding-card {
+        position: fixed;
+        margin-top: 0rem;
+        top: 56px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+
+    .error-alert.active {
+        height: 6rem;
+        visibility: visible;
+    }
+
+    .primary-button {
+        position: fixed !important;
+        right: 0.25rem;
+        bottom: 4rem;
+    }
+}
+
+
+a.mat-button:hover {
+    color: white;
+    text-decoration: none;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+ }
+
+ .password-visibility-toggle-button{
+     cursor: pointer;
+ }
+
+ /* custom card */
+ .custom-card {
+    background: #E7F1FF;
+    opacity: 0.95;
+    border-radius: 4px;
+    color: black;
+}
+.custom-card-header {
+    background: white;
+}
+.list-group-item{
+    background-color: transparent;
+}  
+.mat-form-field {
+    color: white !important;
+}
+
+.custom-card-header h5{
+    height: 50px !important;
+}
+ /* custom card log*/
+ .custom-card-log {
+    background: #E7F1FF;
+    opacity: 0.95;
+    border-radius: 4px;
+    color: black;
+}
+.custom-card-header-log {
+    background: #022641;
+}
+
+.mat-form-field-log {
+    color: white !important;
+}
+
+.mat-tab-label {
+    padding: 5px;
+    background-color: transparent;
+    color: white !important;
+    font-weight: 700;
+}
+
+.stepOptions {
+    overflow: auto;
+    white-space: nowrap;
+    
+}
+.stepOptions button {
+    /* /* background-color: #022641 !important; */
+    background: #017DB5; 
+    color: white !important;
+    display: inline-block;
+}
+
+.customBackground {
+    background-color: #022641 !important;
+    color: white !important;
+}

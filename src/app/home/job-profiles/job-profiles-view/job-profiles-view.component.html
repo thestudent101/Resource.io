@@ -1,0 +1,129 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+ 
+<nav class="navbar" style="background: linear-gradient(90deg, #40B9F0 0%, rgba(23, 14, 102, 0.90) 100%);">
+    <div class="container-fluid d-flex justify-content-center">
+        <h4 class="text-white text-weight-bold">Blue Desk</h4>
+    </div>
+</nav>
+<div class="container-fluid" >
+    <div class=" ">
+    
+        <!-- <div class="col-12 mb-2">
+            <button class="rounded-pill m-1" (click)="onClickAddProfile()" mat-raised-button>
+                New Job Profile
+              </button>
+        </div> -->
+        <div class="stepOptions row mb-2">
+            <div class="col">
+                <button class="rounded-pill m-1 act" (click)="setStep(1)" mat-raised-button>
+                    Active Jobs
+                  </button>
+                </div >
+                <div class="col">
+                    <!-- show work history -->
+                    <button class="rounded-pill m-1 actd" (click)="onClickAddProfile()" mat-raised-button>
+                    Create Jobs
+            </button>
+            </div>
+          
+           
+        </div>
+    
+        <mat-divider class="my-2"></mat-divider>
+         <div class="d-flex row">
+            <div class="col">
+                <h6>Rate per hour</h6>
+
+                <mat-slider min="50" max="1000" step="2" (change)="Ratefilter($event)" showTickMarks discrete [displayWith]="formatLabel">
+                    <input matSliderThumb>
+                  </mat-slider>
+                  <div class="d-flex ">
+                        
+                            <label> 50 </label>  
+                        
+                            <!-- <label> 1000 </label> -->
+                     
+                           
+                  </div>
+            </div>
+            <div class="col">
+                 <h6></h6>     
+            </div>
+            
+        </div>
+       
+          <mat-divider class="my-2"></mat-divider>
+
+        <div *ngIf="jobStep === 1">
+            <div *ngIf="isShown" class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 " *ngFor="let jobProf of activeJobProfiles"> 
+                    <div class="card my-2">
+                        <div class="card-body" style="background: linear-gradient(0deg, rgba(1,125,181,1) 27%, rgba(31,85,140,1) 100%);;border-radius: 1px;box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                        " >
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="d-flex align-items-center text-white card-title"><b>{{jobProf.title}}</b></h4>
+                                      <div class="dropdown-center">
+                                          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                              <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu #menu="matMenu" xPosition="before">
+                                              <button mat-menu-item (click)="editProfile(jobProf)">
+                                                <mat-icon>edit</mat-icon>
+                                                <span>Edit</span>
+                                              </button>
+                                              <button mat-menu-item (click)="Delete(jobProf.identifier)">
+                                                <mat-icon>delete_forever</mat-icon>
+                                                <span>Delete</span>
+                                              </button>
+                                            </mat-menu>
+                                        </div>
+                                    </div>
+                            <p class="text-white"><strong>Based in:</strong> {{jobProf.jobLocation}}</p>
+                            <p class="text-white"><strong>Rate/hr:</strong> {{jobProf.ratePerHour | currency:'R'}}</p>
+                            <p class="text-white"><strong>Closing date:</strong> {{jobProf.closingDate | date}}</p>
+                            <p class="text-white"><strong>Contract duration:</strong> {{jobProf.contractDurationInMonths}} Months</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center"style="background-color:#017DB5;text-white">
+                            <button class="text-white" (click)="matchedProfiles(jobProf.identifier)" mat-button>
+                                View Matches
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div *ngIf="jobStep === 2">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4"  *ngFor="let jobProf of expiredJobProfiles">
+        
+                    <div class="custom-card my-3">
+                        <div class="custom-card-header p-3 text-white">
+                            <h6 class="mb-1"><strong>{{jobProf.title}}</strong></h6>
+                        </div>
+                        <div class="custom-card-body p-3">
+                            <p class=""><strong>Based in:</strong> {{jobProf.jobLocation}}</p>
+                            <p class=""><strong>Rate per hour:</strong> {{jobProf.ratePerHour | currency:'R'}}</p>
+                            <p class=""><strong>Closing date:</strong> {{jobProf.closingDate | date}}</p>
+                            <p class=""><strong>Contract duration:</strong> {{jobProf.contractDurationInMonths}} Months</p>
+                        </div>
+                        <mat-divider class="mb-3"></mat-divider>
+                        <div class="custom-card-actions px-3 pb-3">
+                            <button (click)="editProfile(jobProf)" mat-button>
+                                EDIT
+                            </button>
+                            <button (click)="matchedProfiles(jobProf.identifier)" mat-button>
+                                VIEW MATCHES
+                            </button>
+                            <button (click)="Delete(jobProf.identifier)" mat-button>
+                                DELETE JOB
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

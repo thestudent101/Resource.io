@@ -1,0 +1,264 @@
+<div class="alert alert-success app-alert update-alert" [class.alert-visible]="alertVisible" role="alert">
+  <strong>Application Updated!</strong> The application has been updated. <a class="alert-link" (click)="reload()">Please click here to reload.</a> 
+  <button type="button" class="close" (click)="dismiss()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+
+<mat-toolbar id="mainToolbar" class="shadow-sm custom-font responsive fxShow:sm fxHide:xs " *ngIf="isLandingPage()">
+    <mat-toolbar-row class="d-flex justify-content-center align-items-center" >
+      <button class="btn" *ngIf="closeButtonHidden && isLoggedIn" (click)="openNav()"><mat-icon mat-list-icon>menu</mat-icon></button>
+      <a class="btn" [routerLink]="homeLink">
+        <img src="assets/BLUE-Logo-Large-removebg-preview 2.png" class="logo responsive" alt="Blueapp.blue">
+      </a>
+  
+      <div class="nav mx-auto responsiv ">
+        <button class="btn2 btn-primary rounded-pill mr-4"mat-raised-button *ngIf="isLargerScreen">
+          <mat-icon class="ColorB">fiber_manual_record</mat-icon><span id="onlineText">{{ onlineText }}</span>
+        </button>
+            <a class="nav-link" (click)="scrollToSection('Home')" *ngIf="isLargerScreen"><img src="assets/home.png" alt="">Home</a>
+            <a class="nav-link" (click)="scrollToSection('About')" *ngIf="isLargerScreen"><img src="assets/team.png" alt="">About Blue</a>
+            <a class="nav-link" (click)="scrollToSection('Benefits')" *ngIf="isLargerScreen"><img src="assets/authenticity.png" alt="">Benefits</a>
+            <a class="nav-link" (click)="scrollToSection('Testimonial')" *ngIf="isLargerScreen"><img src="assets/testimonials.png" alt="">Testimonial</a>
+      </div>
+  
+      <div class="nav">
+        <a *ngIf="!isLoggedIn" class="btn1 btn-primary rounded-pill" mat-raised-button routerLink="auth/login/">
+          <mat-icon>lock_open</mat-icon> Sign in | Sign up
+        </a>
+      </div>
+    </mat-toolbar-row>
+    
+    
+  </mat-toolbar>
+ 
+ 
+  <ng-container *ngIf="isContractor">
+    <mat-toolbar class="contractor-top-nav mb-4 col-md-12 ">
+        <!-- Blue Logo on the left -->
+        <a routerLink="/main/dashboard">
+          <img src="/assets/images/logo_landing.png" class="logo" alt="Blueapp.blue">
+        </a>
+      
+        <!-- Menu Items: Jobs, Notifications, Information, Profile, Logout -->
+        <div class="nav">
+
+
+          <!-- Timesheet -->
+          <a mat-button routerLink="/main/timesheets" class="navhide">
+            <mat-icon>calendar_today</mat-icon>Timesheet
+          </a>
+
+          <!-- Jobs Dropdown -->
+          <button class="ml-1 navhide " mat-button [matMenuTriggerFor]="jobsMenu">
+            <mat-icon mat-list-icon class="cust">work_outline</mat-icon><mat-icon>keyboard_arrow_down</mat-icon> <span class="jobtittle">Jobs</span>
+          </button>
+          <mat-menu #jobsMenu="matMenu">
+            <a mat-menu-item routerLink="/main/user-profile/Jobs-view">Applied jobs</a>
+            <a mat-menu-item routerLink="/main/user-profile">Saved jobs</a>
+          </mat-menu>
+      
+          <!-- Notifications -->
+          <a mat-button routerLink="/main/notifications" class="navhide">
+            <mat-icon>notifications_none</mat-icon>Notifications
+          </a>
+      
+          <!-- Information -->
+          <button class="ml-1 cust navhide" mat-button [matMenuTriggerFor]="HelpMenu">
+            <mat-icon mat-list-icon>help_outline</mat-icon><mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #HelpMenu="matMenu">
+            <a mat-menu-item routerLink="/main/help">Help and Support</a>
+            <a mat-menu-item routerLink="/main/terms-and-conditions">Terms and Conditions</a>
+            <a mat-menu-item routerLink="/main/terms-and-conditions">Privacy Policy</a>
+          </mat-menu>
+      
+          <!-- Profile -->
+          <a mat-button routerLink="/main/user-profile/profileview">
+            <mat-icon>account_circle_outline</mat-icon>
+          </a>
+
+          <!-- Menu for Small Screens -->
+          <a mat-button [matMenuTriggerFor]="MobileMenu" class="menu">
+            <mat-icon mat-list-icon>menu</mat-icon>
+          </a>
+          <mat-menu #MobileMenu="matMenu">
+            <a mat-menu-item routerLink="/main/help">Help and Support</a>
+            <a mat-menu-item routerLink="/main/terms-and-conditions">Terms and Privacy</a>
+            <a mat-menu-item routerLink="/main/notifications">Notifications</a>
+            <a mat-menu-item routerLink="/main/user-profile/Jobs-view">Applied jobs</a>
+            <a mat-menu-item routerLink="/main/timesheets">Timesheets</a>
+          </mat-menu>
+      
+          <!-- Logout -->
+          <a mat-button (click)="onClickLogout()">
+            <mat-icon>input</mat-icon>
+          </a>
+
+
+        </div>
+      </mat-toolbar>
+      
+</ng-container>
+ 
+<!-- <ng-container>
+  <div class="col-md-12 user-profile contractor-profile" *ngIf="isContractor" (click) = "onMenuItemClicked('Profile', '/main/user-profile/view')">
+    <div class="profile-picture-holder">
+        <user-profile-picture [emailAddress]="userEmail" [defaultText]="userInitials"></user-profile-picture>
+    </div>
+    <mat-list  [routerLink]="['/main/user-profile/view']" routerLinkActive="active">
+        <mat-list-item >
+            <div mat-line>{{username}}</div>
+            <div mat-line>View & Edit Profile</div>
+        </mat-list-item>
+    </mat-list>
+</div>
+</ng-container> -->
+
+<mat-sidenav-container 
+    class="example-container" [hasBackdrop]="false">
+  <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" class="sidenava" (keydown.escape)="close('escape')" *ngIf="isLoggedIn && isClient" >
+    <button mat-button (click)="close('toggle button')"><mat-icon>clear</mat-icon></button>
+    <div class="m-3" >
+      <!-- client profile -->
+      <div class="col-md-12 user-profile client-profile" *ngIf="isClient" (click) = "onMenuItemClicked('Profile', '/main/client-profile')">
+        
+        <div class="headercard">
+        
+            <div  >
+               <div class=" profilecard py-5"  > 
+                <img class="pic px-5" src="../assets/icons/BLUE-Logo-Large-removebg-preview 5.svg" alt="">
+                <div class="sidecardcontainer">
+                   </div>
+                   <div class="d-flex">
+                    <div class="row" >{{username}}</div>
+                    <div style="align-self: self-end;">
+                       
+                        <mat-icon class="pen" [routerLink]="['/main/client-profile']" routerLinkActive="active">create</mat-icon>
+                    </div> 
+                   </div>
+              </div>
+          </div>
+          
+      </div>
+                     
+                        
+                
+              
+      </div>
+      <!-- nav links -->
+      <mat-list  class="listsidnav">
+          <!-- dashboard -->
+       
+              <div class="sidecardcontainer">
+                <div  class="d-flex sidecard my-1" (click)="autoCloseMobile()" [routerLink]="['/main/dashboardclient']" routerLinkActive="active" >
+                    <mat-icon>home</mat-icon>
+                     
+                    <div class="nav-mat-line mx-2" mat-line>Dashboard</div>
+                    
+                  </div>
+              </div>
+              
+           
+          
+          <!-- job profile -->
+              <div class="sidecardcontainer">
+                <div  class="d-flex sidecard my-1" *ngIf="profileComplete" (click)="autoCloseMobile()" [routerLink]="['/main/job-profiles']" routerLinkActive="active" >
+                    <mat-icon>business_center</mat-icon>
+                         <div class="nav-mat-line mx-2" mat-line> Blue Desk</div>
+                      </div>
+              </div>
+         
+              <div class="sidecardcontainer">
+                <div class="d-flex sidecard my-1" *ngIf="profileComplete " (click)="autoCloseMobile()"  [routerLink]="['/main/timesheets']" routerLinkActive="active">
+                  <mat-icon mat-list-icon>access_time</mat-icon>
+                  <div class="nav-mat-line mx-2" mat-line> Timesheets</div>
+                    </div>
+              </div>
+              <div class="sidecardcontainer">
+                <div class="d-flex sidecard my-1" *ngIf="profileComplete " (click)="autoCloseMobile()" [routerLink]="['/main/dashboard']" routerLinkActive="active">
+                  <mat-icon mat-list-icon>access_time</mat-icon>
+                  <div class="nav-mat-line mx-2" mat-line> Consultants</div>
+                    </div>
+              </div>
+             
+          <!-- help and support -->
+              <div class="sidecardcontainer">
+                <div class="d-flex sidecard my-1" *ngIf="profileComplete" (click)="autoCloseMobile()" [routerLink]="['/main/help']" routerLinkActive="active" >
+                    <mat-icon mat-list-icon>help</mat-icon>
+                    <div class="nav-mat-line mx-2" mat-line> Help & Support</div>
+                  </div>
+              </div>
+              
+          
+          <!-- terms and conditions -->
+              <div class="sidecardcontainer">
+                <div class="d-flex sidecard my-1"  *ngIf="profileComplete" (click)="autoCloseMobile()" [routerLink]="['/main/terms-and-conditions']" routerLinkActive="active" >
+                    <mat-icon mat-list-icon>article</mat-icon>
+                    <div class="nav-mat-line mx-2" mat-line> Terms & Conditions</div>
+                    </div>
+              </div>
+              
+          
+          <!-- payment -->
+              <div class="sidecardcontainer">
+                <div class="d-flex sidecard my-1"  *ngIf="profileComplete && isClient" (click)="autoCloseMobile()" [routerLink]="['/main/payments']" routerLinkActive="active"   >
+                    <mat-icon> monetization_on</mat-icon>
+                    <div class="nav-mat-line mx-2" mat-line> Subscriptions</div>
+                  </div>
+              </div>
+              
+          <!-- logout -->
+          <div class="sidecardcontainer" (click)="onClickLogout()">
+            <div class="d-flex sidecard my-1">
+                <mat-icon mat-list-icon>power_settings_new</mat-icon>
+                <div class="nav-mat-line mx-2" mat-line> Logout</div>
+                </div>
+          </div>
+       
+      </mat-list>
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+   <button mat-button (click)="sidenav.open()"><mat-icon>view_headline</mat-icon></button>
+
+   <div id="homeMain" role="main" [class.public]="!isLoggedIn">
+    <div class="main-item-view mainview" [class.top-offset]="!isLoggedIn">
+        <!-- charles added this bootsrap alert - the close button does not work -->
+        <div *ngIf="subscriptionFeeOutstanding && isLoggedIn" class="alert alert-warning alert-dismissible">
+            <strong>Warning!</strong> Your monthly subscription fee is outstanding.
+        </div>
+        <router-outlet></router-outlet>
+        <div class="footer col-12 pt-1" *ngIf="isLandingPage()">
+          <div class="col-md-4 footerFont mb-2">
+              <img class="footerimg mb-2" src="/assets/icons/location.png" alt="" srcset="">
+              <p class="mb-0 small-text">
+                SPACES Waterfall <br>
+                Ground &amp; 1st Floor, 22 Magwa Crescent, Gateway West<br> 
+                Waterfall City, Midrand, Johannesburg, Gauteng
+              </p>
+            </div>
+            <div class="row footerSocial">
+              <div class="justify-content-center d-flex">
+                 <a href="https://www.facebook.com/"><img class="footerimg mr-2" src="/assets/icons/facebook.png" alt="" srcset=""></a> 
+                 <a href="https://https://www.instagram.com/"><img class="footerimg mr-2"  src="/assets/icons/instagram.png" alt="" srcset=""></a> 
+                 <a href="https://https://www.linkedin.com/company/blueapp-blue/"></a><img class="footerimg mr-2"  src="/assets/icons/linkedin.png" alt="" srcset="">
+              </div>
+            </div>
+            <div class="footerFont align-items-center">
+                  <p class="mb-0 small-text">
+                      Developed by <a href="https://bluepearl.co.za" rel="noopener noreferrer" target="_blank">Blue Pearl</a>
+                  </p>
+                  <p class="mb-0 small-text">
+                      <a  href="{{privacyPolicyUrl}}" rel="noopener noreferrer" target="_blank">View our Privacy Policy</a>
+                  </p>
+            </div>
+        </div> 
+    </div>
+  </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

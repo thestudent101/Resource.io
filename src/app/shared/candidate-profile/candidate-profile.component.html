@@ -1,0 +1,98 @@
+<mat-card class="candidateCv col-md-12 col-lg-12 col-sm-12 p-0">
+    <div class="row mx-0 d-flex">
+        <div class="col-sm-12 col-md-4 col-lg-3 d-flex flex-column justify-content-start align-content-center cvCards col-left">
+            <div class="profile-picture-holder pt-3">
+                <user-profile-picture [emailAddress]="userEmail" [defaultText]="userInitials"></user-profile-picture>
+            </div>
+            <h2>Personal</h2>
+            <h6 *ngIf="hasProfile">{{candidate.nationality}}</h6>
+            <h6 *ngIf="hasProfile">{{candidate.gender}}, {{candidate.title}}</h6>
+            <h6 *ngIf="hasProfile">{{candidate.province}}, {{candidate.city}}</h6>
+            <h6 *ngIf="hasProfile">Availability: {{candidate.noticePeriod}}</h6>
+
+            <!-- <h2>References</h2>
+            <div>
+                <div *ngFor="let reference of getReferences">
+                    <h6><strong>{{reference.fullName}}</strong></h6>
+                    <h6><a class="activity-link" href="mailto:{{reference.emailAddress}}"><i class="material-icons">mail</i>{{reference.emailAddress}}</a></h6>
+                    <h6><a class="activity-link" href="tel:{{reference.contactNumber}}"><i class="material-icons">call</i>{{reference.contactNumber}}</a></h6>
+                    <br>
+                </div>
+                <p *ngIf="getReferences.length == 0">No references have been listed by this candidate</p>
+            </div> -->
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9 col-main">
+            <div class="col-sm-12 pt-3">
+                <h4 *ngIf="hasProfile" class="">{{candidate.candidateNum}}</h4>
+                <mat-divider></mat-divider>
+                <div class="row">
+                    <div class="col-md-12 mb-2">
+                        <h2>Skills</h2>
+                        <mat-tab-group  *ngIf="getSkills.length > 0" [dynamicHeight]="true">
+                            <mat-tab style="color: white;"  *ngFor="let skillGroup of getGroupedSkills">
+                                <div class="row mx-0 pt-2">
+                                    <div *ngFor="let skill of skillGroup.data" class="col-sm-12 col-md-6 col-lg-4">
+                                        <p><strong>{{skill.description}}</strong>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>                            
+                        <p *ngIf="getSkills.length == 0">No skills have been listed by this candidate</p>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <h2>Work History</h2>
+                        <p><strong>Total Experience: &nbsp;</strong>{{getYearsOfExperience}} years, {{getMonthsOfExperience}} months</p>
+                        <div *ngFor="let work of getWorkHistory">
+                            <p class='title'><strong>{{work.company}}:&nbsp;</strong>{{work.role}}</p>
+                            <p *ngIf="work.to != null">Start: {{work.from | date}} - {{work.to | date}}</p>
+                            <p *ngIf="work.to == null">Start: {{work.from | date}} - Current</p>
+                        </div>
+                        <p *ngIf="getWorkHistory.length == 0">No work history has been listed by this candidate</p>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <h2>Certifications</h2>
+                        <div *ngFor="let certificate of getCertifications">
+                            <p class='title'><strong>{{certificate.authority}}:&nbsp;</strong>{{certificate.name}}</p>
+                            <p>Obtained: {{certificate.attained | date}}</p>
+                        </div>
+                        <p *ngIf="getCertifications.length == 0">No certifications have been listed by this candidate</p>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <div class="col-md-12">
+                        <h2>Education</h2>
+                        <div *ngFor="let qualification of getQualifications">
+                            <p class='title'><strong>{{qualification.institution}}:&nbsp;</strong>{{qualification.name}}</p>
+                            <p>Obtained: {{qualification.attained | date}}</p>
+                        </div>
+                        <p *ngIf="getQualifications.length == 0">No qualifications have been listed by this candidate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mx-0" *ngIf="isClientUser && isUserActive">
+        <div class="col-sm-12">
+            <mat-divider></mat-divider>
+
+            <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+                {{errorMessage}}
+            </div>
+        
+            <p class="text-muted mb-0 mt-3">If you wish to hire this candidate, please read the terms and conditions and then proceed.</p>
+            <div class="signContract">
+                <!-- terms and conditions -->
+                <section class="example-section">
+                    <mat-checkbox [(ngModel)]="disabled" class="example-margin">I have read the <a class="mat-checkbox-label-link" href="javascript:void(0);" (click)="viewTerms()">Terms and Conditions</a></mat-checkbox>
+                </section>  
+                <button 
+                    [disabled] = "!disabled"  
+                    (click) = "onViewNextSteps()"
+                    mat-stroked-button>
+                        <mat-icon>check</mat-icon> Proceed
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-card>

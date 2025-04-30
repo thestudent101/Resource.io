@@ -1,0 +1,95 @@
+h1.giant-number {
+    font-size: 4.5rem;
+    font-weight: 10px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.info-card {
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    display: none;
+    transition: all ease-out 0.3s;
+    background: #9fdaee;
+    border: 1px solid #2bb0d7;
+}
+
+.info-card.open {
+    opacity: 1;
+    display: block;
+}
+
+.info-card-close-button {
+    color: black;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent !important;
+}
+
+.title {
+    color: white;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+.mat-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-card-header-text {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+}
+
+::ng-deep .mat-card-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+}
+
+.info-button {
+    padding: 0;
+    line-height: inherit;
+    background: transparent !important;
+}
+
+.enter-button {
+    padding: 0;
+    line-height: inherit;
+    position: absolute;
+    bottom: 1.0rem;
+    right: 1.0rem;
+}
+
+.bar-chart-card {
+    margin-top: 1.5rem;
+    min-height: 600px;
+}
+
+@media only screen and (max-width: 576px) {
+    .bar-chart-card {
+        display: none;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  ._card {
+    border-radius: 5px 25px !important;
+  }

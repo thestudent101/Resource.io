@@ -1,0 +1,53 @@
+::ng-deep .peach-button {
+    background-color:  #2952a3;
+}
+
+::ng-deep div.mat-radio-outer-circle {
+    border-color: white;
+}
+
+::ng-deep div.mat-tab-label-content {/*** Charles to check if this is acceptable ***/
+    color: white;
+}
+
+.mat-mdc-card {
+    background-color: #017DB5  !important;
+}
+
+.button {
+    border-color: white;
+    margin-top: 5px;
+}
+
+.mat-tab-label {
+    color: white;
+}
+
+.client-profile .row {
+    margin: 10px;
+}
+
+.required-field {
+    font-size: 0.7rem;
+    margin-top: -15px;
+}
+
+.addUser {
+    background: rgb(160,197,236);
+    background: linear-gradient(90deg, rgba(160,197,236,1) 0%, rgba(140,214,215,1) 100%); 
+}
+
+.card-p-element {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+
+.card-h6-element {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 576px) {
+    .userCard {
+        margin-bottom: 0px;
+    }
+}

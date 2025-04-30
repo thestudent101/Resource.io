@@ -1,0 +1,94 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<mat-card>
+    <mat-card-content>
+        <div class="row">
+            <!--  -->
+            <mat-form-field class="col-md-3">
+                <mat-label>Date From:</mat-label>
+                <input [(ngModel)]="dateFrom" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!--  -->
+            <mat-form-field class="col-md-3">
+                <mat-label>Date To</mat-label>
+                <input [(ngModel)]="dateTo" matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+            <!-- search for timsheets -->
+            <div class="col-md-3 text-right">
+                <button (click)="queryTimesheets()" mat-button>
+                    <mat-icon>search</mat-icon> Search timesheets
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<div class="alert alert-danger mt-3 text-center" *ngIf="error && !loading">
+    Report could not be retrieved. Please try again.
+</div>
+
+<!-- no contractors -->
+<mat-card *ngIf="!hasData && !error && !loading">
+    <mat-card-content>
+    No time entries were found for your query
+</mat-card-content></mat-card>
+
+<!-- loading -->
+<mat-card *ngIf="loading" class="w-100">
+    <mat-card-content>
+        <p class="text-center">Please Wait: Loading Report</p>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="hasData && !loading && !error">
+    <mat-card-content>
+        <!--  -->
+        <div class="timesheetSummary">
+            <div class="text-right">
+                <button (click)="download()" mat-button *ngIf="!downloading">
+                    <mat-icon>cloud_download</mat-icon> Download PDF
+                </button>
+                <button mat-button disabled *ngIf="downloading">
+                    <span class="spinner-border spinner-border-sm" role="status"></span>
+                    Downloading...
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-borderless col-12">
+                    <thead>
+                        <tr>
+                            <th>Contract</th>
+                            <th>Activity</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Hours</th>
+                        </tr>
+                    </thead>
+                    <mat-divider></mat-divider>
+                    <tbody *ngFor="let timesheet of timesheets.timesheetEntries">
+                        <tr>
+                            <td></td>
+                            <td>{{timesheet.activity}}</td>
+                            <td>{{timesheet.description}}</td>
+                            <td>{{timesheet.date}}</td>
+                            <td>{{timesheet.minutes | hoursMinutes}}</td>
+                        </tr>
+                        <mat-divider></mat-divider>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><strong>Total Hours</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>{{total | hoursMinutes}}</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

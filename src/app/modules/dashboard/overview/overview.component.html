@@ -1,0 +1,22 @@
+<div class="custom-card p-3 my-3">
+    <div class="stepOptions mb-2">
+      <button class="rounded-pill m-1" (click)="setStep(1)" mat-raised-button>
+        Blue View
+      </button>
+      <!-- show work history -->
+      <button class="rounded-pill m-1" (click)="setStep(2)" mat-raised-button>
+          Search
+      </button>
+
+      <mat-divider class="my-2"></mat-divider>
+
+      <div *ngIf="currentStep === 1">
+        <app-blue-view></app-blue-view>
+      </div>
+      <div *ngIf="currentStep === 2">
+        <app-search></app-search>
+      </div>
+    </div>
+</div>
+
+

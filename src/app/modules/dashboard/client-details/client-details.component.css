@@ -1,0 +1,21 @@
+
+.custom-header ::ng-deep .mat-card-header-text {
+    margin: 0 !important;
+}
+
+
+.mat-paginator {
+    background-color: #137c9a;
+    opacity: 0.95;
+    color: white;
+
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger, .mat-select-trigger .mat-select-value {
+    color: rgba(255,255,255,.87);
+}
+.custom-mat-card-title {
+    font-size: 20px;
+    line-height: 25px;
+    height: 50px;
+}

@@ -1,0 +1,145 @@
+/* Apply this CSS to your component's CSS file */
+.cont {
+    display: flex;
+    width: 100%;
+  }
+  
+  .left-side{
+    flex: 1;
+    padding: 5px; /* Adjust the padding as needed */
+    box-sizing: border-box;
+    font-size: small;
+    background-color: #BCE6FF;
+  }
+
+
+  .left-content{
+
+    justify-content: center;
+    color: black;
+    align-items: center;
+    margin-top: 70%;
+
+  }
+
+  .left-content span{
+    color: #017DB5;
+    font-weight: bolder;
+  }
+
+
+
+
+  .right-side {
+    flex: 2;
+    padding: 5px; /* Adjust the padding as needed */
+    box-sizing: border-box;
+    font-size: small;
+    background-color: #BCE6FF;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .right-content p{
+    color:black
+  }
+  
+  /* Media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    .cont {
+      flex-direction: column;
+    }
+    
+    .left-side,
+    .right-side {
+      width: 100%;
+      color: black;
+    }
+  }
+
+
+
+.Button{
+    background-color: #017DB5;
+    font-size: medium;
+}
+
+
+
+
+h1, h4, h2 {
+    color: #017DB5;
+    opacity: 0.78;
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+
+
+.sign-contract {
+    padding-bottom: 20px;
+}
+
+.sign-contract p {
+    color: black;
+}
+.sign-contract .mat-divider {
+    border-color: white;
+}
+
+.text-muted {
+    color: #383c40!important;
+}
+
+
+
+.activity-link .material-icons{
+    font-size: inherit;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+@media (max-width: 576px){
+    .col-left {
+        order: 1;
+    }
+
+    .col-right { 
+        order: 2;
+    }
+}
+
+
+.Jobinto{
+    width: 680px;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.card{
+    border-radius: 12px;
+    box-shadow: rgba(9, 30, 66, 0.2) 0px 8px 8px;
+    width: 600px;
+    min-width: auto !important ;
+    display: flex;
+    flex-direction: row;
+}
+
+.jobC, .JobQ ,.JobS {
+    line-height: 10px;
+    text-decoration: none;
+}
+
+.buttonA{
+    background-color: #017DB5;
+    color: white;
+    width: 10%;
+}
+
+
+  

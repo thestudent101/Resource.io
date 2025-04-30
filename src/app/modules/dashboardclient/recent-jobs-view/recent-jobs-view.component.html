@@ -1,0 +1,22 @@
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 mb-4" *ngFor="let job of jobs | slice:0:4">
+    <div class="card job-view-client">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h4 class="card-title">{{job.title}} </h4>
+                <img class="logo" height="30" width="30"  src = "../../assets/images/BLUE-Logo-Icon-Large.png">
+            </div>
+            <!-- <p class=""><strong>Description:</strong> {{job.description}}</p> -->
+            <p class=""><strong>Contract duration:</strong> {{job.contractDurationInMonths}} Months</p>
+            <p class=""><strong>Closing date:</strong> {{job.closingDate | date}}</p>
+            <div class="row">
+                <div class="col">
+                    <p class="">{{job.ratePerHour | currency:'R'}}/hr</p>
+                </div>
+                <div class="col">
+                    <p class="">{{job.jobLocation}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

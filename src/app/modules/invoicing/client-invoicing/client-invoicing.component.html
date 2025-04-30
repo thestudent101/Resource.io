@@ -1,0 +1,86 @@
+
+        <!--  -->
+        <div class="custom-card add-profile container p-3 mt-3" style="background-color: aliceblue;background: #FFF;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); width:900px; 
+        ">
+            <!--  -->
+            <div class="col-md-6">
+                <button mat-button>
+                    <mat-icon>arrow_back</mat-icon> Back
+                </button>
+            </div>
+       
+        <div class="row">
+            <!--  -->
+            <mat-form-field class="col-md-3">
+                <mat-label>Clients</mat-label>
+                <mat-select [(ngModel)]="contractId">
+                    <mat-option *ngFor="let contract of contracts" [value]="contract.contractId">
+                        {{contract.contractorName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!--  -->
+            <mat-form-field class="col-md-3">
+                <mat-label>Date From:</mat-label>
+                <input [(ngModel)]="startDate" matInput [matDatepicker]="startDatePicker">
+                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+            <!--  -->
+            <mat-form-field class="col-md-3">
+                <mat-label>Date To</mat-label>
+                <input [(ngModel)]="endDate" matInput [matDatepicker]="endDatePicker">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
+            <!-- search for timsheets -->
+            <div class="col-md-3 text-right">
+                <button (click)="loadInvoices()" mat-button>
+                    <mat-icon>search</mat-icon> Search invoices
+                </button>
+            </div>
+        </div>
+        </div>
+      <div class="my-3">
+
+        
+      </div>
+          
+        
+<div class="custom-card add-profile container p-3" style="background-color: aliceblue;background: #FFF;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); width:900px;
+">
+        <div class="timesheetSummary">
+            <table class="col-md-12">
+                <thead>
+                    <tr>
+                        <th>Invoice Number</th>
+                        <th>Contract Ref</th>
+                        <th>Invoice Date</th>
+                        <th>Invoice Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let invoice of invoices; let i = index; trackBy: trackByInvoice">
+                        <td>{{invoice.invoiceNumber}}</td>
+                        <td>{{invoice.contractorReference}}</td>
+                        <td>{{invoice.invoiceDate}}</td>
+                        <td>{{invoice.invoiceAmountIncludingVAT.amount | currency:invoice.invoiceAmountIncludingVAT.currencyCode}}
+                        </td>
+                        <td>
+                            <button (click)="download(invoice.downloadLink)" mat-button  *ngIf="!downloading">
+                                <mat-icon>cloud_download</mat-icon> Download PDF
+                            </button>
+                            <button mat-button disabled *ngIf="downloading">
+                                <span class="spinner-border spinner-border-sm" role="status"></span>
+                                Downloading...
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+ 

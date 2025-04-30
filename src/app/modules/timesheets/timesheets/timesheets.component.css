@@ -1,0 +1,50 @@
+
+::ng-deep .mat-tab-label {
+    padding: 5px;
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+}
+
+
+.mat-paginator {
+    background-color: #137c9a;
+    opacity: 0.95;
+    color: white;
+
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger, .mat-select-trigger .mat-select-value {
+    color: rgba(255,255,255,.87);
+}
+
+.mat-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    color: rgba(255,255,255,.87);
+}
+
+.custom-mat-card-title{
+    font-size: 20px;
+    line-height: 25px;
+    height: 50px;
+}
+
+::ng-deep .mat-card .mat-card-header .mat-card-header-text {
+    margin: 0 !important;
+}
+
+.stepOptions {
+    overflow: auto;
+    white-space: nowrap;
+    
+}
+.stepOptions button {
+    /* background-color: #022641 !important; */
+    background: #2D82B5 !important;
+    color: white !important;
+    display: inline-block;
+}

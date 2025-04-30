@@ -1,0 +1,30 @@
+    <br><br>
+    <!--h1 style="text-align: center">Payment Method</h1>
+    <div style="text-align: center">
+        <mat-progress-spinner style="text-align: center" *ngIf="!ready" mode="indeterminate"></mat-progress-spinner>
+    </div>
+    <div *ngIf="ready">
+        <div class="peach-payment-form">
+            <form action={{peachRedirectUrl}} class="paymentWidgets" data-brands="VISA MASTER AMEX"></form>
+        </div>
+    </div-->
+
+    <!-- progress bar -->
+<mat-progress-bar *ngIf="!ready" mode="indeterminate"></mat-progress-bar>
+<!-- body -->
+<div class="container client-profile pt-3 justify-content-center" style="background: linear-gradient(180deg, #333A77 0%, #017DB5 100%);">
+            <!-- subscription details -->
+            <div class="col-sm-12 col-md-12 justify-content-center">
+                <mat-card class="h-100 " style="background: linear-gradient(180deg, #333A77 0%, #017DB5 100%);" >
+                    <mat-card-header>
+                        <mat-card-title class="mt-4" style="color:whitesmoke "><strong>Complete Checkout and Process Payment</strong></mat-card-title>
+                    </mat-card-header>
+                    <mat-progress-spinner *ngIf="!ready" mode="indeterminate"></mat-progress-spinner>
+                    <mat-card-content *ngIf="ready" class="container">
+                        <div class="peach-payment-form mt-4">
+                            <form action={{peachRedirectUrl}} class="paymentWidgets text-dark" data-brands="VISA MASTER AMEX"></form>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+</div>

@@ -1,0 +1,107 @@
+<mat-progress-bar *ngIf = "loading"  mode="indeterminate"></mat-progress-bar>
+
+<div class="col-12">
+    <div class=" jobProfiles mt-2">
+        <div class="col">
+            <mat-form-field class="row-sm-12 row-md-4 row-lg-2" appearance="fill">
+                <mat-label>Skills</mat-label>
+                <input type="text" placeholder="Pick one" matInput [formControl]="skillsFilter" [matAutocomplete]="skillsauto">
+                <mat-autocomplete #skillsauto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredSkills | async" [value]="option">{{option}}</mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <mat-form-field class="row-sm-12 row-md-4 row-lg-2" appearance="fill">
+                <mat-label>Certifications</mat-label>
+                <input type="text" placeholder="Pick one" matInput [formControl]="certificationFilter" [matAutocomplete]="certificationauto">
+                <mat-autocomplete #certificationauto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredCertifications | async" [value]="option">{{option}}</mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <mat-form-field class="" appearance="fill">
+                  <mat-label>Qualifications</mat-label>
+                  <input type="text" placeholder="Pick one" matInput [formControl]="qualificationsFilter" [matAutocomplete]="qualificationauto">
+                  <mat-autocomplete #qualificationauto="matAutocomplete">
+                      <mat-option *ngFor="let option of filteredQualifications | async" [value]="option">{{option}}</mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field class="row-sm-12 row-md-4 row-lg-2" appearance="fill">
+                <mat-label>of Experience</mat-label>
+                <input type="text" placeholder="Pick one" matInput [formControl]="experienceFilter" [matAutocomplete]="experienceauto">
+                <mat-autocomplete #experienceauto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredExperience | async" [value]="option">{{option}}</mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <button mat-raised-button class="apply-filters-button row-sm-12 row-md-4 row-lg-2" (click)="filterData()" [disabled]="loading">Apply Filters</button>
+              <button mat-raised-button class="apply-filters-button row-sm-12 row-md-4 row-lg-2 clearFilters" (click)="resetData()" [disabled]="loading || noFilters">Clear Filters</button>
+        </div>
+       
+  </div>
+  <div class="col">
+
+    <div>
+        <label>Skills</label>
+        <input type="text" placeholder="Pick one" matInput [formControl]="skillsFilter" [matAutocomplete]="skillsauto">
+        <mat-autocomplete #skillsauto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredSkills | async" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+    </div>
+    <hr>
+    <div>
+        <label>Certifications</label>
+        <input type="text" placeholder="Pick one" matInput [formControl]="certificationFilter" [matAutocomplete]="certificationauto">
+        <mat-autocomplete #certificationauto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredCertifications | async" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+    </div>
+    <hr>
+    <div >
+        <label>Qualifications</label>
+        <input type="text" placeholder="Pick one" matInput [formControl]="qualificationsFilter" [matAutocomplete]="qualificationauto">
+        <mat-autocomplete #qualificationauto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredQualifications | async" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+    </div>
+  </div>
+  <div class="row mt-2">
+      <div class="col-sm-12">
+          <!-- no contractors -->
+          <div class="alert alert-light mt-3" *ngIf="contractors.length == 0 && !loading">
+              Unfortunately there are no contractors profiles that match your filters
+          </div>
+          <!-- loading -->
+          <mat-card *ngIf="loading" class="w-100">
+              <mat-card-content>
+                  <p class="text-center">Please Wait: Loading Contractor Profiles</p>
+              </mat-card-content>
+          </mat-card>
+      </div>
+  </div>
+  
+  <!-- all jobs -->
+  <div class="row mt-2">
+      <div class="col-sm-12 col-md-6 col-lg-4 mx-left my-2" *ngFor="let contractor of contractors">
+          <mat-card>
+              <div class="mat-card-header">
+                  <div class="mat-card-header-text">{{contractor.candidateNumber}} </div>
+              </div>
+              <user-profile-picture [defaultText]="'BP'" [emailAddress]="''" *ngIf="!isAuthenticated"></user-profile-picture>
+              <user-profile-picture [defaultText]="contractor.initials" [emailAddress]="contractor.emailAddress" *ngIf="isAuthenticated"></user-profile-picture>
+              <mat-card-content class="pt-2">
+                  <p *ngIf="contractor.summary.indexOf('null') == -1">{{contractor.summary}}</p>
+                  <p *ngIf="contractor.summary.indexOf('null') > -1">No Location specified</p>
+                  <p>Availability: <strong>{{contractor.availability || 'Availability not specified'}}</strong></p>
+              </mat-card-content>
+              <mat-card-actions>
+                  <a mat-button routerLink="/main/dashboard/contractor-view/{{contractor.candidateNumber}}" *ngIf="!isAuthenticated">View Profile</a>
+                  <a mat-button routerLink="/main/dashboard/contractor-view/{{contractor.candidateNumber}}/private" *ngIf="isAuthenticated">View Profile</a>
+              </mat-card-actions>
+          </mat-card>
+      </div>
+  </div>
+  <div class="row mt-2">
+      <div class="col-sm-12">
+          <!--https://material.angular.io/components/paginator/overview for guidance on how pageinator works-->
+          <mat-paginator [length]="totalElements" [pageSize]="pageSize"  [pageSizeOptions]="[10, 25, 50, 100]" [pageIndex]="pageNumber" (page)="pageChanged($event)"></mat-paginator>
+      </div>
+  </div>
+</div>

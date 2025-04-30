@@ -1,0 +1,633 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+:host {
+    display: block;
+    left: 0;
+    width: 100%;          
+    height: 100%;  
+}
+
+.alert.app-alert {
+    position: fixed;
+    margin-bottom: 0;
+    transition: all ease-out 0.3s;
+    border: none;
+    border-radius: 0;
+    text-align: center;
+    z-index: 1090;
+}
+
+.matInput {
+    color: white;
+    border-color: white;
+}
+
+input {
+    color: white;
+}
+
+@media only screen and (min-width: 576px){
+    .alert.app-alert {
+        top: -3rem;
+        left: 50%;
+        margin-left: -30rem;
+        width: 60rem;
+        height: 3rem;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
+
+    .alert.app-alert.alert-visible {
+        top: 0rem;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .alert.app-alert {
+        width: 100vw;
+        height: 5rem;
+        bottom: -5rem;
+    }
+
+    .alert.app-alert.alert-visible {
+        bottom:0;
+    }
+
+}
+
+.alert.app-alert .alert-link{
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.alert.app-alert.update-alert {
+    color: #FFF;
+    background-color: #3b3b3b;
+    border-color: #3b3b3b;    
+}
+
+.alert.app-alert.update-alert .alert-link {
+    color: rgba(255,255,255,0.5)
+}
+.alert.app-alert.update-alert .alert-link:hover {
+    color: rgba(255,255,255,0.7)
+}
+
+
+
+.mainview {
+    /* padding-top: 20px; */
+    /* padding-bottom: 4rem; */
+    min-height: calc(100vh);
+    height: 100%;
+    position: relative;
+}
+
+.container-inner {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.menu-header {
+    height: 56px;
+}
+
+.menu-header .btn {
+    height: 56px;
+    width: 100%;
+    display: inline-block;
+    background-color: #f5f5f5;
+    border-radius: 0px;
+}
+
+.btn-back > .mat-icon {
+    float:left;
+}
+
+.mat-toolbar {
+    background-color: white;
+    position: fixed;
+    z-index: 1060;
+}
+
+.mat-toolbar-single-row {
+    padding: 0;
+}
+
+@media (min-width: 576px) {
+    .mainview {
+        /* padding-top: 64px; */
+        min-height: calc(100vh);
+    }
+    .menu-header {
+        height: 64px;
+    }
+    .menu-header .btn {
+        height: 64px;
+        width: 100%;
+        display: inline-block;
+    }
+}
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+.toolBar {
+    height: 60px;
+    opacity: o.5;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    width: 100%;
+}
+.toolbar-right {
+    position: static;
+    float: right;
+    margin-left: 5px;
+    color: #ffffff;
+    background-color: #022641;
+}
+.toolBar-right button {
+    color: #006699;
+    background-color: #022641;
+}
+.side{
+    background-color:#E7F1FF;
+}
+.sidebar {
+    height: calc(100% - 56px);
+    width: 60px;
+    position: fixed;
+    z-index: 1050;
+    top: 56px;
+    bottom: 0;
+    left: 0;
+    background-color:#E7F1FF;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 0px;
+}
+/* @media (min-width: 576px) {
+    .sidebar {
+        height: calc(100% - 64px);
+        top: 64px;
+    } */
+ 
+/* } */
+
+
+
+.nav-mat-line{
+    color: black;
+}
+.nav-mat-line:active {
+    color: white;
+    border-radius: 10px;
+}
+.sidebar mat-list-item:hover{
+    /* background-color: white; */
+    cursor: pointer;
+
+    & .nav-mat-line{
+        color: white !important;
+
+    }
+    & .mat-line :hover{
+        color: white !important;
+           /* border-radius: 10px; */
+    }
+    &.bi {
+        color:white !important
+    }
+}
+.sidecard:hover{
+    cursor: pointer;
+    color: white !important;
+    & .nav-mat-line{
+        color: white !important;
+
+    }
+    & .mat-line :hover{
+        color: white !important;
+           /* border-radius: 10px; */
+    }
+    & mat-icon {
+        color:white !important
+    }
+}
+.sidecardcontainer{
+    
+    display: flex;
+    justify-content: center;
+}
+ .sidecard{
+    
+    height:40px;
+    text:20px;
+    /* justify-content: center; */
+    padding: 3px;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 80%;
+ }
+ .profilecard{
+   justify-content: center;
+   padding: 5px;
+
+ }
+ 
+ .headercard{
+    height:150px;
+    justify-content: center;
+ }
+.sidebar mat-list-item:active{
+    background-color: #017DB5;
+    /* border-radius: 10px; */
+    color: white !important;
+    cursor: pointer;
+
+    & .nav-mat-line{
+        color: white !important;
+
+    }
+    & .mat-line :hover{
+        color: white !important;
+    }
+    &.bi{
+        color:white !important
+    }
+}
+.sidecard mat-list-item:active{
+    background-color: #017DB5;
+    /* border-radius: 10px; */
+    cursor: pointer;
+
+    & .nav-mat-line{
+        color: white !important;
+
+    }
+    & .mat-line :hover{
+        color: white !important;
+    }
+    &.bi{
+        color:white !important
+    }
+}
+
+.sidebar .closebtn {
+    top: 0;
+    right: 0px;
+    font-size: 36px;
+    margin-left: 185px;
+}
+
+.sidebar .logo {
+    position: fixed;
+    top: 0;
+    margin: 5px;
+    width: 50px;
+}
+.mat-toolbar .logo {
+    top: 0;
+    margin: 5px;
+    margin-left: 0;
+    width: 50px;
+}
+
+.profile-picture-holder {
+    padding: 5px;
+    width: 100%;
+}
+
+.user-profile {
+    background-color:#E7F1FF;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    /* color: #818181; */
+    display: block;
+    transition: 0.3s;
+}
+
+#homeMain {
+    transition: margin-left 0.5s;
+    padding: 0px;
+    margin-left: 60px;
+}
+
+#homeMain.public {
+    margin-left: 0;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-list-item {
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    :host {
+        display: block;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .toolBar {
+        height: 60px;
+        background-color: #ffffff;
+        color: white;
+        padding: 10px 15px 10px 5px;
+        border: none;
+        width: 100%;
+        -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+        -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
+        box-shadow: 3px 3px 5px 6px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+    }
+
+    .sidebar {
+        width: 0px;
+        box-shadow: 0 0 0.75rem 0.125rem rgba(0, 0, 0, 0.125);
+    }
+
+    #homeMain {
+        transition: margin-left 0.5s;
+        padding: 0px;
+        margin-left: 0px;
+    }
+    #openNav {
+        margin-left: 35px;
+        position: fixed;
+    }
+}
+
+.contacts-holder {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: fixed;
+    top:56px;
+    right: 0px;
+    z-index: 1050;
+    background-color: #f5f5f5;
+}
+
+@media (min-width: 576px) {
+    .contacts-holder {
+        top:64px;
+    }
+}
+
+.contacts-holder a, .contacts-holder a span {
+    color: #383c40!important;
+}
+
+.sign-up-overlay.visible {
+    height: 100vh;
+    margin-top: 0;
+}
+
+.mat-flat-button {
+    background-color: white;
+}
+
+@media only screen and (max-width: 576px) {
+    .sign-up-overlay.visible {
+        padding: 0;
+    }
+}
+
+.footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 0;
+    background-color: #017DB5;
+    display: -webkit-flex; /* old versions of Chrome/Safari/Opera */
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -webkit-flex-wrap: wrap; /* old versions of Chrome/Safari/Opera */
+    flex-wrap: wrap;
+}
+
+.footerimg{
+    height: 30px;
+}
+
+.footerFont{
+    font-size: small;
+    font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    color: white;
+    padding: 10px;
+}
+
+.footerFont p a{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: #FFA000;
+}
+
+.footerFont p{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+
+
+
+.registration-buttons {
+    background: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.ColorB{
+    color: green;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-left: 3px;
+   
+ }
+ 
+ .nav a i{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+ }
+
+.nav a {
+    color: black;
+}
+   
+.nav a:hover {
+    text-decoration: underline solid #47B2FF 3px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+}
+
+
+.contractor-top-nav {
+    background-color: #E7F1FF;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.contractor-top-nav a img{
+    height: 48px;
+    width: auto;
+}
+
+.nav {
+    margin-left: auto;
+}
+
+/* Styling for the dropdown button */
+button.mat-icon-button {
+    color: #017DB5; /* Set the text color for the button to black */
+    font-size: 16px; /* Adjust the font size as needed */
+    text-decoration: none;
+    margin-left: 2px;
+}
+
+.cust{
+    color: black;
+}
+  
+  /* Styling for the dropdown menu items */
+.mat-menu-content {
+    background-color: #fff; /* Set the background color of the dropdown menu */
+    text-decoration: none;
+}
+  
+.mat-menu-item {
+    color: black; /* Set the text color for the menu items to black */
+    font-size: 14px; /* Adjust the font size as needed */
+    text-decoration: none;
+}
+
+.mat-icon{
+   color: #017DB5; 
+}
+
+
+
+.nav-link{
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: medium;
+
+}
+
+.nav-link i{
+    padding: 2px;
+}
+
+.nav-link img{
+    height: 28px;
+    width: auto;
+    padding: 4px;
+    justify-content: center;
+}
+
+
+nav a:hover{
+    color: none;
+
+}
+
+.footerimg{
+    height: 20px;
+    width: auto;
+
+}
+
+.jobtittle{
+    color: black;
+}
+
+/* Navigation responsive ness for small screens */
+
+.menu{
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .menu{
+        display: block;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        top: 10px;
+        left: 15px;
+    }
+
+    .navhide{
+        display: none;
+    }
+
+
+}
+
+/* Side Navigation for Client  */
+.sidenava{
+    background-color:#E7F1FF;
+}
+
+.listsidnav{
+     background-color:#E7F1FF;
+}
+
+
+.btn1 .mat-icon{
+    color: black;
+
+}
+
+.btn2 .mat-icon{
+    color: greenyellow;
+
+}
+
+.btn img{
+    height: 35px;
+    max-width: auto;
+}
+.mat-drawer-container{
+    background-color: unset;
+}

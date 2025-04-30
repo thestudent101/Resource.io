@@ -1,0 +1,191 @@
+
+
+.my-jobs-heading{
+    align-items:center ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
+
+.Button1{
+  background-color: #017DB5;
+  font-size: medium;
+  margin-right: auto;
+}
+
+.my-jobs-heading h2 {
+    color: #017DB5;
+    align-items:center ;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-family: 'Poppins',sans-serif;
+}
+
+.section-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+    height: 50px; /* Adjust the height as needed */
+    width: auto;
+    width: auto;
+
+
+}
+
+
+.section-buttons button{
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  height: auto;
+  margin-right: auto;
+  width: 600px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  background-color: #FAFAFA;
+  font-size: 20px;
+  border: #017DB5;
+}
+
+.applied-jobs-section{
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+.noApplied{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.noApplied img{
+  height: 60px;
+  width: auto;
+}
+
+.saved-jobs-section{
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+
+      
+.section-divider {
+    position: relative;
+    width: 34%;
+    height: 8px;
+    background-color: #017DB5; /* Adjust the color as needed */
+    margin-right: auto;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    display:none;
+}
+
+  
+  .job-profile-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* flex: 0 0 calc(33.33% - 20px); /* Three cards in a row with some spacing */ 
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 1020px; 
+  }
+  
+  .job-profile-horizontal {
+    background-color: #E7F1FF;
+    border-bottom: 10px solid #017DB5;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    color: black;
+  }
+  
+  .company-logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: auto;
+  }
+  
+  .company-logo img {
+    width: auto;
+    height: 48px;
+    margin-right: auto;
+  }
+  
+  .job-title-and-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+    bottom: 60px;
+  }
+  
+  .job-title {
+    margin: 0;
+  }
+  
+  .job-location {
+    color: #888;
+  }
+  
+  .dots-icon-and-apply-button {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  
+  .mat-icon {
+    margin-right: 5px;
+  }
+  
+  .apply-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .apply-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .job-salary {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Optional: Add media queries to adjust card layout for smaller screens */
+  @media (max-width: 768px) {
+    .job-profile-horizontal {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  

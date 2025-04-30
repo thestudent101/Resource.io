@@ -1,0 +1,255 @@
+<div class="card add-profile container p-3" style="background-color: aliceblue;background: #FFF;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); width:700px;
+">
+    <div class="error-alert" [class.active]="hasErrors">
+        {{errorText}}
+    </div>
+    <div class="col-12 mb-2">
+        <button class="rounded-pill  text-dark" (click)="onClickSaveJobProfile()" mat-stroked-button [disabled]="saveButtonDisabled">
+            <mat-icon>save</mat-icon> Save</button>
+        <button class="rounded-pill  text-dark" (click)="onClickCancel()" mat-stroked-button>
+            <mat-icon>close</mat-icon> Cancel</button>
+    </div>
+
+    <div class="stepOptions mb-2">
+        <button class="rounded-pill m-1" style="background: #017DB5;" (click)="setStep(1)" mat-raised-button>
+          Job Details
+        </button>
+        <!-- show work history -->
+        
+        <button class="rounded-pill m-1" style="background: #017DB5;" (click)="setStep(3)" mat-raised-button>
+            Skills
+          </button>
+          <!-- show work history -->
+          <button class="rounded-pill m-1" style="background: #017DB5;" (click)="setStep(4)" mat-raised-button>
+            Certifications
+          </button>
+          <button class="rounded-pill m-1" style="background: #017DB5;" (click)="setStep(5)" mat-raised-button>
+            Qualifications
+          </button>
+          <!-- show work history -->
+          <button class="rounded-pill m-1" style="background: #017DB5;" (click)="setStep(6)" mat-raised-button>
+            Responsibilities
+              </button>
+        
+    </div>
+    <div class="col-12" *ngIf="jobStep === 1">
+        <div class="row">
+
+            <mat-form-field class="col-md-4 col-lg-4">
+                <mat-label>Job Title</mat-label>
+                <input required
+                    [(ngModel)]="jobTitle" 
+                    matInput 
+                    placeholder="Senior Java Developer">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-4 col-lg-4">
+                <mat-label>Rate Per Hour</mat-label>
+                <input required
+                    [(ngModel)]="ratePerHour" 
+                    matInput 
+                    type="number"
+                    min = "1"
+                    max = "100000"
+                    minlength="0"
+                    maxlength="6"
+                    placeholder="175">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-4 col-lg-4">
+                <mat-label>Job Location</mat-label>
+                <input [(ngModel)]="jobLocation" matInput placeholder="Johannesburg" required>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-md-4 col-lg-4">
+                <mat-label>Closing Date</mat-label>
+                <input required
+                    [(ngModel)]="closingDate" 
+                    matInput 
+                    [matDatepicker]="clsDatePicker">
+                    <mat-datepicker-toggle 
+                        matSuffix 
+                        [for]="clsDatePicker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #clsDatePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="col-md-4 col-lg-4">
+                <mat-label>Work Experience in Years</mat-label>
+                <input 
+                    [(ngModel)]="workExperienceInYears" 
+                    matInput 
+                    placeholder="5">
+            </mat-form-field>
+            <mat-form-field class="col-md-4 col-lg-4">
+                <mat-label>Contract Duration in Months</mat-label>
+                <input 
+                    [(ngModel)]="contractDurationInMonths" 
+                    matInput 
+                    placeholder="12">
+            </mat-form-field>
+
+        </div>
+        <div class="row">
+            <mat-form-field class="col-md-12 col-lg-12">
+                <mat-label>Employment Equity</mat-label>
+                <textarea 
+                [(ngModel)]="empEquity" 
+                matInput 
+                placeholder=""></textarea>
+            </mat-form-field>
+            <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+                <mat-label>Job Description</mat-label>
+                <textarea required
+                    [(ngModel)]="jobDescription" 
+                    matInput 
+                  
+                    placeholder="Job is suitable for...">
+                </textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf="jobStep === 2">
+        <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+            <mat-chip-grid #personalityTraitChipList aria-label="skill selection">
+            <mat-chip-row *ngFor="let personalityTrait of personalityTraits" 
+                 (removed)="removePersonalityTrait(personalityTrait)">
+                {{personalityTrait.description}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip-row>
+            <input 
+                placeholder="Candidate Required Personality Traits..."
+                [matChipInputFor]="personalityTraitChipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="addPersonalityTrait($event)">
+            </mat-chip-grid>
+        </mat-form-field>
+    </div>
+    <div *ngIf="jobStep === 3">
+        <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+            <mat-chip-grid #skillsChipList aria-label="skill selection">
+                <mat-chip-row 
+                    *ngFor="let skill of skills"  
+                    (removed)="removeSkill(skill)">
+                        {{skill.description}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip-row>
+                <input 
+                    placeholder="Candidate Required Skills..."
+                    #skillInput
+                    [formControl] = "skillControl"
+                    [matAutocomplete] = "skillAuto"
+                    [matChipInputFor]="skillsChipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="addSkill($event)">
+            </mat-chip-grid>
+            <mat-autocomplete 
+                #skillAuto="matAutocomplete" 
+                (optionSelected)="selectedSkill($event)">
+                    <mat-option 
+                        *ngFor="let skill of filteredSkills | async" 
+                        [value]="skill">
+                            {{skill}}
+                    </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div *ngIf="jobStep === 4">
+        <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+            <mat-chip-grid #chipList2 aria-label="cert selection">
+                <mat-chip-row 
+                    *ngFor="let cert of certs" 
+                    
+                     
+                    (removed)="removeCertificate(cert)">
+                    {{cert.description}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip-row>
+                <input 
+                    placeholder="Candidate Required Skills"
+                    #certificationInput
+                    [formControl] = "certificationControl"
+                    [matAutocomplete] = 'certAuto'
+                    [matChipInputFor]="chipList2"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="addCertificate($event)">
+            </mat-chip-grid>
+            <mat-autocomplete 
+                #certAuto="matAutocomplete" 
+                (optionSelected)="selectedCertification($event)">
+                    <mat-option 
+                        *ngFor="let certification of filteredCertifications | async" 
+                        [value]="certification">
+                            {{certification}}
+                    </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div *ngIf="jobStep === 5">
+        <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+            <mat-chip-grid #chipList1 aria-label="qualification selection">
+            <mat-chip-row 
+                *ngFor="let qualification of qualifications" 
+                
+                 
+                (removed)="removeQualification(qualification)">
+                {{qualification.description}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip-row>
+            <input 
+                placeholder="Candidate Required Qualifications..."
+                #qualificationInput
+                [formControl] = "qualificationControl"
+                [matAutocomplete] = "auto"
+                [matChipInputFor]="chipList1"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="addQualification($event)">
+            </mat-chip-grid>
+            <mat-autocomplete 
+                #auto = "matAutocomplete"
+                (optionSelected)="selectedQualification($event)" >
+                    <mat-option 
+                        *ngFor="let qualification of filteredQualifications | async" 
+                        [value]="qualification">
+                            {{qualification}}
+                    </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div *ngIf="jobStep === 6">
+        <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+            <mat-chip-grid #responsibilityChipList aria-label="responsibility selection">
+            <mat-chip-row *ngFor="let responsibility of responsibilities" 
+                     (removed)="removeResponsibility(responsibility)">
+                {{responsibility.description}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip-row>
+            <input placeholder="Candidate responsibilities..."
+                    [matChipInputFor]="responsibilityChipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addResponsibility($event)">
+            </mat-chip-grid>
+        </mat-form-field>
+    </div>
+    <div *ngIf="jobStep === 7">
+        <mat-form-field class="col-sm-12 col-md-12 col-lg-12">
+            <mat-chip-grid #offerChipList aria-label="offers selection">
+            <mat-chip-row *ngFor="let offer of offers" 
+                     (removed)="removeOffer(offer)">
+                {{offer.description}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip-row>
+            <input placeholder="Candidate Offers..."
+                    [matChipInputFor]="offerChipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addOffer($event)">
+            </mat-chip-grid>
+        </mat-form-field>
+    </div>
+
+</div>
+

@@ -1,0 +1,185 @@
+<!-- progress bar -->
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<!-- body -->
+
+<div class="custom-cardsss p-3 my-5">
+
+    <div class="col-10">
+        <button class="rounded-pill m-1" [routerLink]="['/main/client-profile/edit']" mat-raised-button>
+            Edit Profile
+          </button>
+          <!-- show work history -->
+          <button class="rounded-pill m-1" (click)="onAddUser()" mat-raised-button>
+            Add User
+          </button>
+    </div>
+
+    <mat-card  [hidden]="addUser">
+        <mat-card-header>
+            <mat-card-title>Invite New User</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <!-- candidate name -->
+                <mat-form-field class="col-md-6">
+                    <mat-label>Name</mat-label>
+                    <input [(ngModel)]="newUserName" matInput placeholder="John">
+                </mat-form-field>
+                <!-- email -->
+                <div class="col-md-6">
+                    <mat-form-field style = "width: 100%;">
+                        <mat-label>Email</mat-label>
+                        <input required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="newUserEmail" matInput placeholder="mail@example.com" type="email" #mail="ngModel">
+                    </mat-form-field>
+                    <div [hidden]="mail.valid || mail.untouched" class="required-field col-sm-12">
+                        Please input correct email address...
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="text-right">
+            <button
+                (click) = "onCancelUser()"
+                mat-button>CANCEL</button>
+            <button 
+                (click) = "onInviteUser()"
+                mat-button>INVITE</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <div class="alert alert-danger alert-info mt-3 text-center" *ngIf="!hasProfile">
+        Your profile is not complete. You will not be able to post any job profiles or request interviews with consultants until you complete your profile.
+    </div>
+    
+    <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+        {{error}}
+    </div>
+<!-- <div class="stepOptions mb-2">
+        <button class="rounded-pill m-1"  mat-raised-button>
+            Persnoal Details
+          </button> -->
+          <!-- show work history -->
+          <!-- <button class="rounded-pill m-1"  mat-raised-button>
+              Company Details
+          </button> -->
+          <!--  -->
+          <!-- <button class="rounded-pill m-1"  mat-raised-button>
+            Company Users
+        </button>
+    </div> -->
+
+    <mat-divider class="my-2"></mat-divider>
+
+    <div>
+        <div class="Customcard my-3" >
+            <div class=" p-3  head">
+                <h6><strong>Personal Details</strong></h6>
+            </div>
+            <!-- <div class=" p-3 text-white head" >
+                <h5><strong>Personal Details</strong></h5>
+            </div> -->
+            <div class="custom-card-body p-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="clientDetails" *ngIf="hasProfile">
+                            <!-- name -->
+                            <p><strong>Name: </strong>{{profile.name}}</p>
+                            <!-- surname -->
+                            <p><strong>Surname: </strong>{{profile.surname}}</p>
+                            <!-- contact number -->
+                            <p><strong>Contact Number: </strong>{{profile.contactNumber}}</p>
+                            <!-- contact number -->
+                            <p><strong>Email Address: </strong>{{profile.emailAddress}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class=" p-3  head" >
+            <h6 class="MB-1"><strong>Company Details</strong></h6>
+        </div>
+        <div class="custom-card-body p-3">
+            <div class="clientDetails" *ngIf="hasProfile">
+                <!-- company name -->
+                <p><strong>Company Name: </strong>{{profile.company.name}}</p>
+                <!-- trading name -->
+                <p><strong>Trading Name: </strong>{{profile.company.tradingName}}</p>
+                <!-- company registration number -->
+                <p><strong>Company Registration Number: </strong>{{profile.company.registrationNumber}}</p>
+                <!-- company domain name -->
+                <p><strong>Company Vat Number: </strong>{{profile.company.vatNumber}}</p>
+                <!-- company domain name -->
+                <p><strong>Company Physical Address: </strong>{{profile.company.physicalAddress}}</p>
+                <!-- company domain name -->
+                <p><strong>Company Postal Address: </strong>{{profile.company.postalAddress}}</p>
+                <!-- company domain name -->
+                <p><strong>Company Web Domain: </strong>{{profile.company.webDomainName}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div >
+        <div class=" p-3  head" >
+            <h6 class="MB-1"><strong>Company Users</strong></h6>
+        </div>
+        <div class="custom-card-body p-3">
+            <div class="clientDetails" *ngIf="hasProfile">
+                <div
+                [hidden] = "isMobile"
+                class="row">
+                <div class="col-md-4">
+                    <p>Name</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Email</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Status</p>
+                </div>
+                <div class="col-md-2">
+                    <p>#</p>
+                </div>
+            </div>
+            <div *ngFor = "let user of users" class="row userCard">
+                <div class="col-md-4">
+                    <p class = "card-p-element" [hidden] = "!isMobile">
+                        Name
+                    </p>
+                    <h6 class = "card-h6-element"><strong>{{user.name}} {{user.surname}}</strong></h6>
+                </div>
+                <div class="col-md-4">
+                    <p class = "card-p-element" [hidden] = "!isMobile">
+                        Email
+                    </p>
+                    <h6 class = "card-h6-element"><strong>{{user.emailAddress}}</strong></h6>
+                </div>
+                <div class="col-md-2">
+                    <p class = "card-p-element" [hidden] = "!isMobile">
+                        Status
+                    </p>
+                    <div *ngIf = "user.invitationStatus == null">
+                        <h6 class = "card-h6-element"><strong>INACTIVE</strong></h6>
+                    </div>
+                    <h6 class = "card-h6-element"><strong>{{user.invitationStatus}}</strong></h6>
+                </div>
+                <div class="col-md-2">
+                    <p class = "card-p-element" [hidden] = "!isMobile">
+                        #
+                    </p>
+                    <div *ngIf = "user.invitationStatus == 'REQUESTED'">
+                        <button mat-flat-button (click)="onApproveRequest()">
+                            <mat-icon>info</mat-icon>Approve
+                        </button>
+                    </div>
+                </div>
+                <mat-divider [hidden] = "!isMobile"></mat-divider>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>

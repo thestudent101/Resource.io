@@ -1,0 +1,30 @@
+.customButon{
+
+    background-color: #017DB5;
+    color: white;
+}
+
+.left-side {
+    display: flex;
+    background: linear-gradient(0deg, rgba(163, 188, 248, 0.80) 0%, rgba(163, 188, 248, 0.65) 70%),
+      url('/assets/images/image_121.png'), lightgray 40% / cover no-repeat;
+    text-align: center;
+    background-size: cover;
+    background-position: center;   
+    color: white;
+    flex-shrink: 0;
+    width: 80%;
+    max-width: 400px;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 550px;
+    margin-left: 20px; /* Add some spacing between the left and right sides */
+}

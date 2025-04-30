@@ -1,0 +1,158 @@
+
+<div class="container-fluid">
+ 
+  <div class="container">
+    <div class="row" *ngIf="userProfile">
+      <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="card  mt-5">
+          <div class="headcard">
+           
+                <div class="limit">
+                    <div class="imagewrapper">
+                      <div class="limitCotent">
+                        <user-profile-picture class="image" [emailAddress]="userEmailAddress" [defaultText]="userInitials">
+                        </user-profile-picture>
+                        <img class="float-right logo"  src = "../../assets/images/BLUE-Logo-Icon-Large.png" alt="BlueAPP">
+                      </div>
+                     
+                    </div>
+                   
+                </div>
+         
+            <p class="fs-3 text-white text-center"><b>{{userProfile?.title}} {{userProfile?.name}} {{userProfile?.surname}}</b></p>
+          <p class="fs-3 text-white text-center" > {{userProfile?.jobTitle}}</p>
+          </div>
+          
+          <div class="card-body">
+  
+  <div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <img  class="icon " src="assets/location3.svg" alt="Avatar">
+            {{userProfile?.preferredJobLocation}}</li>
+        <li class="list-group-item">
+            <img  class="icon " src="assets/phone3.svg" alt="Avatar">
+            {{userProfile?.contactNumber}}</li>
+           
+        <li class="list-group-item">
+            <img  class="icon " src="assets/email.png" alt="">
+            {{userProfile?.email}}</li>
+        <li class="list-group-item"><b>Rate : R {{userProfile?.ratePerHour}} /hr</b></li>
+        <li class="list-group-item"><b>Availability: {{userProfile?.noticePeriod}}</b></li>
+      </ul>
+    </div>
+   
+  </div>
+ 
+</div>
+<div class="card-footer">
+  <button type="button" class="btn  text-white mt-5 mx-3" routerLink="/main/user-profile/edit" >Edit Profile</button>     
+  <button type="button" class="btn  text-white mt-3 mx-3" routerLink="/main/user-profile/change-password" >Update Password</button>         
+  
+</div>
+
+      
+      </div>
+      <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="row mt-5">
+                <div class="col">
+                    <div class="row">
+                      <div>
+                        <!-- <h5 class="text-white"><span class="display" style="text-shadow: 2px 2px #000000;" [style.color]="flagProfileScoreLessThan50 ? colorRed : flagProfileScoreBetween50and70 ? colorOrange : flagProfileScoreBetween70and90 ? colorYellow : flagProfileScoreGreaterThan90 ? colorGreen : colorBlack">{{userProfile.percentageScore}}</span>&#20;</h5> -->
+                    
+                      </div>
+                     
+                        <div class="col-12 ">  
+                          <div class="d-flex justify-content-between">
+                            <h5 class="card-title">Skills</h5>
+                            <i *ngIf="userProfile?.skills !== null" class="text-end fs-3 bi bi-check-circle" style="color: green;"></i>
+                            <i *ngIf="userProfile?.skills === null" class="text-end fs-3 bi bi-check-circle" style="color: red;"></i>
+                          </div>                          
+                          <div class="card">
+                            
+                            <div class="card-body">
+                             <!-- Some borders are removed -->
+                             <span *ngFor="let skill of userProfile?.skills" class="badge rounded-pill text-bg-secondary">
+                                <span class="badge rounded-pill text-bg-secondary" style="cursor: pointer;">{{skill.description}} 
+                                </span>
+                                </span>
+                            </div>
+                     
+                          </div>
+
+                        </div>
+                        <div class="col-12 mt-4" >
+                          <div class="d-flex justify-content-between">
+                            <h5 class="card-title">Certifications</h5>
+                            <i *ngIf="userProfile?.certitications !== null" class="text-end fs-3 bi bi-check-circle" style="color: green;"></i>
+                            <i *ngIf="userProfile?.certitications === null" class="text-end fs-3 bi bi-check-circle" style="color: red;"></i>
+                          </div>
+                       
+                            <div class="card">
+                              <div class="card-body">
+                                <!-- Some borders are removed -->
+                                <ul class="list-group list-group-flush" *ngFor="let cert of userProfile?.certifications">
+                                    <li class="list-group-item"><b>{{cert.name}} </b></li>
+                                    <li class="list-group-item">Issued by : <i>{{cert.authority}}</i> </li>
+                                    <li class="list-group-item">Valid from : <i>{{cert.attained | date: 'dd MMM yy'}}</i></li>
+                                  </ul>
+                              </div>
+                       
+                            </div>
+  
+                          </div>
+                          <div class="col-12 mt-4" >
+                            <div class="d-flex justify-content-between">
+                              <h5 class="card-title">Qualifications</h5>
+                              <i *ngIf="userProfile?.qualifications !== null" class="text-end fs-3 bi bi-check-circle" style="color: green;"></i>
+                              <i *ngIf="userProfile?.qualifications === null" class="text-end fs-3 bi bi-check-circle" style="color: red;"></i>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <ul class="list-group list-group-flush" *ngFor="let qual of userProfile?.qualifications">
+                                  <li class="list-group-item"> <b>{{qual.name}}</b> - <i> {{qual.institution}}</i> </li>
+                                    
+                                    <li class="list-group-item"><i>Completed :  {{qual.attained | date: 'dd-MMM-yy'}}</i></li>
+                                  </ul>
+                              </div>
+                       
+                            </div>
+  
+                          </div>
+                          <div class="col-12 mt-4" >
+                            <div class="d-flex justify-content-between">
+                              <h5 class="card-title">Work history</h5>
+                              <i *ngIf="userProfile?.workHistory !== null" class="text-end fs-3 bi bi-check-circle" style="color: green;"></i>
+                              <i *ngIf="userProfile?.workHistory === null" class="text-end fs-3 bi bi-check-circle" style="color: red;"></i>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <ul class="list-group list-group-flush" *ngFor="let work of userProfile?.workHistory">
+                                    <li class="list-group-item">
+                                        <p class="text-lead"><b>{{work.role}}</b> - <i>{{work.company}}</i></p>
+                                        <p>From: <i>{{work.from | date: 'dd-MMM-yy' }} To: {{work.to | date: 'dd-MMM-yy'}}</i></p>
+
+                                    </li>
+                                  </ul>
+                              </div>
+                       
+                            </div>
+  
+                          </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row mt-3" *ngIf="userProfile === null">
+        <div class="card">
+          <div class="card-body">
+          <p class="text-lead text-black ">Please Update your Profile</p>
+          <button type="button" class="btn  text-white " routerLink="/main/user-profile/edit" >Edit Profile</button>
+          </div>
+         </div>
+      </div>
+  </div>
+    </div>
+  
+ 

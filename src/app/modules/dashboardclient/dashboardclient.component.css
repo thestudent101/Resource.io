@@ -1,0 +1,14 @@
+.custom-card-client {
+display: block;
+width: 41.729px;
+height: 34.483px;
+flex-shrink: 0;
+border-radius: 5px;
+border: 1px solid white;
+background: #212B6C;
+color: white;
+margin-right: 1%;
+}
+.card-bpdy{
+    outline: none;
+}

@@ -1,0 +1,113 @@
+<div class="mt-4">
+    <button mat-raised-button color="primary" class="Button" (click)="goBack(true)">
+        <mat-icon>arrow_back</mat-icon> Back
+    </button>
+</div>
+<mat-card *ngIf="jobProfileExpired" class="mb-3">
+    <mat-card-content>
+        <p class="text-center">This job profile has either been fulfilled or the closing date has passed.</p>
+    </mat-card-content>
+</mat-card>
+
+<div class="cont d-flex mt-3">
+    <div class="left-side col">
+
+            <div class="col-sm-12 pt-3 left-content">
+                <h2> <strong>Summary</strong></h2>
+                <h6>{{ Company?.company?.name }} is a company based in {{ Company?.jobLocation }} looking for a {{ jobProfile?.title }} with at least {{ Company?.workExperienceInYears }} years experience.</h6> <br>
+                <h6>Rate per hour: <span>{{ jobProfile?.ratePerHour | currency:'R' }}</span></h6>
+                
+            </div>
+        
+
+    </div>
+
+    <div class="right-side col">
+
+        <div class="col-sm-12 col-md-8 col-lg-9 col-main">
+            <div class="col-sm-12 pt-3 right-content">
+                <h1 class=""><strong>{{ jobProfile?.title }}</strong></h1>
+                <h2>Job Description</h2>
+                <p class="Jobinto">{{ jobProfile?.description }}</p>
+                <mat-divider></mat-divider>
+                <br>
+                <br>
+                <div class="row"> 
+                    <!-- Skills -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-md-12 mb-2">
+                                <h2>Skills</h2>                            
+                                <div *ngFor="let skill of jobProfile?.skills">
+                                    <p class="jobS">{{ skill?.description }}</p>
+                                </div>
+                                <p *ngIf="!jobProfile?.skills || jobProfile?.skills?.length == 0">No certifications have been listed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <!-- Certifications -->
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class= "col-md-12 mb-2">
+                                <h2>Certifications</h2>
+                                <div *ngFor="let certification of jobProfile?.certifications">
+                                    <p class="jobC">{{ certification?.description }}</p>
+                                </div>
+                                <p *ngIf="!jobProfile?.certifications || jobProfile?.certifications?.length == 0">No certifications have been listed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <!-- Education -->
+
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <h2>Qualifications</h2>
+                                <div *ngFor="let qualification of jobProfile?.qualifications">
+                                    <p class="jobQ">{{ qualification?.description }}</p>
+                                </div>
+                                <p *ngIf="!jobProfile?.qualifications || jobProfile?.qualifications?.length == 0">No qualifications have been listed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mx-0">
+            <div class="col-sm-12">
+
+                <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+                    {{ errorMessage }}
+                </div>
+                <p class="text-muted my-3">If you wish to apply for this position, please click the apply button below.</p>
+                <div class="sign-contract">
+                    <button class="ml-2 buttonA" mat-raised-button (click)="apply()" [disabled]="processing"> Apply </button>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+</div>

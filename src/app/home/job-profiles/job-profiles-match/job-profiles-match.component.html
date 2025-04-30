@@ -1,0 +1,29 @@
+
+<div class="container pt-3">
+    <!-- back button -->
+    <div class="row pb-3">
+        <div class="col-sm-12">
+            <button
+            mat-stroked-button 
+            (click) = "goBack()">
+                <mat-icon>arrow_back</mat-icon> Back </button>
+        </div>
+    </div>
+    <div class="alert alert-light mt-3" *ngIf="noDataExists">
+        No profiles are available, most likely this means you have refreshed the page. please click back and re-select the position to view available profiles
+    </div>
+
+    <mat-card *ngIf="noMatchesFound">
+        <mat-card-content>
+            <p class="text-center">No matched contractor profiles were found</p>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-4 mx-left contractorView" *ngFor="let contractorProfile of contractorProfiles; let i = index">
+            <app-contractor-card  [contractorProfile]="contractorProfile" [rank]="i+1"></app-contractor-card>
+        </div>
+    </div>
+</div>
+
+

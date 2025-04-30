@@ -1,0 +1,12 @@
+.payment-success {
+    color: #1ccf4b;
+}
+
+.payment-failure {
+    color:rgb(155, 4, 4);
+
+}
+
+::ng-deep .peach-button {
+    background-color:  #102f6e;
+}

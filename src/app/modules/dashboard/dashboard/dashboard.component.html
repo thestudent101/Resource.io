@@ -1,0 +1,20 @@
+<mat-progress-bar *ngIf = "loading"  mode="indeterminate"></mat-progress-bar>
+<!-- details -->
+<div class="container pt-3">
+    
+    <div class="alert alert-info mt-3 text-center" *ngIf="isContractorProfileIncomplete">
+        Your profile is not complete. You will not be able to be matched to job profiles or apply for any positions until you complete your profile.<br> <a routerLink="/main/user-profile/edit">Click here</a> to edit your profile.
+    </div>
+    
+    <div class="alert alert-info mt-3 text-center" *ngIf="isClientProfileIncomplete">
+        Your profile is not complete. You will not be able to post any job profiles or request interviews with consultants until you complete your profile.<br> <a routerLink="/main/client-profile/edit">Click here</a> to edit your profile.
+    </div>
+    
+    <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+        {{error}}
+    </div>
+    <!--  -->
+    <router-outlet></router-outlet>
+</div>
+
+    

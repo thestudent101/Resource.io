@@ -1,0 +1,522 @@
+
+<div class="container-fluid vh-100 ">
+    <div class="container">
+        <button type="button" class="btn  text-white mt-5 back-btn" routerLink="/main/user-profile/view" ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+          </svg> Back</button>   
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="card mt-5 ">
+              <div class="headcard">
+                <div class="images">
+                    <div class="imagewrapper">
+                      <user-profile-picture [emailAddress]="userEmailAddress" [defaultText]="userInitials">
+                      </user-profile-picture>
+                        <label class="picIcon">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                              <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                              <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                            </svg>
+                          
+                          <input type="file" class="hidden" accept=".png,.jpg,.jpeg" (change)="onFileChanged($event)" #profilePicInput />
+                 
+                        </label>
+                        
+                      
+                    </div>
+                    
+              </div>
+               
+             
+              </div>
+              
+              <div class="card-body">
+      
+                <p class="upload-error" *ngIf="fileUploadedError">Image size too large. The maximum upload size is
+                  5mb</p>
+            
+               <form [formGroup]="resumeData">
+                <div class="form-group ">
+                
+                  <div class="form-group ">
+                    <label for="title">Title *</label>
+                    <select class="form-control " id="title  "                    
+                    [ngClass]="{'is-invalid': resumeData.get('title')?.errors && resumeData.get('title')?.touched, 'is-valid': resumeData.get('title')?.valid}" 
+                   formControlName="title"
+                   required>
+                      <option *ngFor="let title of titles" [value]="title.description">  {{ title.description }}</option>
+                   
+                    </select>
+                    <div class="error-msg" *ngIf="resumeData.get('title')?.errors && resumeData.get('title')?.touched">
+                      Please select a title
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group ">
+                  <label for="jobTitle">Job Title *</label>
+             <input class="form-control" formControlName="jobTitle" 
+             [ngClass]="{'is-invalid': resumeData.get('jobTitle')?.errors && resumeData.get('ratePerHour')?.touched, 'is-valid': resumeData.get('jobTitle')?.valid}" 
+             id="jobTitle" placeholder="Job title" required type="text" >
+                  <div class="error-msg" *ngIf="resumeData.get('jobTitle')?.errors && resumeData.get('jobTitle')?.touched">
+                    Please enter your job title
+                  </div>
+                </div>
+              
+                    <div class="form-group ">
+                      <label for="preferredJobLocation ">Preferred Job Location</label>
+                      <select class="form-control " id="preferredJobLocation  "                    
+                      [ngClass]="{'is-invalid': resumeData.get('preferredJobLocation')?.errors && resumeData.get('preferredJobLocation')?.touched, 'is-valid': resumeData.get('preferredJobLocation')?.valid}" 
+                      formControlName="preferredJobLocation" placeholder="Preferred Job Location" >
+                        <option *ngFor="let province of provinces" [value]="province.description">
+                    {{ province.description }}</option>
+                       </select>
+                      <div class="error-msg" *ngIf="resumeData.get('preferredJobLocation')?.errors && resumeData.get('preferredJobLocation')?.touched">
+                        Please enter your preferred job location
+                      </div>
+                    </div>
+                    <!-- <div class="form-group ">
+                    <label for="city ">Preferred Job City</label>
+                <select class="form-select" aria-label="Default select example" formControlName="city" [ngSwitch]="provinces">
+                  <option *ngFor="let city of cities.EasternCape" [value]="city.description">{{ city.description }}</option> -->
+                
+                  <!-- <div *ngSwitchCase="'Eastern Cape'">
+                    <option *ngFor="let city of cities.EasternCape" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'Free State'">
+                    <option *ngFor="let city of cities.FreeState" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'Gauteng'">
+                    <option *ngFor="let city of cities.Gauteng" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'KwaZulu-Natal'">
+                    <option *ngFor="let city of cities.KwaZuluNatal" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'Limpopo'">
+                    <option *ngFor="let city of cities.Limpopo" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'Mpumalanga'">
+                    <option *ngFor="let city of cities.Mpumalanga" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'North West'">
+                    <option *ngFor="let city of cities.NorthWest" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'Northern Cape'">
+                    <option *ngFor="let city of cities.NorthernCape" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div *ngSwitchCase="'Western Cape'">
+                    <option *ngFor="let city of cities.WesternCape" [value]="city.description">
+                        {{ city.description }}
+                    </option>
+                </div>
+                <div class="error-msg" *ngIf="resumeData.get('preferredJobLocation')?.errors && resumeData.get('preferredJobLocation')?.touched">
+                  Please enter your preffered job location
+                </div>
+                </select>
+                </div> --> 
+                   <!-- <div class="form-group ">
+                      <label for="city ">Preferred Job City</label>
+                      <select formControlName="city" [ngSwitch]="provinces">
+                        <div *ngSwitchCase="'Eastern Cape'">
+                            <option *ngFor="let city of cities.EasternCape" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'Free State'">
+                            <option *ngFor="let city of cities.FreeState" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'Gauteng'">
+                            <option *ngFor="let city of cities.Gauteng" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'KwaZulu-Natal'">
+                            <option *ngFor="let city of cities.KwaZuluNatal" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'Limpopo'">
+                            <option *ngFor="let city of cities.Limpopo" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'Mpumalanga'">
+                            <option *ngFor="let city of cities.Mpumalanga" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'North West'">
+                            <option *ngFor="let city of cities.NorthWest" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'Northern Cape'">
+                            <option *ngFor="let city of cities.NorthernCape" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                        <div *ngSwitchCase="'Western Cape'">
+                            <option *ngFor="let city of cities.WesternCape" [value]="city.description">
+                                {{ city.description }}
+                            </option>
+                        </div>
+                    </select>
+                      <div class="error-msg" *ngIf="resumeData.get('preferredJobLocation')?.errors && resumeData.get('preferredJobLocation')?.touched">
+                        Please enter your preffered job location
+                      </div>
+                    </div> -->
+               
+                  <div class="form-group">
+                    <label for="rate ">Rate per hour *</label>
+                    <input class="form-control" formControlName="ratePerHour" 
+                    [ngClass]="{'is-invalid': resumeData.get('ratePerHour')?.errors && resumeData.get('ratePerHour')?.touched, 'is-valid': resumeData.get('ratePerHour')?.valid}" 
+                    id="rate" placeholder="Rate per hour in Rands" required type="number" min="-1000" max="100000">
+                    <div class="error-msg" *ngIf="resumeData.get('ratePerHour')?.errors && resumeData.get('ratePerHour')?.touched">
+                      Please enter your Rate per hour in Rands.
+                    </div>
+                  </div>
+
+                 
+                  <div class="form-group" >
+                    <label for="noticePeriod">Notice Period</label>
+                    <select class="form-control "
+                    [ngClass]="{'is-invalid': resumeData.get('noticePeriod')?.errors && resumeData.get('noticePeriod')?.touched, 'is-valid': resumeData.get('noticePeriod')?.valid}" 
+                    formControlName="noticePeriod" id="availability " placeholder="Notice Period" required>
+                      <option *ngFor="let noticePeriod of noticePeriods" [value]="noticePeriod.description">{{ noticePeriod.description }}</option>
+                       <!--                    
+                      <option>Immediately</option>
+                      <option>1 month</option>
+                      <option>2 months</option> -->
+                    </select>
+                    <div class="error-msg" *ngIf="resumeData.get('noticePeriod')?.errors && resumeData.get('noticePeriod')?.touched">
+                      Please choose your notice period.
+                    </div>
+                  </div>
+                
+              </form>
+              </div>    
+              <div class="card-footer">
+                <button type="button" class="btn text-white" (click)="update()">Update Profile</button>
+
+              </div>
+              
+         </div>   
+        </div>
+
+          <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                   <!-- Upload Resume -->
+                   <div class="upload-section mb-3">
+                    <label for="resume">Upload Resume:</label>
+                    <input type="file" #fileInput (change)="uploadResume(fileInput)">
+                    <button type="button" *ngIf="resumeExtracted" class="btn btn-primary text-white" (click)="clearForm()">Clear form</button>
+                  </div>
+                  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+            <form [formGroup]="resumeData">
+      
+          
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                      <label for="firstname">First Name *</label>
+                      <input type="text" class="form-control" 
+                      [ngClass]="{'is-invalid': resumeData.get('name')?.errors && resumeData.get('name')?.touched, 'is-valid': resumeData.get('name')?.valid}" 
+
+                      id="firstname" formControlName="name"
+                      placeholder="First Name"> 
+                    </div>
+                    
+                    <div class="error-msg" *ngIf="resumeData.get('name')?.errors && resumeData.get('name')?.touched">
+                      Please enter your name.
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                      <label for="surname">Last Name *</label>
+                      <input type="text" class="form-control"
+                       id="surname" 
+                       [ngClass]="{'is-invalid': resumeData.get('surname')?.errors && resumeData.get('surname')?.touched, 'is-valid': resumeData.get('surname')?.valid}" 
+
+                       formControlName="surname" 
+                       placeholder="Last Name">
+                    </div>
+                    <div class="error-msg" *ngIf="resumeData.get('surname')?.errors && resumeData.get('surname')?.touched">
+                      Please enter your surname.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <input type="tel" id="phone"> -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6 mt-3">
+    
+                      <label for="phone">Phone Number *</label>
+                      <ngx-intl-tel-input
+                      [cssClass]="'form-control'"
+                      [ngClass]="{'is-invalid': resumeData.get('contactNumber')?.errors && resumeData.get('contactNumber')?.touched, 'is-valid': resumeData.get('contactNumber')?.valid}" 
+                      [preferredCountries]="preferredCountries"
+                      [enableAutoCountrySelect]="true"
+                      [enablePlaceholder]="true"
+                      [searchCountryFlag]="true"
+                      [searchCountryField]="[
+                        SearchCountryField.Iso2,
+                        SearchCountryField.Name
+                      ]"
+                      [selectFirstCountry]="false"
+                      [selectedCountryISO]="CountryISO.SouthAfrica"
+                      [maxLength]="15"
+                      [phoneValidation]="true"
+                      [separateDialCode]="separateDialCode"
+                      [numberFormat]="PhoneNumberFormat.National"
+                      id="phone"
+                      formControlName="contactNumber"
+                    >
+                    </ngx-intl-tel-input>
+                    <div class="error-msg" *ngIf="resumeData.get('contactNumber')?.hasError('required') && resumeData.get('contactNumber')?.touched">
+                        Please enter your contact Number
+                    </div>
+                    <div class="error-msg" *ngIf="resumeData.get('contactNumber')?.hasError('validatePhoneNumber')">
+                                   Please enter a valid contact Number
+                    </div>
+                
+                  </div>
+                  <!-- <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                      <label for="emailAddress">Email address *</label>
+                      <input type="email" class="form-control"
+                       id="emailAddress" 
+                       formControlName="email"
+                       [ngClass]="{'is-invalid': resumeData.get('email')?.errors && resumeData.get('email')?.touched, 'is-valid': resumeData.get('email')?.valid}" 
+
+                       placeholder="Email">
+                    </div>
+                    <div class="error-msg" *ngIf="resumeData.get('email')?.errors && resumeData.get('email')?.touched">
+                      Please enter your email.
+                    </div>
+                  </div> -->
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                      <label for="idnumber">ID Number / Passport Number *</label>
+                      <input type="text" class="form-control"
+                       id="idnumber" 
+                       formControlName="idNumber"
+                       [ngClass]="{'is-invalid': resumeData.get('idNumber')?.errors && resumeData.get('idNumber')?.touched, 'is-valid': resumeData.get('idNumber')?.valid}" 
+
+                       placeholder="Identity number">
+                    </div>
+                    <div class="error-msg" *ngIf="resumeData.get('idNumber')?.errors && resumeData.get('idNumber')?.touched">
+                      Please enter a valid SA ID number or Passport number
+                    </div>
+                  </div>
+                  
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6" >
+                    <label for="gender">Gender *</label>
+
+                    <select class="form-control "
+                    [ngClass]="{'is-invalid': resumeData.get('gender')?.errors && resumeData.get('gender')?.touched, 'is-valid': resumeData.get('gender')?.valid}" 
+                    formControlName="gender" id="gender " placeholder="Gender" required>
+                      <!-- <option selected disabled value="">gender</option> -->
+                      <option *ngFor="let gender of genders" [value]="gender.description">    {{ gender.description }}</option>
+                    
+                    </select>
+                    <div class="error-msg" *ngIf="resumeData.get('gender')?.errors && resumeData.get('gender')?.touched">
+                      Please choose your gender.
+                    </div>
+                  </div>
+                 
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6" >
+                    <label for="nationality">Nationality *</label>
+
+                    <select class="form-control "
+                    [ngClass]="{'is-invalid': resumeData.get('nationality')?.errors && resumeData.get('nationality')?.touched, 'is-valid': resumeData.get('nationality')?.valid}" 
+                    formControlName="nationality" id="nationality " placeholder="nationality" required>
+                      <!-- <option selected disabled value="">gender</option> -->
+                      <option *ngFor="let nationality of nationalities" [value]="nationality.description"> {{ nationality.description }}</option>
+                     
+                    </select>
+                    <div class="error-msg" *ngIf="resumeData.get('nationality')?.errors && resumeData.get('nationality')?.touched">
+                      Please choose your nationality.
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6" >
+                    <label for="race">Race *</label>
+
+                    <select class="form-control "
+                    [ngClass]="{'is-invalid': resumeData.get('race')?.errors && resumeData.get('race')?.touched, 'is-valid': resumeData.get('race')?.valid}" 
+                    formControlName="race" id="race " placeholder="race" required>
+                      <option *ngFor="let race of races" [value]="race.description">  {{ race.description }}</option>
+                     
+                    </select>
+                    <div class="error-msg" *ngIf="resumeData.get('race')?.errors && resumeData.get('race')?.touched">
+                      Please choose your race.
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+          
+              <div class="form-group">
+                  <span *ngFor="let skill of resumeData.value.skills; let i = index">
+                  <span class="badge rounded-pill text-bg-secondary"  style="cursor: pointer;"  (click)="setSkillToForm(skill)">{{skill.description}}  <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeSkill(skill)"></i> 
+                  </span>
+                  <!-- <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeSkill(skill)"></i> -->
+                  </span>
+          
+                <div formArrayName="skills">
+                 
+                  <div class="skill-group">
+                    <label for="exampleFormControlInput1">Skills *</label>
+                    <div class=" row row-cols-2">
+                      <div class="col">
+                        <input type="text" class="form-control" #skillName placeholder="Add skill" />
+                      </div>   
+                    </div>
+                    
+                    <button type="button" class="btn text-white mt-3 mb-3" (click)="addSkills(skillName)">Add Skill</button>
+                    
+                  </div>
+                
+                </div>
+                <!-- <div formArrayName="certifications">
+                    <label for="exampleFormControlInput1">Certifications</label>
+                    <div class="skill-group">
+                      <input type="text" class="form-control" #skillName placeholder="add skill" />
+                      <button type="button" class="btn text-white mt-3 mb-3" (click)="addSkill(skillName)">Add Certification</button>
+                      
+                    </div>
+                  </div> -->
+                  <div class="form-group">
+                    <ng-container *ngFor="let qualification of resumeData.value.qualifications" >
+                        <span class="badge rounded-pill bg-secondary" [class.bg-danger]="hasNullValues(qualification, 'qualification')" style="cursor: pointer;"  (click)="setQualificationToForm(qualification.name, qualification.institution, qualification.attained)">{{qualification.name}}    <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeQualification(qualification)"></i>
+                        </span>
+                        <!-- <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeQualification(qualification)"></i> -->
+                    </ng-container>
+                        <div formArrayName="qualifications">
+                            <label for="exampleFormControlInput1">Qualifications *</label>
+                            <div class="qualification-group">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+                                        <input type="text" class="form-control" #qualName placeholder="Qualification" />
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4 mt-md-0 mt-lg-0 mt-xl-0 mt-sm-3 mt-xs-3">
+                                        <input type="text" class="form-control" #institution placeholder="Institution Name" />
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4 mt-md-0 mt-lg-0 mt-xl-0 mt-sm-3 mt-xs-3">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="dp1" disabled #attained placeholder="Attained date">
+                                            <mat-datepicker-toggle matIconSuffix [for]="dp1"></mat-datepicker-toggle>
+                                            <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+                                          </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="error-msg" *ngIf="resumeData.get('qualification')?.value.length == 0">
+                                  Please add qualification
+                                </div>                          
+                                
+                                <button type="button" class="btn text-white" (click)="addQualification(qualName, institution, attained)">Add Qualification</button>
+
+                            </div>
+                          </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <ng-container *ngFor="let work of resumeData.value.workHistory; let i = index">
+                        <span class="badge rounded-pill bg-secondary" [class.bg-danger]="hasNullValues(work, 'workHistory')"style="cursor: pointer;"  (click)="setWorkHistory(work)">{{work.role}}     <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeWork(work)"></i>
+                        </span>
+                        <!-- <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeWork(work)"></i> -->
+                    </ng-container>
+                        <div formArrayName="workHistory">
+                            <label for="exampleFormControlInput1">Work History *</label>
+                            <div class="workHistory-group">
+                                <div class="row row-cols-2">
+                                    <div class="col">
+                                        <input type="text" class="form-control" #role placeholder="Role" />
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" #company placeholder="Company" />
+                                    </div>
+                               
+                                </div>
+                                <div class="row row-cols-2 mt-3">
+                                    <div class="col">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="dp3" disabled #from placeholder="From">
+                                            <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                                            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                                          </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="dp4" disabled #to placeholder="To">
+                                            <mat-datepicker-toggle matIconSuffix [for]="dp4"></mat-datepicker-toggle>
+                                            <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                                          </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="error-msg" *ngIf="resumeData.get('workHistory')?.value.length == 0">
+                                  Please add work history
+                                </div> 
+                                <button type="button" class="btn text-white" (click)="addWorkHistory(role, company, from, to)">Add Work history</button>
+
+                            </div>
+                          </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <ng-container *ngFor="let cert of resumeData.value.certifications; let i = index">
+                        <span class="badge rounded-pill bg-secondary" [class.bg-danger]="hasNullValues(cert, 'certification')" style="cursor: pointer;"  (click)="setCertToForm(cert)">{{cert.name}} 
+                        </span>
+                        <i class="bi bi-x-circle" style="cursor: pointer;" (click)="removeCert(cert)"></i>
+                    </ng-container>
+                        <div formArrayName="certifications">
+                            <label for="exampleFormControlInput1">Certifications</label>
+                            <div class="certification-group">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+                                        <input type="text" class="form-control" #certName placeholder="Certification name" />
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4 mt-md-0 mt-lg-0 mt-xl-0 mt-sm-3 mt-xs-3">
+                                        <input type="text" class="form-control" #certAuthority placeholder="Authority" />
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4 mt-md-0 mt-lg-0 mt-xl-0 mt-sm-3 mt-xs-3">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="dp2" disabled #certAttained placeholder="Attained date">
+                                            <mat-datepicker-toggle matIconSuffix [for]="dp2"></mat-datepicker-toggle>
+                                            <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+                                          </mat-form-field>
+                                    </div>
+                                </div>
+                                <button  type="button" class="btn text-white" (click)="addCertification(certName, certAuthority, certAttained)">Add Certification</button>
+
+                            </div>
+                          </div>
+                  </div>
+                </div>
+            </form>
+               
+              </div>
+          </div>
+      </div>
+    </div>
+  
+    
+ 

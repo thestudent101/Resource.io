@@ -1,0 +1,133 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<!-- details -->
+<div class="container pt-3">
+    <div class="row pb-3">
+        <div class="col-sm-12">
+            <a mat-stroked-button routerLink="/main/dashboard/client-view">
+                <mat-icon>arrow_back</mat-icon> Back
+            </a>
+        </div>
+    </div>
+    <!-- no Jobs -->
+    <div class="alert alert-light mt-3" *ngIf="noProfilesAvailable">
+        Unfortunately this company has not posted any job profiles. Please click back and try again
+    </div>
+
+    <mat-card *ngIf="loading">
+        <mat-card-content>
+            <p class="text-center">Please Wait: Loading Job Profile</p>
+        </mat-card-content>
+    </mat-card>
+
+    <!--
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Active Jobs">
+            <div class="row mt-2">
+                <div class="col-sm-12 col-md-6 col-lg-4 mx-left my-2" *ngFor="let jobProfile of profiles">
+                    <div *ngIf="getJobProfileStatus(jobProfile) == 'Available'">
+                        <div class="custom-card my-3">
+                            <div class="custom-card-header p-3 text-white">
+                                <h5 class="mb-1"><strong>{{jobProfile.title}}</strong></h5>
+                                <p *ngIf="isLoggedIn">{{jobProfile.companyName}}</p>
+                            </div>
+                            <div class="custom-card-body p-3">
+                                <p class=""><strong>Status:</strong> {{getJobProfileStatus(jobProfile)}}</p>
+                                <p class=""><strong>Based in:</strong> {{jobProfile.jobLocation}}</p>
+                                <p class=""><strong>Rate per hour:</strong> {{jobProfile.ratePerHour | currency:'R'}}</p>
+                                <p class=""><strong>Closing date:</strong> {{jobProfile.closingDate | date}}</p>
+                                <p class=""><strong>Contract duration:</strong> {{jobProfile.contractDurationInMonths}} Months</p>
+                            </div>
+                            <mat-divider class="mb-3"></mat-divider>
+                            <div class="custom-card-actions px-3 pb-3">
+                                <a mat-button routerLink="{{jobProfile.id}}" *ngIf="!isLoggedIn">MORE DETAILS</a>
+                                <a mat-button routerLink="{{jobProfile.id}}/private" *ngIf="isLoggedIn">MORE DETAILS</a>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Expired Jobs">
+            <div class="row mt-2">
+                <div class="col-sm-12 col-md-6 col-lg-4 mx-left my-2" *ngFor="let jobProfile of profiles">
+                    <div *ngIf="getJobProfileStatus(jobProfile) == 'Expired'">
+                        <div class="custom-card my-3">
+                            <div class="custom-card-header p-3 text-white">
+                                <h5 class="mb-1"><strong>{{jobProfile.title}}</strong></h5>
+                                <p *ngIf="isLoggedIn">{{jobProfile.companyName}}</p>
+                            </div>
+                            <div class="custom-card-body p-3">
+                                <p class=""><strong>Status:</strong> {{getJobProfileStatus(jobProfile)}}</p>
+                                <p class=""><strong>Based in:</strong> {{jobProfile.jobLocation}}</p>
+                                <p class=""><strong>Rate per hour:</strong> {{jobProfile.ratePerHour | currency:'R'}}</p>
+                                <p class=""><strong>Closing date:</strong> {{jobProfile.closingDate | date}}</p>
+                                <p class=""><strong>Contract duration:</strong> {{jobProfile.contractDurationInMonths}} Months</p>
+                            </div>
+                            <mat-divider class="mb-3"></mat-divider>
+                            <div class="custom-card-actions px-3 pb-3">
+                                <a mat-button routerLink="{{jobProfile.id}}" *ngIf="!isLoggedIn">MORE DETAILS</a>
+                                <a mat-button routerLink="{{jobProfile.id}}/private" *ngIf="isLoggedIn">MORE DETAILS</a>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    -->
+
+    <!-- all public  jobs -->
+    <div class="row mt-2">
+        <div class="col-sm-12 col-md-6 col-lg-4 mx-left my-2" *ngFor="let jobProfile of profiles">
+            
+            <!--
+            <mat-card>
+                <mat-card-header class="custom-header w-100">
+                    <mat-card-title class="custom-mat-card-title w-100">{{jobProfile.title}}</mat-card-title>
+                    <mat-card-subtitle *ngIf="isLoggedIn">{{jobProfile.companyName}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Status:</strong> {{getJobProfileStatus(jobProfile)}}</p>
+                    <p><strong>Job based in:</strong> {{jobProfile.jobLocation}}</p>
+                    <p><strong>Rate Per Hour:</strong> {{jobProfile.ratePerHour | currency:'R'}}</p>
+                    <p><strong>Closing Date:</strong> {{jobProfile.closingDate | date}}</p>
+                    <p><strong>Contract Duration:</strong> {{jobProfile.contractDurationInMonths}} Months</p>
+                    <mat-divider></mat-divider>
+                </mat-card-content>
+                <mat-card-actions>
+                    <a mat-button routerLink="{{jobProfile.id}}" *ngIf="!isLoggedIn">MORE DETAILS</a>
+                    <a mat-button routerLink="{{jobProfile.id}}/private" *ngIf="isLoggedIn">MORE DETAILS</a>
+                </mat-card-actions>
+            </mat-card>
+            -->
+
+            <div class="custom-card my-3">
+                <div class="custom-card-header p-3 text-white">
+                    <h5 class="mb-1"><strong>{{jobProfile.title}}</strong></h5>
+                    <p *ngIf="isLoggedIn">{{jobProfile.companyName}}</p>
+                </div>
+                <div class="custom-card-body p-3">
+                    <p class=""><strong>Status:</strong> {{getJobProfileStatus(jobProfile)}}</p>
+                    <p class=""><strong>Based in:</strong> {{jobProfile.jobLocation}}</p>
+                    <p class=""><strong>Rate per hour:</strong> {{jobProfile.ratePerHour | currency:'R'}}</p>
+                    <p class=""><strong>Closing date:</strong> {{jobProfile.closingDate | date}}</p>
+                    <p class=""><strong>Contract duration:</strong> {{jobProfile.contractDurationInMonths}} Months</p>
+                </div>
+                <mat-divider class="mb-3"></mat-divider>
+                <div class="custom-card-actions px-3 pb-3">
+                    <a mat-button routerLink="{{jobProfile.id}}" *ngIf="!isLoggedIn">MORE DETAILS</a>
+                    <a mat-button routerLink="{{jobProfile.id}}/private" *ngIf="isLoggedIn">MORE DETAILS</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageIndex]="pageNumber" (page)="pageChanged($event)"></mat-paginator>
+        </div>
+    </div>
+</div>

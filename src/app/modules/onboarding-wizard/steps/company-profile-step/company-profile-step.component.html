@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="custom-card-log p-0 my-3 col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <div class="custom-card-header-log text-white p-3">
+            <div class="row">
+                <button mat-button routerLink = "/landing"><mat-icon>arrow_back</mat-icon></button>
+                <h5 class="mt-2">Company Profile</h5>
+            </div>
+        </div>
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <div class="custom-card-body">
+            <form class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-sm-12">
+                        <p>To assist you in setting up your profile we require a few more details. If you would like to provide this later, you can click skip</p>
+                    </div>
+                </div>
+                <div class="">
+                    <!-- name -->
+                    <mat-form-field class="col-sm-12" appearance="fill">
+                        <mat-label>Company Name</mat-label>
+                        <input required [formControl]="name" matInput placeholder="John" type="text" >
+                        <mat-error *ngIf="name.invalid">Your company's name is required</mat-error>
+                    </mat-form-field>
+                    <!-- company known name -->
+                    <mat-form-field class="col-md-12">
+                        <mat-label>Company Trading Name</mat-label>
+                        <input [formControl]="tradingName" matInput placeholder="Doe's Services" type="text">
+                    </mat-form-field>
+                    <!-- surname -->
+                    <mat-form-field class="col-sm-12" appearance="fill">
+                        <mat-label>Company Registration Number</mat-label>
+                        <input required  [formControl]="registrationNumber" matInput placeholder="Doe" type="text" >
+                        <mat-error *ngIf="registrationNumber.invalid">Your company's registration number is required</mat-error>
+                    </mat-form-field>
+                    <!-- company registration number -->
+                    <mat-form-field class="col-md-12">
+                        <mat-label>Company Domain Name</mat-label>
+                        <input [formControl]="webDomainName" matInput placeholder="doeindustries.co.za" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="">
+                    <div class="col-sm-12">
+                        <button (click)="requestAccess()" mat-raised-button [disabled]="loading" matTooltip="Request access" class="request-access-button" *ngIf="companyExists"> Request Access </button>
+                    </div>
+                </div>
+                <div class="">
+                    <!--<div class="text-left col-sm-12">
+                        <button (click)="skip()" mat-button [disabled]="loading" matTooltip="Skip" class="skip-button"> Skip <mat-icon>skip_next</mat-icon></button>
+                    </div>-->
+                </div>
+                <div class="">
+                    <div class="text-right col-sm-12">
+                        <button (click)="next()" mat-button [disabled]="loading || companyExists" matTooltip="Next" class="primary-button"> Next <mat-icon>arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+            </form>          
+        </div>
+    </div>
+
+
+    <!--
+    <div class="login-container card onboarding-card col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <-- card title --
+        <div class="onboarding-header row my-1">
+                <div class="col-2 header-action pl-0">
+                    <button mat-button routerLink = "/landing"><mat-icon>arrow_back</mat-icon></button>
+                </div>
+                <div class="col-8 header-title">
+                    <h4 class="text-center">Company Profile</h4>
+                </div>
+                <div class="col-2 placeholder">                 
+                </div>
+        </div>
+        <form class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>To assist you in setting up your profile we require a few more details. If you would like to provide this later, you can click skip</p>
+                </div>
+            </div>
+            <div class="row">
+                <-- name --
+                <mat-form-field class="col-sm-12" appearance="fill">
+                    <mat-label>Company Name</mat-label>
+                    <input required [formControl]="name" matInput placeholder="John" type="text" >
+                    <mat-error *ngIf="name.invalid">Your company's name is required</mat-error>
+                </mat-form-field>
+                <-- company known name --
+                <mat-form-field class="col-md-12">
+                    <mat-label>Company Trading Name</mat-label>
+                    <input [formControl]="tradingName" matInput placeholder="Doe's Services" type="text">
+                </mat-form-field>
+                <-- surname --
+                <mat-form-field class="col-sm-12" appearance="fill">
+                    <mat-label>Company Registration Number</mat-label>
+                    <input required  [formControl]="registrationNumber" matInput placeholder="Doe" type="text" >
+                    <mat-error *ngIf="registrationNumber.invalid">Your company's registration number is required</mat-error>
+                </mat-form-field>
+                <-- company registration number --
+                <mat-form-field class="col-md-12">
+                    <mat-label>Company Domain Name</mat-label>
+                    <input [formControl]="webDomainName" matInput placeholder="doeindustries.co.za" type="text">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button (click)="requestAccess()" mat-raised-button [disabled]="loading" matTooltip="Request access" class="request-access-button" *ngIf="companyExists"> Request Access </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-left col-sm-12">
+                    <button (click)="skip()" mat-button [disabled]="loading" matTooltip="Skip" class="skip-button"> Skip <mat-icon>skip_next</mat-icon></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-right col-sm-12">
+                    <button (click)="next()" mat-button [disabled]="loading || companyExists" matTooltip="Next" class="primary-button"> Next <mat-icon>arrow_forward</mat-icon></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    -->
+</div>

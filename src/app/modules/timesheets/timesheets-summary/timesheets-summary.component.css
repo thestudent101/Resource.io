@@ -1,0 +1,17 @@
+.timesheetSummary  {
+    margin-top: 30px;
+}
+
+th {
+    padding: 10px 0;
+    color: white;
+}
+
+td {
+    padding: 10px 0;
+    color: lightgrey;
+}
+.mat-card {
+    margin-top: 15px;
+}
+

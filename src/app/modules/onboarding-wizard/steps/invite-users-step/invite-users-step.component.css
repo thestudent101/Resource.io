@@ -1,0 +1,16 @@
+
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: none;
+}
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: none;
+    color: #eeeeee;
+}
+
+.mat-stroked-button:not([disabled]) {
+    border-color: rgba(255,255,255,.12);
+}

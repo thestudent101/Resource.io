@@ -1,0 +1,241 @@
+
+.greeting-container {
+    background-color: #017DB5;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Search Area */
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+.search-container .input-group {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+
+
+  /* Job Cards */
+  .parent-container {
+    text-align: center;
+  }
+  
+  .jobProfiles {
+    padding: 10px;
+    max-width: 1300px; /* Set your desired maximum width */
+    margin: 0 auto; /* Center horizontally within the parent container */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .job-profile {
+    background-color: #bce6fffd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px; /* Adjust vertical spacing as needed */
+    color: black;
+  }
+
+
+/* Responsive columns */
+@media (min-width: 576px) {
+  .job-profile {
+    flex: 0 0 calc(33.333% - 30px); /* Three columns with spacing */
+    width: calc(33.333% - 30px); /* Three columns with spacing */
+  }
+}
+
+/* On larger screens, use col-md-4 and col-lg-4 for responsiveness */
+@media (min-width: 768px) {
+  .job-profile {
+    flex: 0 0 calc(33.333% - 30px); /* Four columns with spacing */
+    width: calc(33.333% - 30px); /* Four columns with spacing */
+  }
+}
+
+
+  
+  /* Job Cards */
+.card {
+    width: 100px;
+    height: auto;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: #7acaf8;
+    color: black;
+    
+}
+  
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+  
+.card-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+.btn-primary {
+    background-color: #017DB5;
+    border-color: #017DB5;
+    color: black;
+  }
+  
+.btn-primary:hover {
+    background-color: #003366; /* Darker shade of blue on hover */
+  }
+
+  .job-matching-section {
+    margin: 20px 0;
+  }
+  
+  
+  .matched-jobs {
+    margin-top: 10px;
+  }
+  
+  
+  
+  .job-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+  
+  
+  .job-description {
+    font-size: 14px;
+    color: black;
+  }
+  
+  .no-matched-jobs {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+
+.section-title{
+    align-items: center;
+    color: black;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.company-logo img{
+  height: 50px;
+  width: auto;
+
+}
+ head{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.viewJ{
+ justify-content: flex-end;
+ margin-left: auto;
+
+}
+
+
+
+.head a{
+  font-size: 17px;
+  text-decoration: none;
+  color: #017DB5;
+}
+
+.head a:hover{
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #017DB5;
+
+}
+
+.blue-star {
+  color: #017DB5;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  justify-content: flex-end;
+  margin-left: auto;
+
+}
+
+
+/* Ensure the star icon is vertically centered within its container */
+.blue-star mat-icon {
+  height: 100%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.searbutton{
+  height: 40px;
+  background-color:#017DB5 ;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  border: #017DB5;
+}
+
+
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.job-salary {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: none;
+  text-overflow: wrap;
+
+}
+
+.job-salary mat-icon,
+.job-salary i {
+  margin-right: 3px;
+  height: 15px;
+  margin-left: 3px;
+}
+
+  
+.hoverable {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hoverable:hover {
+  color: blue; /* Change this color to your preferred hover color */
+}
+
+
+

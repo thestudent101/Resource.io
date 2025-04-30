@@ -1,0 +1,10 @@
+.custom-dt-picker {
+}
+
+.custom-dt-picker * {
+    color: black;
+}
+
+.time-divider {
+    font-size: 32px;
+}

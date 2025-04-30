@@ -1,0 +1,96 @@
+<!-- progress bar -->
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<!-- body -->
+<div class="container pt-3">
+    <div class="error-alert" *ngIf="hasErrors">
+        {{errorText}}
+    </div>
+
+    <div class="alert alert-info" *ngIf="createProfile && !isLoading">
+        Your profile is not yet been created. You will need to input at least the following data points:
+        <ol>
+            <li>Name, Surname, Contact Number</li>
+            <li>Company Name, Company Registration Number</li>
+        </ol>
+    </div>
+
+    <div class="alert alert-info" *ngIf="!createProfile && !isLoading">
+        The following fields are required:
+        <ol>
+            <li>Name, Surname, Contact Number</li>
+            <li>Company Name, Company Registration Number</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <mat-card class="h-100">
+           
+                <mat-card-header>
+                    <mat-card-title>Edit Profile Details</mat-card-title>
+                </mat-card-header>
+            
+                <mat-card-content class="container" [formGroup]="clientProfileForm">
+                    <input type="hidden" formControlName="emailAddress"/>
+                    <mat-form-field class="col-md-12">
+                        <mat-label>Name</mat-label>
+                        <input formControlName="name" matInput placeholder="John" type="text">
+                    </mat-form-field>
+                    <!-- surname -->
+                    <mat-form-field class="col-md-12">
+                        <mat-label>Surname</mat-label>
+                        <input formControlName="surname" matInput placeholder="Doe" type="text">
+                    </mat-form-field>
+                    <!-- contact number -->
+                    <mat-form-field class="col-md-12">
+                        <mat-label>Contact Number</mat-label>
+                        <input formControlName="contactNumber" matInput placeholder="0123456789" type="text">
+                    </mat-form-field>
+                    <!-- company name -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company Name</mat-label>
+                        <input formControlName="name" matInput placeholder="Doe Industries" type="text">
+                    </mat-form-field>
+                    <!-- company known name -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company Trading Name</mat-label>
+                        <input formControlName="tradingName" matInput placeholder="Doe's Services" type="text">
+                    </mat-form-field>
+                    <!-- company registration number -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company Registration Number</mat-label>
+                        <input formControlName="registrationNumber" matInput placeholder="2020/201/264" type="text">
+                    </mat-form-field>
+                    <!-- company vat number -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company VAT Number</mat-label>
+                        <input formControlName="vatNumber" matInput placeholder="4220122222" type="text">
+                    </mat-form-field>
+                    <!-- company physical address -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company Physical Address</mat-label>
+                        <input formControlName="physicalAddress" matInput placeholder="22 Sloane St, Bryanston, Johannesburg, 2191" type="text">
+                    </mat-form-field>
+                    <!-- company postal address -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company Postal Address</mat-label>
+                        <input formControlName="postalAddress" matInput placeholder="22 Sloane St, Bryanston, Johannesburg, 2191" type="text">
+                    </mat-form-field>
+                    <!-- company domain name -->
+                    <mat-form-field class="col-md-12" [formGroup]="companyForm">
+                        <mat-label>Company Domain Name</mat-label>
+                        <input formControlName="webDomainName" matInput placeholder="doeindustries.co.za" type="text">
+                    </mat-form-field>
+                </mat-card-content>
+           
+            </mat-card>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col">
+            <button (click)="onSaveButtonClick()" mat-stroked-button [disabled]="profileFormInvalid">
+                <mat-icon>save</mat-icon> SAVE</button>
+        <button [routerLink]="['/main/client-profile']" mat-stroked-button class="ml-2">
+            <mat-icon>close</mat-icon> CANCEL</button>
+        </div>
+    </div>
+</div>

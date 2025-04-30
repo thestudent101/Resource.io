@@ -1,0 +1,19 @@
+mat-tab-group {
+    color: white;
+}
+
+.mat-tab-label {
+    padding: 5px;
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+}
+
+.mat-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    color: rgba(255, 255, 255, 0.87);
+}

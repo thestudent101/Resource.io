@@ -1,0 +1,216 @@
+
+.greeting-container {
+    background-color: #017DB5;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Search Area */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+  }
+  
+.search-container .input-group {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  .search{
+    border-radius: 4px;
+    max-width: 400px;
+    align-items: center;
+    margin: 10px;
+
+
+  }
+  
+  /* Jobs Matching Section */
+.jobProfiles{
+  padding : 20px;
+  max-width: 1300px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.job-profile {
+  background-color:#bce6fffd;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+  
+  /* Job Cards */
+.card {
+    /*max-width: 200px;*/
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: #7acaf8;
+    color: black;
+    
+}
+  
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+  
+.card-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+.btn-primary {
+    background-color: 017DB5;
+    border-color: 017DB5;
+    color: black;
+  }
+  
+.btn-primary:hover {
+    background-color: #003366; /* Darker shade of blue on hover */
+  }
+
+  .job-matching-section {
+    margin: 20px 0;
+  }
+  
+  
+  .matched-jobs {
+    margin-top: 10px;
+  }
+  
+  .job-profile {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .job-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+  
+  
+  .job-description {
+    font-size: 14px;
+    color: black;
+  }
+  
+  .no-matched-jobs {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+
+.section-title{
+    align-items: center;
+    color: black;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.company-logo img{
+  height: 50px;
+  width: auto;
+
+}
+
+.head a{
+  margin-left: auto;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.blue-star {
+  color: #017DB5;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  justify-content: flex-end;
+  margin-left: auto;
+
+}
+
+
+/* Ensure the star icon is vertically centered within its container */
+.blue-star mat-icon {
+  height: 100%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.searbutton{
+  height: 40px;
+  background-color:#017DB5 ;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  margin: 5px;
+}
+
+
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.job-salary {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: none;
+  text-overflow: wrap;
+  justify-content: space-evenly;
+
+}
+
+.job-salary mat-icon,
+.job-salary i {
+  margin-right: 3px;
+  height: 15px;
+  margin-left: 3px;
+}
+
+  
+.hoverable {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hoverable:hover {
+  color: blue; /* Change this color to your preferred hover color */
+}
+
+
+.mat-divider {
+  border-top-color: #017DB5;
+  border-radius: 4px;
+  height: 8px;
+  border-top-width: 8px;
+}
+
+.Button{
+  background-color: #017DB5;
+  font-size: medium;
+}

@@ -1,0 +1,23 @@
+ /*** Peach Payment Card Details Widget Elements Styling ***/
+div.peach-payment-form {
+    color: black !important;
+}
+
+ ::ng-deep button.wpwl-button.wpwl-button-pay {
+    background-color: #2952a3;;
+}
+
+/*::ng-deep iframe.wpwl-target {
+    background-color:#98b2e6; 
+}*/
+
+::ng-deep .mat-card input.wpwl-control {
+    color: black;
+}
+
+::ng-deep .wpwl-message.wpwl-has-error {
+    color: maroon !important;
+}
+.container{
+    /* background: linear-gradient(180deg, #333A77 0%, #017DB5 100%); */
+}

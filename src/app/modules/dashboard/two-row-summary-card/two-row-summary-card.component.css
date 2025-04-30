@@ -1,0 +1,88 @@
+h1.giant-number {
+    font-size: 4.5rem;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.info-card {
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    display: none;
+    transition: all ease-out 0.3s;
+    background: #9fdaee;
+    border: 1px solid #2bb0d7;
+}
+
+.info-card.open {
+    opacity: 1;
+    display: block;
+}
+
+.info-card-close-button {
+    color: black;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent !important;
+}
+
+.title {
+    color: white;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+.footer {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+.mat-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-card-header-text {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+}
+
+::ng-deep .mat-card-header-text .title {
+    margin-right: 2.5rem;
+}
+
+::ng-deep .mat-card-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+}
+
+.info-button {
+    padding: 0;
+    line-height: inherit;
+    background: transparent !important;
+}
+
+.enter-button {
+    padding: 0;
+    line-height: inherit;
+    position: absolute;
+    bottom: 1.0rem;
+    right: 1.0rem;
+    background: transparent !important;
+}
+
+.two-row-summary-card {
+    margin-top: 1.5rem;
+    min-height: 200px;
+    background: #022641;
+}

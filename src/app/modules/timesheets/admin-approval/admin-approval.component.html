@@ -1,0 +1,21 @@
+<!-- title -->
+<h1 mat-dialog-title>Approve Timesheet</h1>
+<!-- content -->
+<div mat-dialog-content>
+    <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+    <p>Are you sure you want to approve this entry?</p>
+</div>
+<div mat-dialog-actions>
+    <button 
+    mat-button color="white"
+        (click) = "onDeny()"
+        mat-button>
+            No
+    </button>
+    <button 
+        mat-button color="white"
+        (click) = "onConfirm()" 
+        cdkFocusInitial>
+            Yes
+    </button>
+</div>

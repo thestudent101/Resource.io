@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="custom-card-log p-0 my-3 col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <div class="custom-card-header-log p-3 text-white">
+            <div class="row">
+                <button mat-button routerLink = "/auth/login"><mat-icon>arrow_back</mat-icon></button>
+                <h5 class="mt-2"><strong>Confirm User Type</strong></h5>
+            </div>
+        </div>
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <div class="custom-card-body">
+            <div class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>It appears that you have started this process before, but we cannot seem to determine what user you are. Please can you choose the appropriate option:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button (click)="selectContractor()" mat-raised-button [disabled]="loading" matTooltip="Choose Contractor" class="mx-auto my-4 col-sm-12 confirmation-button "> I am a Consultant<mat-icon>arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button (click)="selectClient()" mat-raised-button [disabled]="loading" matTooltip="Choose Client" class="mx-auto my-4 col-sm-12 confirmation-button "> I am a Client <mat-icon>arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    <div class="login-container card onboarding-card col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <-- card title --
+        <div class="onboarding-header row my-1">
+                <div class="col-3 header-action pl-0">
+                    <button mat-button routerLink = "/auth/login"><mat-icon>arrow_back</mat-icon></button>
+                </div>
+                <div class="col-6 header-title">
+                    <h4 class="text-center">Confirm User Type</h4>
+                </div>
+                <div class="col-3 placeholder">                 
+                </div>
+        </div>
+        <div class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>It appears that you have started this process before, but we cannot seem to determine what user you are. Please can you choose the appropriate option:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button (click)="selectContractor()" mat-raised-button [disabled]="loading" matTooltip="Choose Contractor" class="mx-auto my-4 col-sm-12 confirmation-button "> I am a Consultant<mat-icon>arrow_forward</mat-icon></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button (click)="selectClient()" mat-raised-button [disabled]="loading" matTooltip="Choose Client" class="mx-auto my-4 col-sm-12 confirmation-button "> I am a Client <mat-icon>arrow_forward</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+</div>

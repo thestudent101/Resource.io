@@ -1,0 +1,135 @@
+.candidate-cv.container {
+    margin-bottom: 20px;
+}
+
+.profile-picture{
+    border-radius: 50%;
+    height: auto;
+    width: calc(100% - 40px);
+    margin: 20px;
+    background-color: gray;
+}
+
+.candidate-cv p {
+    color: white;
+}
+.candidate-cv p.title {
+    margin-bottom: 0.5rem;
+}
+
+.candidate-cv h2 {
+    margin: 20px;
+    margin-left: 0px;
+    color: white;
+}
+
+h1, h4, h2 {
+    color: white;
+    opacity: 0.78;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.cv-cards {
+    background-color: #022641;
+}
+
+.cv-cards p, .cv-cards h6, .cv-cards h2 {
+    color: steelblue;
+}
+
+
+.activity-link {
+    color: steelblue;
+    opacity: 0.75;
+    font-size: 0.8rem;
+}
+
+.sign-contract {
+    padding-bottom: 20px;
+}
+
+.sign-contract p {
+    color: white;
+}
+.sign-contract .mat-divider {
+    border-color: white;
+}
+
+.text-muted {
+    color: #383c40!important;
+}
+
+.mat-checkbox-label {
+    font-size: 0.8rem  !important;
+}
+
+.mat-checkbox-label-link {
+    color: #003a77 !important;
+}
+
+
+.activity-link .material-icons{
+    font-size: inherit;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.ml-offset {
+    margin-left: -15px;
+}
+
+@media (max-width: 576px){
+    .col-left {
+        order: 2;
+    }
+
+    .col-right { 
+        order: 1;
+    }
+}
+
+.col-main {
+    transition: all ease-out 0.3s;
+}
+
+:host /deep/ .mat-tab-label, :host /deep/ .mat-tab-link {
+    color: rgba(255,255,255,.87);
+}
+
+:host /deep/ .mat-tab-label.mat-tab-label-active {    
+    color: rgb(255,255,255);
+}
+
+/* Styles for the ink bar */
+:host /deep/ .col-main .mat-ink-bar {
+    background-color: white !important;
+}
+.mat-stroked-button {
+    border-color: white;
+}
+
+.sign-contract {
+    padding-bottom: 20px;
+}
+
+.sign-contract p {
+    color: white;
+}
+.sign-contract .mat-divider {
+    border-color: white;
+}
+
+
+.sign-contract .mat-flat-button {
+    background: #137c9a;
+    color: white;
+
+}
+
+.sign-contract .mat-raised-button {
+    background-color: #022641;
+    color: white;
+}

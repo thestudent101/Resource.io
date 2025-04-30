@@ -1,0 +1,13 @@
+
+<div class="container pt-3">
+    <!-- back button -->
+    <div class="row pb-3">
+        <div class="col-sm-12">
+            <button
+            mat-stroked-button 
+            (click) = "goBack()">
+                <mat-icon>arrow_back</mat-icon> Back </button>
+        </div>
+    </div>    
+    <detail-job-profile-view [jobProfile]="jobProfile"></detail-job-profile-view>
+</div>

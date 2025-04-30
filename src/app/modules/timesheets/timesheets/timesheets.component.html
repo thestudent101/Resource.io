@@ -1,0 +1,56 @@
+<nav class="navbar" style="background: linear-gradient(90deg, #40B9F0 0%, rgba(23, 14, 102, 0.90) 100%);">
+  <div class="container-fluid d-flex justify-content-center">
+      <h4 class="text-white "><b>Timesheets</b></h4>
+  </div>
+</nav>
+<div class=" p-3 my-3" style="background-color: transparent;">
+ 
+  <div class="stepOptions mb-2">
+    <button *ngIf="isContractor" class="rounded-pill m-1" (click)="setInfoStep(1)" mat-raised-button>
+      Day View 
+    </button>
+    <!-- show work history -->
+    <button *ngIf="isContractor"  class="rounded-pill m-1" (click)="setInfoStep(2)" mat-raised-button>
+        Week View
+    </button>
+    <!-- show qualifications -->
+    <button *ngIf="isContractor" class="rounded-pill m-1" (click)="setInfoStep(3)" mat-raised-button>
+        Billing Report
+    </button>
+    <!-- show certifications -->
+    <button *ngIf="isClient" class="rounded-pill m-1" style="background: #2D82B5;" (click)="setInfoStep(4)" mat-raised-button>
+        Timesheet Review 
+    </button>
+    <!-- show skills -->
+    <button *ngIf="isClient" class="rounded-pill m-1" (click)="setInfoStep(5)" mat-raised-button>
+        Contractor Week View 
+    </button>
+    <!-- show references -->
+    <button *ngIf="isClient" class="rounded-pill m-1" (click)="setInfoStep(6)" mat-raised-button>
+        Contractor Summary 
+    </button>
+  </div>
+
+  <mat-divider class="my-2"></mat-divider>
+
+  <div>
+    <app-day-view *ngIf="stepNumber === 1"></app-day-view>
+    <app-week-view *ngIf="stepNumber === 2"></app-week-view>
+    <app-timesheets-summary *ngIf="stepNumber === 3"></app-timesheets-summary>
+    <app-administer-timesheets *ngIf="stepNumber === 4"></app-administer-timesheets>
+    <app-admin-week-view *ngIf="stepNumber === 5"></app-admin-week-view>
+    <app-admin-summary *ngIf="stepNumber === 6"></app-admin-summary>
+
+  </div>
+</div>
+
+
+<!--
+<mat-tab-group>
+    <mat-tab label="Day View" *ngIf="isContractor"><app-day-view></app-day-view></mat-tab>
+    <mat-tab label="Week View" *ngIf="isContractor"><app-week-view></app-week-view></mat-tab>
+    <mat-tab label="Billing Report" *ngIf="isContractor"><app-timesheets-summary></app-timesheets-summary></mat-tab>
+    <mat-tab label="Timesheet Review" *ngIf="isClient"><app-administer-timesheets></app-administer-timesheets></mat-tab>
+    <mat-tab label="Contractor Week View" *ngIf="isClient"><app-admin-week-view></app-admin-week-view></mat-tab>
+    <mat-tab label="Contractor Summary" *ngIf="isClient"><app-admin-summary></app-admin-summary></mat-tab>
+  </mat-tab-group> -->

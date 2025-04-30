@@ -1,0 +1,96 @@
+
+
+<mat-card *ngIf="jobProfileExpired" class="mb-3">
+    <mat-card-content>
+        <p class="text-center">This job profile has either been fulfilled or the closing date has passed.</p>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="candidate-cv col-md-12 col-lg-12 col-sm-12 p-0">  
+    <mat-card-content>
+        <div class="row mx-0 d-flex">
+            <div class="col-sm-12 col-md-4 col-lg-3 d-flex flex-column justify-content-start align-content-center cv-cards col-left">
+                <h2>Summary</h2>
+                <h6>{{company.name}} is a company based in {{jobProfile.jobLocation}} looking for a {{jobProfile.title}} with atleast {{jobProfile.workExperienceInYears}} years experience.</h6>
+                <h6>Closing Date: {{jobProfile.closingDate | date}} </h6>
+                <h6>Rate: {{jobProfile.ratePerHour | currency:'R'}}/hour</h6>
+                <h6>Experience: {{jobProfile.workExperienceInYears}} Years</h6>
+                <h6>Contract Duration:{{jobProfile.contractDurationInMonths}} Months</h6>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-9 col-main">
+                <div class="col-sm-12 pt-3">
+                    <h1 class="">{{jobProfile.title}}</h1>
+                    <h2><strong>Job Description</strong></h2>
+                    <p>{{jobProfile.description}}</p>
+                    <mat-divider></mat-divider>
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <h2>Responsibiilities</h2>                            
+                            <p><strong>The applying candidate will have the following responsibilities</strong></p>
+                            <div *ngFor = "let responsibility of jobProfile.responsibilities">
+                                <p>{{responsibility.description}}</p>
+                            </div>
+                            <p *ngIf="!jobProfile.responsibilities || jobProfile.responsibilities.length == 0">No responsibilities have been listed</p>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <h2>Skills</h2>                            
+                            <p><strong>The applying candidate should have the following skills</strong></p>
+                            <div *ngFor = "let skill of jobProfile.skills">
+                                <p>{{skill.description}}</p>
+                            </div>
+                            <p *ngIf="!jobProfile.skills || jobProfile.skills.length == 0">No certifications have been listed</p>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <h2>Certifications</h2>
+                            <p><strong>The applying candidate should have one of the following certifications</strong></p>
+                            <div *ngFor = "let certification of jobProfile.certifications">
+                                <p>{{certification.description}}</p>
+                            </div>
+                            <p *ngIf="!jobProfile.certifications || jobProfile.certifications.length == 0">No certifications have been listed</p>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <div class="col-md-12">
+                            <h2>Qualifications</h2>
+                            <p><strong>The applying candidate should have one of the following qualifications</strong></p>
+                            <div *ngFor = "let qualification of jobProfile.qualifications">
+                                <p>{{qualification.description}}</p>
+                            </div>
+                            <p *ngIf="!jobProfile.qualifications || jobProfile.qualifications.length == 0">No qualifications have been listed</p>
+                        </div>
+                        <div class="col-md-12">
+                            <h2>Personality Traits</h2>
+                            <p><strong>The applying candidate should posses following personality traits.</strong></p>
+                            <div *ngFor = "let personalityTrait of jobProfile.personalityTraits">
+                                <p>{{personalityTrait.description}}</p>
+                            </div>
+                            <p *ngIf="!jobProfile.personalityTraits || jobProfile.personalityTraits.length == 0">No personality traits have been listed</p>
+                        </div>
+                        <div class="col-md-12">
+                            <h2>Offers</h2>
+                            <p><strong>The following is on offer for the applying candidate.</strong></p>
+                            <div *ngFor = "let offer of jobProfile.offers">
+                                <p>{{offer.description}}</p>
+                            </div>
+                            <p *ngIf="!jobProfile.offers || jobProfile.offers.length == 0">No offers have been listed</p>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-0" *ngIf="isContractorUser && !jobProfileExpired && isUserActive">
+            <div class="col-sm-12">
+                <mat-divider></mat-divider>
+
+                <div class="alert alert-danger mt-3 text-center" *ngIf="error">
+                    {{errorMessage}}
+                </div>
+                <p class="text-muted my-3">If you wish to apply for this position, please click the apply button below.</p>
+                <div class="sign-contract">
+                    <button class="ml-2" mat-raised-button (click)="apply()" [disabled]="processing"> Apply </button>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

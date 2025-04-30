@@ -1,0 +1,7 @@
+<div class="container">
+    <register-step *ngIf="isRegisterStep" heading="Consultant Registration" [userType]="'contractor'"></register-step>
+    <verify-email-step *ngIf="isVerifyEmailStep"></verify-email-step>
+    <contractor-profile-step *ngIf="isContractorProfileStep"></contractor-profile-step>
+    <contractor-details-step *ngIf="isContractorDetailsStep"></contractor-details-step>
+    <accept-permissions-step *ngIf="isAcceptPermissionsStep"></accept-permissions-step>
+</div>

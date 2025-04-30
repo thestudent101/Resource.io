@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="custom-card-log p-0 my-3 col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <div class="custom-card-heaader-log text-white p-3">
+            <div class="row">
+                <button mat-button routerLink = "/landing"><mat-icon>arrow_back</mat-icon></button>
+                <h5 class="mt-2"><strong>Accept Permissons</strong></h5>
+            </div>
+        </div>
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <div class="custom-card-body p-3">
+            <div class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>We would like you to have the best possible experience on BLUE. <br> In order to do this, we would like to send you notifications whenever a new job match is found. <br> If you agree, please press the request permissions button below, if not, press Next.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button (click)="requestPermissions()" mat-raised-button [disabled]="loading" matTooltip="Request" class="mx-auto my-4 col-sm-12"> Request Permissions</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-right col-sm-12">
+                        <button (click)="skipPermissions()" mat-button [disabled]="loading" matTooltip="Continue" class="primary-button"> Next <mat-icon>arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    <div class="login-container card onboarding-card col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <mat-progress-bar *ngIf="loading" class='onboarding-loading-bar'  mode="indeterminate"></mat-progress-bar>
+        <-- card title --
+        <div class="onboarding-header row my-1">
+                <div class="col-3 header-action pl-0">
+                    <button mat-button routerLink = "/landing"><mat-icon>arrow_back</mat-icon></button>
+                </div>
+                <div class="col-6 header-title">
+                    <h4 class="text-center">Accept Permissions</h4>
+                </div>
+                <div class="col-3 placeholder">                 
+                </div>
+        </div>
+        <div class="card-body pt-0 pl-0 pr-0 m-0 login-form">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="error-alert" [class.active]="hasErrors">{{errorMessage}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>We would like you to have the best possible experience on BLUE. <br> In order to do this, we would like to send you notifications whenever a new job match is found. <br> If you agree, please press the request permissions button below, if not, press Next.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button (click)="requestPermissions()" mat-raised-button [disabled]="loading" matTooltip="Request" class="mx-auto my-4 col-sm-12"> Request Permissions</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-right col-sm-12">
+                    <button (click)="skipPermissions()" mat-button [disabled]="loading" matTooltip="Continue" class="primary-button"> Next <mat-icon>arrow_forward</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+</div>
