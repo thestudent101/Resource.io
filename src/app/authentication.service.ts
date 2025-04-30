@@ -1,107 +1,111 @@
 import { Injectable } from '@angular/core';
-
-import { AuthenticationDetails, CognitoUser,CognitoUserAttribute,CognitoUserPool } from 'amazon-cognito-identity-js';
-import { Observable } from 'rxjs';
-
-const poolData = {
-    UserPoolId: 'eu-west-1_q8lythCqB', // Your user pool id here
-    ClientId: 'Your Client Id' // Your client id here  
-};
-
-const userPool = new CognitoUserPool(poolData);
-
+import { Observable, from, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { SupabaseService } from './supabase.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-    cognitoUser: any;
-
-    constructor() { }
+  constructor(private supabaseService: SupabaseService) {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "constructor", 10, 2, Date.now());
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "constructor", 10, 58, Date.now());
+    }
+  }
 
   // registration
-  register(email: string, password: string) {
-
-    const attributeList: CognitoUserAttribute[] = [];
-
-    return Observable.create((observer:any) => {
-      userPool.signUp(email, password, attributeList, [], (err, result:any) => {
-        if (err) {
-          console.log("signUp error", err);
-          observer.error(err);
+  register(email: string, password: string): Observable<any> {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "register", 13, 2, Date.now());
+      return from(this.supabaseService.signUp(email, password)).pipe(map(response => {
+        if (response.error) {
+          throw response.error;
         }
-
-        this.cognitoUser = result.user;
-        console.log("signUp success", result);
-        observer.next(result);
-        observer.complete();
-      });
-    });
-
+        return response.data;
+      }), catchError(error => {
+        console.log("signUp error", error);
+        return throwError(() => error);
+      }));
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "register", 26, 3, Date.now());
+    }
   }
 
   // confirmation code
-  confirmAuthCode(code:string) {
-    const user = {
-      Username : this.cognitoUser.username,
-      Pool : userPool
-    };
-    return Observable.create((observer:any) => {
-      const cognitoUser = new CognitoUser(user);
-      cognitoUser.confirmRegistration(code, true, function(err, result) {
-        if (err) {
-          console.log(err);
-          observer.error(err);
-        }
-        console.log("confirmAuthCode() success", result);
-        observer.next(result);
+  confirmAuthCode(code: string): Observable<any> {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "confirmAuthCode", 29, 2, Date.now());
+      // Supabase handles email confirmation differently
+      // This is a placeholder for compatibility
+      return new Observable(observer => {
+        observer.next({
+          message: 'Email confirmation handled by Supabase'
+        });
         observer.complete();
       });
-    });
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "confirmAuthCode", 36, 3, Date.now());
+    }
   }
 
   // sign in
-  signIn(email:string, password:string) { 
-
-    const authenticationData = {
-      Username : email,
-      Password : password,
-    };
-    const authenticationDetails = new AuthenticationDetails(authenticationData);
-
-    const userData = {
-      Username : email,
-      Pool : userPool
-    };
-    const cognitoUser = new CognitoUser(userData);
-    
-    return Observable.create((observer:any) => {
-
-      cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-          
-          //console.log(result);
-          observer.next(result);
-          observer.complete();
-        },
-        onFailure: function(err) {
-          console.log(err);
-          observer.error(err);
-        },
-      });
-    });
+  signIn(email: string, password: string): Observable<any> {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "signIn", 39, 2, Date.now());
+      return from(this.supabaseService.signIn(email, password)).pipe(map(response => {
+        if (response.error) {
+          throw response.error;
+        }
+        return response.data;
+      }), catchError(error => {
+        console.log("signIn error", error);
+        return throwError(() => error);
+      }));
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "signIn", 52, 3, Date.now());
+    }
   }
-
-  isLoggedIn() {    
-    return userPool.getCurrentUser() != null;
+  isLoggedIn(): boolean {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "isLoggedIn", 54, 2, Date.now());
+      return this.supabaseService.user !== null;
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "isLoggedIn", 56, 3, Date.now());
+    }
   }
-
-  getAuthenticatedUser(): CognitoUser {
-    // gets the current user from the local storage
-    return userPool.getCurrentUser() as CognitoUser;
+  getAuthenticatedUser(): any {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "getAuthenticatedUser", 58, 2, Date.now());
+      return this.supabaseService.user;
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "getAuthenticatedUser", 60, 3, Date.now());
+    }
   }
-
-  logOut() {
-    this.getAuthenticatedUser().signOut();
-    this.cognitoUser = null;
+  logOut(): Observable<any> {
+    const __devpulse_id = Date.now();
+    try {
+      __devpulse_trace("FUNCTION_ENTRY", "authentication.service.ts", "logOut", 62, 2, Date.now());
+      return from(this.supabaseService.signOut()).pipe(map(response => {
+        // Supabase signOut returns { error: null } on success
+        if (response.error) {
+          throw response.error;
+        }
+        return {
+          success: true
+        };
+      }), catchError(error => {
+        console.log("signOut error", error);
+        return throwError(() => error);
+      }));
+    } finally {
+      __devpulse_trace("FUNCTION_EXIT", "authentication.service.ts", "logOut", 76, 3, Date.now());
+    }
   }
 }
