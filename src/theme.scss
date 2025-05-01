@@ -1,0 +1,77 @@
+@use '@angular/material' as mat;
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// For each palette, you can optionally specify a default, lighter, and darker hue.
+
+// Primary palette (Red)
+$resource-io-primary: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #e30613, // Main primary color
+  600: #d32f2f,
+  700: #c62828,
+  800: #b71c1c,
+  900: #9b0000,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+// Secondary palette (Black)
+$resource-io-secondary: (
+  50: #e0e0e0,
+  100: #bdbdbd,
+  200: #9e9e9e,
+  300: #757575,
+  400: #616161,
+  500: #424242,
+  600: #303030,
+  700: #212121,
+  800: #121212,
+  900: #000000, // Main secondary color
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+// Define the primary and accent palettes
+$resource-io-primary-palette: mat.define-palette($resource-io-primary, 500);
+$resource-io-accent-palette: mat.define-palette($resource-io-secondary, 900);
+
+// The warn palette is optional (defaults to red)
+$resource-io-warn-palette: mat.define-palette(mat.$red-palette);
+
+// Create the theme object
+$resource-io-theme: mat.define-light-theme((
+  color: (
+    primary: $resource-io-primary-palette,
+    accent: $resource-io-accent-palette,
+    warn: $resource-io-warn-palette,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Include theme styles for core and each component used in your app
+@include mat.all-component-themes($resource-io-theme);

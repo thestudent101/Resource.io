@@ -1,0 +1,163 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="logo-container">
+      <img src="assets/ResourceIO-Logo.png" alt="Resource.io" class="logo">
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button 
+        [class.active]="activeTab === 'signin'" 
+        (click)="setActiveTab('signin')">
+        Sign In
+      </button>
+      <button 
+        [class.active]="activeTab === 'signup'" 
+        (click)="setActiveTab('signup')">
+        Sign Up
+      </button>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Sign In Form -->
+    <div class="form-container" *ngIf="activeTab === 'signin'">
+      <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="your@email.com">
+            <mat-error *ngIf="signInForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="signInForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="passwordVisible ? 'text' : 'password'" placeholder="Password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+              <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="signInForm.get('password')?.hasError('required')">Password is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="forgot-password">
+          <a routerLink="/auth/forgot-password">Forgot password?</a>
+        </div>
+
+        <button 
+          mat-raised-button 
+          color="primary" 
+          class="submit-button" 
+          type="submit" 
+          [disabled]="loading">
+          {{ loading ? 'Signing In...' : 'Sign In' }}
+        </button>
+      </form>
+
+      <div class="divider">
+        <span>or continue with</span>
+      </div>
+
+      <div class="social-buttons">
+        <button mat-raised-button class="google-button" (click)="signInWithGoogle()">
+          <img src="assets/icons/google-icon.png" alt="Google">
+          Google
+        </button>
+        <button mat-raised-button class="linkedin-button" (click)="signInWithLinkedIn()">
+          <img src="assets/icons/linkedin-icon.png" alt="LinkedIn">
+          LinkedIn
+        </button>
+      </div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="form-container" *ngIf="activeTab === 'signup'">
+      <div class="user-type-selector">
+        <button 
+          [class.active]="userType === 'client'" 
+          (click)="setUserType('client')">
+          <mat-icon>business</mat-icon>
+          <span>I'm hiring talent</span>
+        </button>
+        <button 
+          [class.active]="userType === 'contractor'" 
+          (click)="setUserType('contractor')">
+          <mat-icon>person</mat-icon>
+          <span>I'm looking for work</span>
+        </button>
+      </div>
+
+      <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="your@email.com">
+            <mat-error *ngIf="signUpForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="signUpForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="passwordVisible ? 'text' : 'password'" placeholder="Password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+              <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-hint>Must be at least 8 characters with uppercase, lowercase, number, and special character</mat-hint>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 8 characters</mat-error>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('pattern')">Password must include uppercase, lowercase, number, and special character</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" [type]="passwordVisible ? 'text' : 'password'" placeholder="Confirm Password">
+            <mat-error *ngIf="signUpForm.get('confirmPassword')?.hasError('required')">Please confirm your password</mat-error>
+          </mat-form-field>
+          <div class="validation-error" *ngIf="signUpForm.hasError('mismatch') && signUpForm.get('confirmPassword')?.touched">
+            Passwords do not match
+          </div>
+        </div>
+
+        <div class="form-group terms-checkbox">
+          <mat-checkbox formControlName="agreeToTerms">
+            I agree to the <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a>
+          </mat-checkbox>
+        </div>
+
+        <button 
+          mat-raised-button 
+          color="primary" 
+          class="submit-button" 
+          type="submit" 
+          [disabled]="loading">
+          {{ loading ? 'Signing Up...' : 'Sign Up' }}
+        </button>
+      </form>
+
+      <div class="divider">
+        <span>or sign up with</span>
+      </div>
+
+      <div class="social-buttons">
+        <button mat-raised-button class="google-button" (click)="signInWithGoogle()">
+          <img src="assets/icons/google-icon.png" alt="Google">
+          Google
+        </button>
+        <button mat-raised-button class="linkedin-button" (click)="signInWithLinkedIn()">
+          <img src="assets/icons/linkedin-icon.png" alt="LinkedIn">
+          LinkedIn
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

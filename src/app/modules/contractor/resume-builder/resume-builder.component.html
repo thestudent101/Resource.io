@@ -1,0 +1,286 @@
+<div class="resume-builder-container">
+  <div class="resource-card">
+    <div class="resource-card-header">
+      <h2>Resume Builder</h2>
+      <p>Create a professional resume to showcase your skills and experience</p>
+    </div>
+    
+    <div class="resource-card-body">
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+      
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      
+      <form [formGroup]="resumeForm" (ngSubmit)="saveResume()">
+        <!-- Personal Information Section -->
+        <mat-accordion>
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Personal Information
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            
+            <div formGroupName="personalInfo" class="form-section">
+              <div class="form-row">
+                <mat-form-field appearance="outline">
+                  <mat-label>Full Name</mat-label>
+                  <input matInput formControlName="fullName">
+                  <mat-error *ngIf="resumeForm.get('personalInfo.fullName')?.hasError('required')">
+                    Full name is required
+                  </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                  <mat-label>Professional Title</mat-label>
+                  <input matInput formControlName="title">
+                  <mat-error *ngIf="resumeForm.get('personalInfo.title')?.hasError('required')">
+                    Title is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              
+              <div class="form-row">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" type="email">
+                  <mat-error *ngIf="resumeForm.get('personalInfo.email')?.hasError('required')">
+                    Email is required
+                  </mat-error>
+                  <mat-error *ngIf="resumeForm.get('personalInfo.email')?.hasError('email')">
+                    Please enter a valid email
+                  </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone</mat-label>
+                  <input matInput formControlName="phone">
+                  <mat-error *ngIf="resumeForm.get('personalInfo.phone')?.hasError('required')">
+                    Phone is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Location</mat-label>
+                <input matInput formControlName="location" placeholder="City, State, Country">
+                <mat-error *ngIf="resumeForm.get('personalInfo.location')?.hasError('required')">
+                  Location is required
+                </mat-error>
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Professional Summary</mat-label>
+                <textarea matInput formControlName="summary" rows="4"></textarea>
+                <mat-error *ngIf="resumeForm.get('personalInfo.summary')?.hasError('required')">
+                  Summary is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+          
+          <!-- Work Experience Section -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Work Experience
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            
+            <div formArrayName="workExperience" class="form-section">
+              <div *ngFor="let experience of workExperience.controls; let i = index" class="form-array-item">
+                <div [formGroupName]="i">
+                  <div class="form-array-header">
+                    <h3>Experience {{ i + 1 }}</h3>
+                    <button type="button" mat-icon-button color="warn" (click)="removeWorkExperience(i)" *ngIf="workExperience.length > 1">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                  
+                  <div class="form-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Company</mat-label>
+                      <input matInput formControlName="company">
+                      <mat-error *ngIf="experience.get('company')?.hasError('required')">
+                        Company is required
+                      </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>Position</mat-label>
+                      <input matInput formControlName="position">
+                      <mat-error *ngIf="experience.get('position')?.hasError('required')">
+                        Position is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="form-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Start Date</mat-label>
+                      <input matInput formControlName="startDate" type="month">
+                      <mat-error *ngIf="experience.get('startDate')?.hasError('required')">
+                        Start date is required
+                      </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline" *ngIf="!experience.get('current')?.value">
+                      <mat-label>End Date</mat-label>
+                      <input matInput formControlName="endDate" type="month">
+                    </mat-form-field>
+                    
+                    <mat-checkbox formControlName="current" (change)="onCurrentJobChange(i)">
+                      Current Position
+                    </mat-checkbox>
+                  </div>
+                  
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" rows="3"></textarea>
+                    <mat-error *ngIf="experience.get('description')?.hasError('required')">
+                      Description is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                
+                <mat-divider *ngIf="i < workExperience.length - 1"></mat-divider>
+              </div>
+              
+              <button type="button" mat-stroked-button color="primary" (click)="addWorkExperience()">
+                <mat-icon>add</mat-icon> Add Work Experience
+              </button>
+            </div>
+          </mat-expansion-panel>
+          
+          <!-- Education Section -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Education
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            
+            <div formArrayName="education" class="form-section">
+              <div *ngFor="let edu of education.controls; let i = index" class="form-array-item">
+                <div [formGroupName]="i">
+                  <div class="form-array-header">
+                    <h3>Education {{ i + 1 }}</h3>
+                    <button type="button" mat-icon-button color="warn" (click)="removeEducation(i)" *ngIf="education.length > 1">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                  
+                  <div class="form-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Institution</mat-label>
+                      <input matInput formControlName="institution">
+                      <mat-error *ngIf="edu.get('institution')?.hasError('required')">
+                        Institution is required
+                      </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>Degree</mat-label>
+                      <input matInput formControlName="degree">
+                      <mat-error *ngIf="edu.get('degree')?.hasError('required')">
+                        Degree is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="form-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Start Date</mat-label>
+                      <input matInput formControlName="startDate" type="month">
+                      <mat-error *ngIf="edu.get('startDate')?.hasError('required')">
+                        Start date is required
+                      </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>End Date</mat-label>
+                      <input matInput formControlName="endDate" type="month">
+                      <mat-error *ngIf="edu.get('endDate')?.hasError('required')">
+                        End date is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" rows="2"></textarea>
+                  </mat-form-field>
+                </div>
+                
+                <mat-divider *ngIf="i < education.length - 1"></mat-divider>
+              </div>
+              
+              <button type="button" mat-stroked-button color="primary" (click)="addEducation()">
+                <mat-icon>add</mat-icon> Add Education
+              </button>
+            </div>
+          </mat-expansion-panel>
+          
+          <!-- Skills Section -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Skills
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            
+            <div formArrayName="skills" class="form-section">
+              <div *ngFor="let skill of skills.controls; let i = index" class="form-array-item skill-item">
+                <div [formGroupName]="i" class="skill-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Skill</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="skill.get('name')?.hasError('required')">
+                      Skill name is required
+                    </mat-error>
+                  </mat-form-field>
+                  
+                  <mat-form-field appearance="outline">
+                    <mat-label>Level</mat-label>
+                    <mat-select formControlName="level">
+                      <mat-option value="Beginner">Beginner</mat-option>
+                      <mat-option value="Intermediate">Intermediate</mat-option>
+                      <mat-option value="Advanced">Advanced</mat-option>
+                      <mat-option value="Expert">Expert</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="skill.get('level')?.hasError('required')">
+                      Skill level is required
+                    </mat-error>
+                  </mat-form-field>
+                  
+                  <button type="button" mat-icon-button color="warn" (click)="removeSkill(i)" *ngIf="skills.length > 1">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              
+              <button type="button" mat-stroked-button color="primary" (click)="addSkill()">
+                <mat-icon>add</mat-icon> Add Skill
+              </button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        
+        <div class="form-actions">
+          <button type="submit" mat-raised-button color="primary" [disabled]="loading">
+            Save Resume
+          </button>
+          
+          <button type="button" mat-stroked-button color="accent" (click)="downloadResume()" [disabled]="loading">
+            <mat-icon>download</mat-icon> Download PDF
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -24,28 +24,30 @@ import { ContractorDetailsComponent } from './steps/contractor-details/contracto
 import { InviteUsersStepComponent } from './steps/invite-users-step/invite-users-step.component';
 import { CustomMaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 
 
 
 
 @NgModule({
   declarations: [
-    CompanyProfileStepComponent, 
+    CompanyProfileStepComponent,
     ContractorProfileComponent,
     ClientProfileComponent,
-    InviteUsersStepComponent, 
-    AcceptPermissionsStepComponent, 
-    RegisterComponent, 
-    ConfirmUserTypeComponent, 
-    VerifyEmailComponent, 
-    ForgotPasswordComponent, 
-    ResetPasswordComponent, 
+    InviteUsersStepComponent,
+    AcceptPermissionsStepComponent,
+    RegisterComponent,
+    ConfirmUserTypeComponent,
+    VerifyEmailComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
     LoginComponent,
-    LoginWizardComponent, 
+    LoginWizardComponent,
     ForgotPasswordWizardComponent,
     RegisterClientWizardComponent,
     RegisterConsultantWizardComponent,
     ContractorDetailsComponent,
+    AuthCallbackComponent,
   ],
   imports: [
     CommonModule,

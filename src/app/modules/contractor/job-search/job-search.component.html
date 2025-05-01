@@ -1,0 +1,90 @@
+<div class="job-search-container">
+  <div class="search-section resource-card">
+    <div class="resource-card-header">
+      <h2>Find Your Next Opportunity</h2>
+    </div>
+    
+    <div class="resource-card-body">
+      <form [formGroup]="searchForm" (ngSubmit)="searchJobs()">
+        <div class="search-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Keywords</mat-label>
+            <input matInput formControlName="keyword" placeholder="Job title, skills, or keywords">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <input matInput formControlName="location" placeholder="City, state, or remote">
+            <mat-icon matSuffix>location_on</mat-icon>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Job Type</mat-label>
+            <mat-select formControlName="jobType">
+              <mat-option value="">All Types</mat-option>
+              <mat-option value="full-time">Full-time</mat-option>
+              <mat-option value="part-time">Part-time</mat-option>
+              <mat-option value="contract">Contract</mat-option>
+              <mat-option value="freelance">Freelance</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Experience</mat-label>
+            <mat-select formControlName="experience">
+              <mat-option value="">Any Experience</mat-option>
+              <mat-option value="entry">Entry Level</mat-option>
+              <mat-option value="mid">Mid Level</mat-option>
+              <mat-option value="senior">Senior Level</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <button mat-raised-button color="primary" type="submit">
+            Search Jobs
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="results-section">
+    <h2>Job Listings</h2>
+    
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    
+    <div *ngIf="!loading && jobs.length === 0" class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <p>No jobs found matching your criteria.</p>
+    </div>
+    
+    <div class="job-list">
+      <mat-card *ngFor="let job of jobs" class="job-card">
+        <mat-card-header>
+          <mat-card-title>{{ job.title }}</mat-card-title>
+          <mat-card-subtitle>{{ job.company }}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <p><mat-icon>location_on</mat-icon> {{ job.location }}</p>
+          <p><mat-icon>attach_money</mat-icon> {{ job.salary }}</p>
+          <p><mat-icon>work</mat-icon> {{ job.jobType }}</p>
+          <p><mat-icon>timeline</mat-icon> {{ job.experience }}</p>
+          <p><mat-icon>event</mat-icon> Posted: {{ job.posted | date }}</p>
+          
+          <p class="job-description">{{ job.description }}</p>
+        </mat-card-content>
+        
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="applyForJob(job.id)">
+            Apply Now
+          </button>
+          
+          <button mat-icon-button [color]="isJobSaved(job.id) ? 'accent' : ''" (click)="toggleSaveJob(job.id)">
+            <mat-icon>{{ isJobSaved(job.id) ? 'bookmark' : 'bookmark_border' }}</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

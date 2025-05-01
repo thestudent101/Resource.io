@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, from, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SessionStorageService } from './shared/session-storage.service';
-import { SupabaseService } from './supabase.service';
+import { SupabaseService } from './services/supabase.service';
 import { CognitoError } from './supabase-error';
 
 @Injectable({
@@ -11,16 +11,12 @@ import { CognitoError } from './supabase-error';
 export class AuthenticationManagementService {
   private authenticatedBehaviourSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
   loggedIn = false;
-  public testLogin = "not tested";
   public authenticationEvent$: Observable<boolean> = this.authenticatedBehaviourSubject.asObservable();
-  _data: any;
 
   constructor(
     private sessionStorageService: SessionStorageService,
     private supabaseService: SupabaseService
   ) {
-    this.loggedIn = this.sessionStorageService.getItem('user-login-state', false);
-
     // Subscribe to Supabase auth changes
     this.supabaseService.user$.subscribe(user => {
       this.loggedIn = !!user;
@@ -29,6 +25,9 @@ export class AuthenticationManagementService {
     });
   }
 
+  /**
+   * Sign up a new user
+   */
   signUp(email: string, password: string): Observable<any> {
     return from(this.supabaseService.signUp(email, password)).pipe(
       map(response => {
@@ -37,67 +36,66 @@ export class AuthenticationManagementService {
         }
         return response.data;
       }),
-      catchError(error => {
-        return throwError(() => error);
-      })
+      catchError(error => throwError(() => error))
     );
   }
 
-  confirmSignUpLogin(username: string, code: string): Observable<any> {
-    // Supabase handles email confirmation differently
-    // This is a placeholder for compatibility
-    return new Observable(observer => {
-      observer.next({ message: 'Email confirmation handled by Supabase' });
-      observer.complete();
-    });
-  }
-
+  /**
+   * Sign in an existing user
+   */
   signIn(email: string, password: string): Observable<any> {
     return from(this.supabaseService.signIn(email, password)).pipe(
       map(response => {
         if (response.error) {
           throw response.error;
         }
-        this.loggedIn = true;
-        this.sessionStorageService.setItem('user-login-state', true);
         return response.data;
       }),
-      catchError(error => {
-        return throwError(() => error);
-      })
+      catchError(error => throwError(() => error))
     );
   }
 
+  /**
+   * Sign in with Google
+   */
+  signInWithGoogle(): Observable<any> {
+    return from(this.supabaseService.signInWithGoogle()).pipe(
+      map(response => {
+        if (response.error) {
+          throw response.error;
+        }
+        return response.data;
+      }),
+      catchError(error => throwError(() => error))
+    );
+  }
+
+  /**
+   * Sign in with LinkedIn
+   */
+  signInWithLinkedIn(): Observable<any> {
+    return from(this.supabaseService.signInWithLinkedIn()).pipe(
+      map(response => {
+        if (response.error) {
+          throw response.error;
+        }
+        return response.data;
+      }),
+      catchError(error => throwError(() => error))
+    );
+  }
+
+  /**
+   * Manually trigger authentication state change
+   */
   triggerEvent(state: boolean) {
     this.authenticatedBehaviourSubject.next(state);
   }
 
-  validateEmail(code: string): Observable<any> {
-    // Supabase handles email confirmation differently
-    // This is a placeholder for compatibility
-    return new Observable(observer => {
-      observer.next({ message: 'Email confirmation handled by Supabase' });
-      observer.complete();
-    });
-  }
-
-  resendCode(): Observable<any> {
-    // Supabase handles email confirmation differently
-    // This is a placeholder for compatibility
-    return new Observable(observer => {
-      observer.next({ message: 'Email confirmation handled by Supabase' });
-      observer.complete();
-    });
-  }
-
-  resendCodeForUser(username: string): Observable<any> {
-    // Supabase handles email confirmation differently
-    // This is a placeholder for compatibility
-    return new Observable(observer => {
-      observer.next({ message: 'Email confirmation handled by Supabase' });
-      observer.complete();
-    });
-  }
+  /**
+   * These methods are no longer needed with Supabase
+   * but kept for backward compatibility
+   */
 
   getAccessTokenAsync(): Promise<string> {
     return new Promise(async (resolve) => {
@@ -114,17 +112,15 @@ export class AuthenticationManagementService {
     return this.supabaseService.user;
   }
 
+  /**
+   * Get the current user's role from their profile
+   */
   getUserRole(): Promise<string | null> {
     return new Promise(async (resolve) => {
       const user = this.supabaseService.user;
       if (user) {
         try {
-          const { data, error } = await this.supabaseService.getClient()
-            .from('profiles')
-            .select('role')
-            .eq('id', user.id)
-            .single();
-
+          const { data, error } = await this.supabaseService.getProfile(user.id);
           if (error) {
             resolve(null);
           } else if (data) {
@@ -153,7 +149,10 @@ export class AuthenticationManagementService {
     );
   }
 
-  changePassword(oldPassword: string, password: string): Observable<any> {
+  /**
+   * Update the user's password
+   */
+  updatePassword(password: string): Observable<any> {
     return from(this.supabaseService.updatePassword(password)).pipe(
       map(response => {
         if (response.error) {
@@ -165,7 +164,17 @@ export class AuthenticationManagementService {
     );
   }
 
-  forgotPassword(email: string): Observable<any> {
+  /**
+   * For backward compatibility
+   */
+  changePassword(oldPassword: string, password: string): Observable<any> {
+    return this.updatePassword(password);
+  }
+
+  /**
+   * Send a password reset email
+   */
+  resetPassword(email: string): Observable<any> {
     return from(this.supabaseService.resetPassword(email)).pipe(
       map(response => {
         if (response.error) {
@@ -177,17 +186,18 @@ export class AuthenticationManagementService {
     );
   }
 
-  isLoggedIn() {
-    return this.loggedIn;
+  /**
+   * For backward compatibility
+   */
+  forgotPassword(email: string): Observable<any> {
+    return this.resetPassword(email);
   }
 
-  forgotPasswordSubmit(email: string, code: string, password: string): Observable<any> {
-    // Supabase handles password reset differently
-    // This is a placeholder for compatibility
-    return new Observable(observer => {
-      observer.next({ message: 'Password reset handled by Supabase' });
-      observer.complete();
-    });
+  /**
+   * Check if the user is logged in
+   */
+  isLoggedIn(): boolean {
+    return this.loggedIn;
   }
 }
 

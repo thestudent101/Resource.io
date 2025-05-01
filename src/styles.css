@@ -1,5 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* Resource.io - Red, Black, and White Theme */
 @import "~@fortawesome/fontawesome-free/css/all.css";
+
+:root {
+  --primary-color: #e30613; /* Red */
+  --secondary-color: #000000; /* Black */
+  --accent-color: #ffffff; /* White */
+  --text-color: #333333;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #757575;
+  --error-color: #d32f2f;
+  --success-color: #2e7d32;
+  --warning-color: #f57c00;
+  --info-color: #0288d1;
+}
 
 html {
     scroll-behavior: smooth;
@@ -7,30 +21,25 @@ html {
 
 html,
 body {
-    width: 100%; 
-    margin: 0;  
-    font-family: "Poppins", sans-serif !important; 
-    background-image: url("./assets/backgrounddd.svg");
-    background : url(assets/backgrounddd.svg) center center/cover no-repeat fixed !important;
-    /* background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed; 
-    /* font-size: 1.2em; */ 
+    width: 100%;
+    margin: 0;
+    font-family: "Poppins", sans-serif !important;
+    background-color: var(--light-gray) !important;
+    color: var(--text-color);
 }
 
 ::-webkit-scrollbar {
-    /* width: 12px;               width of the entire scrollbar */
+    width: 10px;               /* width of the entire scrollbar */
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: #D9D9D9;        /* color of the tracking area */
+    background: var(--light-gray);        /* color of the tracking area */
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    /* background-color: #017DB5;    color of the scroll thumb */
+    background-color: var(--primary-color);    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid #D9D9D9;  /* creates padding around scroll thumb */
+    border: 3px solid var(--light-gray);  /* creates padding around scroll thumb */
   }
 
 
@@ -63,16 +72,16 @@ input.ng-invalid.ng-touch{
 }
 
  .active {
-    color: white !important;
+    color: var(--accent-color) !important;
     text-decoration: none;
-    background: #017DB5 !important;
+    background: var(--primary-color) !important;
     border-radius: 10px;
 
     & .mat-icon {
-        color: white !important;
+        color: var(--accent-color) !important;
     }
  }
-  
+
 .pageHeaders {
     margin: 20px 0;
     text-transform: uppercase;
@@ -83,30 +92,34 @@ input.ng-invalid.ng-touch{
 }
 
 .mat-flat-button {
-    background: #134a77;
+    background: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .mat-card {
-    background: #137c9a;
+    background: var(--accent-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     opacity: 0.95;
 }
 
 .mat-card input {
-    color: white;
+    color: var(--text-color);
 }
 
 .mat-expansion-panel {
-    background-color: transparent;
+    background-color: var(--accent-color);
     opacity: 0.95;
     border: transparent !important;
 }
 
 .mat-stroked-button {
-    color: white;
+    color: var(--primary-color);
+    border-color: var(--primary-color) !important;
 }
 
 .mat-vertical-stepper {
-    color: black;
+    color: var(--text-color);
 }
 
 @media only screen and (max-width: 600px) {
@@ -215,59 +228,255 @@ a.disabled {
 
  /* custom card */
  .custom-card {
-    background: #E7F1FF;
+    background: var(--accent-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     opacity: 0.95;
-    border-radius: 4px;
-    color: black;
+    border-radius: 8px;
+    color: var(--text-color);
+    border-top: 4px solid var(--primary-color);
 }
 .custom-card-header {
-    background: white;
+    background: var(--secondary-color);
+    color: var(--accent-color);
+    padding: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 .list-group-item{
     background-color: transparent;
-}  
+}
 .mat-form-field {
-    color: white !important;
+    color: var(--text-color) !important;
 }
 
 .custom-card-header h5{
     height: 50px !important;
+    margin: 0;
 }
  /* custom card log*/
  .custom-card-log {
-    background: #E7F1FF;
+    background: var(--accent-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     opacity: 0.95;
-    border-radius: 4px;
-    color: black;
+    border-radius: 8px;
+    color: var(--text-color);
+    border-top: 4px solid var(--primary-color);
 }
 .custom-card-header-log {
-    background: #022641;
-}
-
-.mat-form-field-log {
-    color: white !important;
+    background: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 .mat-tab-label {
     padding: 5px;
     background-color: transparent;
-    color: white !important;
+    color: var(--primary-color) !important;
     font-weight: 700;
+}
+
+.mat-tab-label-active {
+    color: var(--accent-color) !important;
+    background-color: var(--primary-color) !important;
+    border-radius: 4px;
 }
 
 .stepOptions {
     overflow: auto;
     white-space: nowrap;
-    
+
 }
 .stepOptions button {
-    /* /* background-color: #022641 !important; */
-    background: #017DB5; 
-    color: white !important;
+    background: var(--primary-color);
+    color: var(--accent-color) !important;
     display: inline-block;
+    border-radius: 4px;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+.stepOptions button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .customBackground {
-    background-color: #022641 !important;
-    color: white !important;
+    background-color: var(--secondary-color) !important;
+    color: var(--accent-color) !important;
+}
+
+/* New Resource.io Styles */
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    color: var(--accent-color) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover {
+    background-color: #c00510 !important; /* Darker red */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color) !important;
+    color: var(--accent-color) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-secondary:hover {
+    background-color: #333333 !important; /* Darker black */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    border: 2px solid var(--primary-color) !important;
+    border-radius: 4px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--accent-color) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards */
+.resource-card {
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.resource-card-header {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    padding: 16px;
+}
+
+.resource-card-body {
+    padding: 16px;
+}
+
+.resource-card-footer {
+    padding: 16px;
+    border-top: 1px solid var(--medium-gray);
+}
+
+/* Navigation */
+.resource-nav {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+}
+
+.resource-nav-item {
+    color: var(--accent-color);
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.resource-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.resource-nav-item.active {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+/* Forms */
+.resource-form-control {
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+.resource-form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.2);
+}
+
+.resource-form-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-badge.success {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+}
+
+.status-badge.warning {
+    background-color: #fff8e1;
+    color: var(--warning-color);
+}
+
+.status-badge.error {
+    background-color: #ffebee;
+    color: var(--error-color);
+}
+
+.status-badge.info {
+    background-color: #e3f2fd;
+    color: var(--info-color);
+}
+
+/* Utilities */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary {
+    color: var(--secondary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.border-secondary {
+    border-color: var(--secondary-color) !important;
 }

@@ -1,0 +1,126 @@
+<div class="dashboard-container">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h1>Welcome, {{ userName || 'there' }}!</h1>
+    <p>Here's an overview of your hiring activities.</p>
+  </div>
+  
+  <!-- Stats Cards -->
+  <div class="stats-container">
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stats-value">{{ jobPostings.length }}</div>
+        <div class="stats-label">Active Job Postings</div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stats-value">{{ candidates.length }}</div>
+        <div class="stats-label">Total Candidates</div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stats-value">1</div>
+        <div class="stats-label">Hired This Month</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <!-- Recent Job Postings -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Recent Job Postings</h2>
+      <a routerLink="/client/jobs" mat-button color="primary">View All</a>
+    </div>
+    
+    <div class="table-container">
+      <table mat-table [dataSource]="jobPostings" class="mat-elevation-z2">
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Job Title</th>
+          <td mat-cell *matCellDef="let job">{{ job.title }}</td>
+        </ng-container>
+        
+        <!-- Applicants Column -->
+        <ng-container matColumnDef="applicants">
+          <th mat-header-cell *matHeaderCellDef>Applicants</th>
+          <td mat-cell *matCellDef="let job">{{ job.applicants }}</td>
+        </ng-container>
+        
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let job">
+            <span class="status-badge" [ngClass]="job.status.toLowerCase()">{{ job.status }}</span>
+          </td>
+        </ng-container>
+        
+        <!-- Created Column -->
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef>Created</th>
+          <td mat-cell *matCellDef="let job">{{ job.created | date }}</td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="['title', 'applicants', 'status', 'created']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['title', 'applicants', 'status', 'created']"></tr>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Recent Candidates -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Recent Candidates</h2>
+      <a routerLink="/client/candidates" mat-button color="primary">View All</a>
+    </div>
+    
+    <div class="table-container">
+      <table mat-table [dataSource]="candidates" class="mat-elevation-z2">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let candidate">{{ candidate.name }}</td>
+        </ng-container>
+        
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Position</th>
+          <td mat-cell *matCellDef="let candidate">{{ candidate.position }}</td>
+        </ng-container>
+        
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let candidate">
+            <span class="status-badge" [ngClass]="candidate.status.toLowerCase()">{{ candidate.status }}</span>
+          </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="['name', 'position', 'status']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['name', 'position', 'status']"></tr>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Quick Actions -->
+  <div class="section">
+    <h2>Quick Actions</h2>
+    
+    <div class="actions-container">
+      <button mat-raised-button color="primary" routerLink="/client/jobs/new">
+        <mat-icon>add</mat-icon>
+        Post a New Job
+      </button>
+      
+      <button mat-raised-button color="accent" routerLink="/client/candidates">
+        <mat-icon>search</mat-icon>
+        Search Candidates
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+.onboarding-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.resource-card {
+  margin-bottom: 40px;
+}
+
+.resource-card-header {
+  padding: 24px;
+  
+  h2 {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  p {
+    margin: 8px 0 0;
+    opacity: 0.8;
+  }
+}
+
+.resource-card-body {
+  padding: 24px;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .onboarding-container {
+    margin: 20px auto;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    gap: 12px;
+    
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,154 @@
+<div class="onboarding-container">
+  <div class="resource-card">
+    <div class="resource-card-header">
+      <h2>Complete Your Contractor Profile</h2>
+      <p>Step {{ currentStep }} of {{ totalSteps }}</p>
+    </div>
+    
+    <div class="resource-card-body">
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      
+      <form [formGroup]="onboardingForm" (ngSubmit)="submitForm()">
+        <!-- Step 1: Personal Information -->
+        <div *ngIf="currentStep === 1">
+          <h3>Personal Information</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullName" placeholder="Enter your full name">
+            <mat-error *ngIf="onboardingForm.get('fullName')?.hasError('required')">
+              Full name is required
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" placeholder="Enter your phone number">
+            <mat-error *ngIf="onboardingForm.get('phone')?.hasError('required')">
+              Phone number is required
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Location</mat-label>
+            <input matInput formControlName="location" placeholder="City, State, Country">
+            <mat-error *ngIf="onboardingForm.get('location')?.hasError('required')">
+              Location is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- Step 2: Professional Information -->
+        <div *ngIf="currentStep === 2">
+          <h3>Professional Information</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Professional Title</mat-label>
+            <input matInput formControlName="title" placeholder="e.g. Software Engineer">
+            <mat-error *ngIf="onboardingForm.get('title')?.hasError('required')">
+              Professional title is required
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Years of Experience</mat-label>
+            <mat-select formControlName="experience">
+              <mat-option value="0-1">Less than 1 year</mat-option>
+              <mat-option value="1-3">1-3 years</mat-option>
+              <mat-option value="3-5">3-5 years</mat-option>
+              <mat-option value="5-10">5-10 years</mat-option>
+              <mat-option value="10+">10+ years</mat-option>
+            </mat-select>
+            <mat-error *ngIf="onboardingForm.get('experience')?.hasError('required')">
+              Experience is required
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Skills</mat-label>
+            <textarea matInput formControlName="skills" placeholder="Enter your key skills (comma separated)"></textarea>
+            <mat-error *ngIf="onboardingForm.get('skills')?.hasError('required')">
+              Skills are required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- Step 3: Preferences -->
+        <div *ngIf="currentStep === 3">
+          <h3>Job Preferences</h3>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Preferred Job Type</mat-label>
+            <mat-select formControlName="jobType">
+              <mat-option value="full-time">Full-time</mat-option>
+              <mat-option value="part-time">Part-time</mat-option>
+              <mat-option value="contract">Contract</mat-option>
+              <mat-option value="freelance">Freelance</mat-option>
+            </mat-select>
+            <mat-error *ngIf="onboardingForm.get('jobType')?.hasError('required')">
+              Job type is required
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Rate Expectation</mat-label>
+            <input matInput formControlName="rateExpectation" placeholder="e.g. $50/hour or $100,000/year">
+            <mat-error *ngIf="onboardingForm.get('rateExpectation')?.hasError('required')">
+              Rate expectation is required
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Availability</mat-label>
+            <mat-select formControlName="availability">
+              <mat-option value="immediate">Immediate</mat-option>
+              <mat-option value="2-weeks">2 weeks</mat-option>
+              <mat-option value="1-month">1 month</mat-option>
+              <mat-option value="3-months">3 months</mat-option>
+            </mat-select>
+            <mat-error *ngIf="onboardingForm.get('availability')?.hasError('required')">
+              Availability is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+        
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+          <button 
+            *ngIf="currentStep > 1" 
+            type="button" 
+            mat-stroked-button 
+            (click)="previousStep()"
+          >
+            Previous
+          </button>
+          
+          <button 
+            *ngIf="currentStep < totalSteps" 
+            type="button" 
+            mat-raised-button 
+            color="primary" 
+            (click)="nextStep()"
+          >
+            Next
+          </button>
+          
+          <button 
+            *ngIf="currentStep === totalSteps" 
+            type="submit" 
+            mat-raised-button 
+            color="primary"
+            [disabled]="loading"
+          >
+            Complete Profile
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

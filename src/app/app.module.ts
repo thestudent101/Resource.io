@@ -21,7 +21,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppAuthHttpInterceptor } from './app-auth-http.interceptor';
 import { BASE_URL_PROVIDER } from './app.provider';
-import { AuthGuard } from './auth.guard';
+import { AuthGuardService } from './auth.guard';
 import { AvailableContractorsComponent } from './home/contractors/available-contractors/available-contractors.component';
 import { ViewContractorDetailsComponent } from './home/contractors/view-contractor-details/view-contractor-details.component';
 import { ContractorJobProfilesViewComponent } from './home/job-profiles/contractor-job-profiles-view/contractor-job-profiles-view.component';
@@ -64,6 +64,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MainModule,
     RouterModule,
+    // Import new modules
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
@@ -75,7 +76,7 @@ import { RouterModule } from '@angular/router';
     provide: HTTP_INTERCEPTORS,
     useClass: AppAuthHttpInterceptor,
     multi: true
-  }, AuthGuard],
+  }, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -20,7 +20,7 @@
               </div>
             </div>
             <div class="row small center">
-              <img class="image" src="assets/images/logo_landing.png" alt="Blue logo" srcset="">
+              <img class="image" src="assets/resource-io-logo.svg" alt="Resource.io logo" width="200">
             </div>
             <div class="row small">
               <!-- email -->
@@ -43,10 +43,10 @@
             <div class="row small mt-3 ml-4 check">
 
               <p>
-                By signing in you accept Blue's <a href="#" (onclick)="navigateToTermsAndConditions()"><span>Privacy Policy.</span></a>
-              </p> 
+                By signing in you accept Resource.io's <a href="#" (onclick)="navigateToTermsAndConditions()"><span>Privacy Policy.</span></a>
+              </p>
               <!-- <mat-checkbox [formControl]="checkbox">
-                  I Accept Blue's  <a><span (click)="navigateToTermsAndConditions()">Privacy Policy</span></a>
+                  I Accept Resource.io's  <a><span (click)="navigateToTermsAndConditions()">Privacy Policy</span></a>
               </mat-checkbox> -->
           </div>
           <div class="col-sm-12 small mt-3 ml-4">
@@ -57,6 +57,24 @@
           </div>
             <div class="col-sm-12 small mt-3 ml-4">
               <a class='btn btn-link p-0 text-black small forgot' routerLink="/auth/forgot-password">Forgot password?</a>
+            </div>
+
+            <div class="col-sm-12 small mt-4 text-center">
+              <p class="mb-2">Or sign in with</p>
+              <div class="social-login-buttons">
+                <button mat-raised-button class="social-btn google-btn mr-2" (click)="signInWithGoogle()">
+                  <img src="assets/icons/google-icon.svg" alt="Google" width="20" height="20" class="mr-2">
+                  Google
+                </button>
+                <button mat-raised-button class="social-btn microsoft-btn mr-2" (click)="signInWithMicrosoft()">
+                  <img src="assets/icons/microsoft-icon.svg" alt="Microsoft" width="20" height="20" class="mr-2">
+                  Microsoft
+                </button>
+                <button mat-raised-button class="social-btn linkedin-btn" (click)="signInWithLinkedIn()">
+                  <img src="assets/icons/linkedin-icon.svg" alt="LinkedIn" width="20" height="20" class="mr-2">
+                  LinkedIn
+                </button>
+              </div>
             </div>
           </form>
         </div>
@@ -107,7 +125,7 @@
                 <img src="/assets/icons/Group 21008.png" alt="" srcset="">
                 <div class="col-8">
                   <h6 class="align-items-center mb-0 small text-wrap small customPara">
-                    Looking to sell your hours or apply for an available position, register as a Consultant
+                    Looking to hire contractors or post job opportunities, register as a Client
                   </h6>
                 </div>
                 <button mat-button routerLink="/auth/register/client" class="mr-0 loginButton"><mat-icon class="text-muted">arrow_forward</mat-icon></button>

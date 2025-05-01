@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
-import { AuthGuard } from './auth.guard';
+import { authGuard } from './auth.guard';
 import { FeeStructureComponent } from './fee-structure/fee-structure.component';
 import { HelpComponent } from './help-support/help/help.component';
 import { ContractorsComponent } from './home/contractors/contractors.component';
@@ -26,9 +26,19 @@ import { ContractorDashboardComponent } from './modules/contractor-profile/contr
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full'},
   { path: 'landing', component: LandingComponent},
-  { path: 'auth', loadChildren: () => import('./modules/onboarding-wizard/onboarding-wizard.module').then(m => m.OnboardingWizardModule)},    
+
+  // New auth module
+  { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)},
+
+  // Client module
+  { path: 'client', loadChildren: () => import('./modules/client/client.module').then(m => m.ClientModule)},
+
+  // Contractor module
+  { path: 'contractor', loadChildren: () => import('./modules/contractor/contractor.module').then(m => m.ContractorModule)},
+
+  // Legacy routes - will be migrated to new structure
   { path: 'main/dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)},
-  { path: 'main', component: MainComponent, canActivateChild: [AuthGuard],
+  { path: 'main', component: MainComponent, canActivateChild: [authGuard],
       children: [
           { path: '', redirectTo:'dashboardclient', pathMatch:'full'},
           { path: 'dashboardclient', loadChildren: () => import('./modules/dashboardclient/dashbordclient.module').then(m => m.DashbordclientModule)},
@@ -37,23 +47,20 @@ const routes: Routes = [
           { path: 'terms-and-conditions', component: TermsComponent},
           { path: 'candidate', component: ViewCandidateComponent},
           { path: 'fees', component: FeeStructureComponent},
-          { path: 'contractors', component: ContractorsComponent, 
+          { path: 'contractors', component: ContractorsComponent,
               children: [
                   { path: '', redirectTo:'available-contractors', pathMatch:'full' },
                   { path: 'available-contractors', component: AvailableContractorsComponent }
               ]},
-          /** Import the ClientProfileModule on the path /main/client-profile/ **/
           { path: 'client-profile', loadChildren: () => import('./modules/client-profile/client-profile.module').then(m => m.ClientProfileModule)},
           { path: 'contractors', loadChildren: () => import('./modules/contractors/contractors.module').then(m => m.ContractorsModule)},
-          
-        //   { path: 'consultantsearch', loadChildren: () => import('./modules/dashboard/consultantsearch').then(m => m.)},
           { path: 'invoicing', loadChildren: () => import('./modules/invoicing/invoicing.module').then(m => m.InvoicingModule)},
           { path: 'payments', loadChildren: () => import('./modules/payments/payments.module').then(m => m.PaymentsModule)},
           { path: 'references', loadChildren: () => import('./modules/references/references.module').then(m => m.ReferencesModule)},
           { path: 'timesheets', loadChildren: () => import('./modules/timesheets/timesheets.module').then(m => m.TimesheetsModule)},
           { path: 'user-profile', loadChildren: () => import('./modules/contractor-profile/contractor-profile.module').then(m => m.ContractorProfileModule)},
           { path: 'notifications', component: NotificationsComponent },
-          { 
+          {
             path: 'job-profiles', component: JobProfilesRootComponent,
             children: [
                 { path: '', redirectTo:'view-job-profiles', pathMatch:'full' },

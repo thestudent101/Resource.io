@@ -1,8 +1,8 @@
 .container{
     height: 100vh;
     max-width: auto;
-   background: #747f8f; 
-} 
+   background: #747f8f;
+}
 
 
 .left-side{
@@ -16,11 +16,11 @@
 
 
 .second-section{
-    background:#E8F1FF;
+    background: var(--light-gray);
 }
 
 .registration-buttons {
-    background: #017DB5;
+    background: var(--primary-color);
     text-align: center;
     padding: 15px;
     text-decoration: none;
@@ -35,13 +35,18 @@
 }
 
 .customButton{
-    background-color: #017DB5;
-    color: #FFF;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
     width: 48%;
     text-decoration: none;
     padding: 15px;
     box-shadow: 0px 3px 21px 1.5px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
 
+.customButton:hover {
+    background-color: #c00510; /* Darker red */
+    transform: translateY(-2px);
 }
 
 .col-sm-12 a{
@@ -51,17 +56,17 @@
 .custom-card-log{
     height: 700px;
     width: auto;
-
+    border-top: 4px solid var(--primary-color);
 }
 
 .customPara{
     font-size: small;
-    font-family: "poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .customButtonLinked{
-    color: white;
-    background-color: #017DB5;
+    color: var(--accent-color);
+    background-color: var(--primary-color);
     box-shadow: 0px 3px 21px 1.5px rgba(0, 0, 0, 0.06);
 }
 
@@ -143,7 +148,7 @@
 .loginButton{
     width: 30px;
     height: auto;
-    
+
 }
 
 .close{
@@ -174,23 +179,77 @@
     color: blue;
 }
 
+/* Social login buttons */
+.social-login-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    min-width: 120px;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn {
+    background-color: #ffffff;
+    color: #757575;
+    border: 1px solid #dadce0;
+}
+
+.google-btn:hover {
+    background-color: #f8f8f8;
+}
+
+.microsoft-btn {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+}
+
+.microsoft-btn:hover {
+    background-color: #333333;
+}
+
+.linkedin-btn {
+    background-color: #0077b5;
+    color: white;
+}
+
+.linkedin-btn:hover {
+    background-color: #006396;
+}
+
 
 .custom-card-body{
-    background: #E8F1FF;
+    background: var(--light-gray);
 }
 
 /* Media query for screens smaller than or equal to 768px (adjust as needed) this is to hide and show the close button */
 .hideclose {
-    display: none; 
+    display: none;
   }
-  
-  
+
+
   @media (max-width: 768px) {
     .hideclose {
-      display: block; 
+      display: block;
     }
     .hideclose2 {
-        display: none; 
+        display: none;
       }
   }
 

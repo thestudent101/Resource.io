@@ -1,0 +1,82 @@
+.contractor-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-container {
+  flex: 1;
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+  background-color: #f5f7fa;
+  border-right: 1px solid #e0e0e0;
+}
+
+.logo-container {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  
+  .logo {
+    height: 40px;
+  }
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top-bar {
+  background-color: white;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background-color: #f5f7fa;
+  overflow-y: auto;
+}
+
+mat-nav-list {
+  a.active {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    
+    mat-icon {
+      color: #1976d2;
+    }
+  }
+  
+  a {
+    margin: 4px 0;
+    border-radius: 4px;
+    
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .sidenav {
+    width: 200px;
+  }
+}

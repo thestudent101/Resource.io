@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router, NavigationEnd } from '@angular/router';
+import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
     selector: 'login-step',
@@ -25,7 +26,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     checkbox = new FormControl();
 
-    constructor(private wizardService: WizardService,private router: Router) { }
+    constructor(
+        private wizardService: WizardService,
+        private router: Router,
+        private supabaseService: SupabaseService
+    ) { }
 
     ngOnInit() {
         this.errorSubscription = this.wizardService.errorEvent$.subscribe((errorMessage) => {
@@ -87,5 +92,51 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     get passwordVisible(): boolean{
         return this.passwordType === "text";
+    }
+
+    // Social login methods
+    async signInWithGoogle() {
+        this.loading = true;
+        try {
+            const { data, error } = await this.supabaseService.signInWithGoogle();
+            if (error) {
+                this.errorMessage = error.message;
+                this.loading = false;
+            }
+            // The redirect will happen automatically
+        } catch (error: any) {
+            this.errorMessage = error.message || 'An error occurred during Google sign-in';
+            this.loading = false;
+        }
+    }
+
+    async signInWithMicrosoft() {
+        this.loading = true;
+        try {
+            const { data, error } = await this.supabaseService.signInWithMicrosoft();
+            if (error) {
+                this.errorMessage = error.message;
+                this.loading = false;
+            }
+            // The redirect will happen automatically
+        } catch (error: any) {
+            this.errorMessage = error.message || 'An error occurred during Microsoft sign-in';
+            this.loading = false;
+        }
+    }
+
+    async signInWithLinkedIn() {
+        this.loading = true;
+        try {
+            const { data, error } = await this.supabaseService.signInWithLinkedIn();
+            if (error) {
+                this.errorMessage = error.message;
+                this.loading = false;
+            }
+            // The redirect will happen automatically
+        } catch (error: any) {
+            this.errorMessage = error.message || 'An error occurred during LinkedIn sign-in';
+            this.loading = false;
+        }
     }
 }
