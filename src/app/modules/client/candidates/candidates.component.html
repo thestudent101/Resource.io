@@ -1,0 +1,93 @@
+<div class="candidates-container">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <div class="header-section">
+    <h1>Find Candidates</h1>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="search-filter-section">
+    <mat-card>
+      <mat-card-content>
+        <div class="search-container">
+          <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Search candidates</mat-label>
+            <input matInput [formControl]="searchControl" placeholder="Search by name, title, or location">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+
+          <button mat-button color="primary" (click)="resetFilters()">
+            <mat-icon>refresh</mat-icon> Reset Filters
+          </button>
+        </div>
+
+        <div class="skills-filter">
+          <h3>Filter by Skills</h3>
+          <div class="skills-chips">
+            <mat-chip-listbox multiple>
+              <mat-chip-option
+                *ngFor="let skill of skills"
+                [selected]="selectedSkills.includes(skill)"
+                (click)="toggleSkillFilter(skill)">
+                {{ skill }}
+              </mat-chip-option>
+            </mat-chip-listbox>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Results Section -->
+  <div class="results-section">
+    <h2>{{ filteredCandidates.length }} Candidates Found</h2>
+
+    <div class="candidates-grid">
+      <mat-card *ngFor="let candidate of filteredCandidates" class="candidate-card">
+        <mat-card-header>
+          <div mat-card-avatar class="candidate-avatar">{{ candidate.name.charAt(0) }}</div>
+          <mat-card-title>{{ candidate.name }}</mat-card-title>
+          <mat-card-subtitle>{{ candidate.title }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="candidate-info">
+            <p><mat-icon>location_on</mat-icon> {{ candidate.location }}</p>
+            <p><mat-icon>work</mat-icon> {{ candidate.experience }}</p>
+            <p><mat-icon>schedule</mat-icon> Available: {{ candidate.availability }}</p>
+            <p><mat-icon>attach_money</mat-icon> {{ candidate.rate }}</p>
+          </div>
+
+          <div class="candidate-skills">
+            <mat-chip-listbox>
+              <mat-chip *ngFor="let skill of candidate.skills.slice(0, 3)">{{ skill }}</mat-chip>
+              <mat-chip *ngIf="candidate.skills.length > 3">+{{ candidate.skills.length - 3 }}</mat-chip>
+            </mat-chip-listbox>
+          </div>
+
+          <div class="candidate-status">
+            <span class="status-badge" [ngClass]="candidate.status.toLowerCase()">{{ candidate.status }}</span>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="viewProfile(candidate.id)">
+            <mat-icon>visibility</mat-icon> View Profile
+          </button>
+
+          <button mat-button color="accent" (click)="contactCandidate(candidate.id)">
+            <mat-icon>email</mat-icon> Contact
+          </button>
+
+          <button mat-button color="primary" (click)="inviteToInterview(candidate.id)" *ngIf="candidate.status === 'Available'">
+            <mat-icon>event</mat-icon> Invite to Interview
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

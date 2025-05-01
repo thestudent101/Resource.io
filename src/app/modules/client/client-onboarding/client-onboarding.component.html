@@ -1,0 +1,167 @@
+<div class="onboarding-container">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <div class="onboarding-header">
+    <h1>Complete Your Client Profile</h1>
+    <p>Help us understand your hiring needs to match you with the best talent.</p>
+  </div>
+
+  <div class="onboarding-content">
+    <div class="step-indicator">
+      <div class="step" [class.active]="currentStep >= 1">1</div>
+      <div class="step-line"></div>
+      <div class="step" [class.active]="currentStep >= 2">2</div>
+      <div class="step-line"></div>
+      <div class="step" [class.active]="currentStep >= 3">3</div>
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="onboardingForm" (ngSubmit)="submitForm()">
+      <!-- Step 1: Company Information -->
+      <div class="step-content" *ngIf="currentStep === 1">
+        <h2>Company Information</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Company Name</mat-label>
+          <input matInput formControlName="companyName" required>
+          <mat-error *ngIf="onboardingForm.get('companyName')?.hasError('required')">
+            Company name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Industry</mat-label>
+          <mat-select formControlName="industry" required>
+            <mat-option value="Technology">Technology</mat-option>
+            <mat-option value="Finance">Finance</mat-option>
+            <mat-option value="Healthcare">Healthcare</mat-option>
+            <mat-option value="Education">Education</mat-option>
+            <mat-option value="Retail">Retail</mat-option>
+            <mat-option value="Manufacturing">Manufacturing</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+          <mat-error *ngIf="onboardingForm.get('industry')?.hasError('required')">
+            Industry is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Company Size</mat-label>
+          <mat-select formControlName="companySize" required>
+            <mat-option value="1-10">1-10 employees</mat-option>
+            <mat-option value="11-50">11-50 employees</mat-option>
+            <mat-option value="51-200">51-200 employees</mat-option>
+            <mat-option value="201-500">201-500 employees</mat-option>
+            <mat-option value="501+">501+ employees</mat-option>
+          </mat-select>
+          <mat-error *ngIf="onboardingForm.get('companySize')?.hasError('required')">
+            Company size is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Step 2: Contact Information -->
+      <div class="step-content" *ngIf="currentStep === 2">
+        <h2>Contact Information</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contact Name</mat-label>
+          <input matInput formControlName="contactName" required>
+          <mat-error *ngIf="onboardingForm.get('contactName')?.hasError('required')">
+            Contact name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contact Email</mat-label>
+          <input matInput formControlName="contactEmail" required type="email">
+          <mat-error *ngIf="onboardingForm.get('contactEmail')?.hasError('required')">
+            Contact email is required
+          </mat-error>
+          <mat-error *ngIf="onboardingForm.get('contactEmail')?.hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contact Phone</mat-label>
+          <input matInput formControlName="contactPhone" required>
+          <mat-error *ngIf="onboardingForm.get('contactPhone')?.hasError('required')">
+            Contact phone is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Step 3: Hiring Needs -->
+      <div class="step-content" *ngIf="currentStep === 3">
+        <h2>Hiring Needs</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>What type of talent are you looking for?</mat-label>
+          <mat-select formControlName="hiringNeeds" required>
+            <mat-option value="Software Development">Software Development</mat-option>
+            <mat-option value="Design">Design</mat-option>
+            <mat-option value="Project Management">Project Management</mat-option>
+            <mat-option value="Data Science">Data Science</mat-option>
+            <mat-option value="DevOps">DevOps</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+          <mat-error *ngIf="onboardingForm.get('hiringNeeds')?.hasError('required')">
+            Hiring needs is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Hiring Timeline</mat-label>
+          <mat-select formControlName="hiringTimeline" required>
+            <mat-option value="Immediate">Immediate</mat-option>
+            <mat-option value="1-2 weeks">1-2 weeks</mat-option>
+            <mat-option value="1 month">1 month</mat-option>
+            <mat-option value="2-3 months">2-3 months</mat-option>
+            <mat-option value="Just exploring">Just exploring</mat-option>
+          </mat-select>
+          <mat-error *ngIf="onboardingForm.get('hiringTimeline')?.hasError('required')">
+            Hiring timeline is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Additional Information</mat-label>
+          <textarea matInput formControlName="additionalInfo" rows="4"></textarea>
+        </mat-form-field>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="button-container">
+        <button
+          type="button"
+          mat-button
+          *ngIf="currentStep > 1"
+          (click)="previousStep()">
+          Previous
+        </button>
+
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          *ngIf="currentStep < totalSteps"
+          (click)="nextStep()">
+          Next
+        </button>
+
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          *ngIf="currentStep === totalSteps"
+          [disabled]="onboardingForm.invalid || loading">
+          Complete Onboarding
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

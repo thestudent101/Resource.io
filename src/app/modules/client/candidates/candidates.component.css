@@ -1,0 +1,129 @@
+.candidates-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header-section {
+  margin-bottom: 24px;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.search-filter-section {
+  margin-bottom: 24px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search-field {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.skills-filter h3 {
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.skills-chips {
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.results-section h2 {
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 16px;
+}
+
+.candidate-card {
+  margin-bottom: 16px;
+}
+
+.candidate-avatar {
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.candidate-info {
+  margin-bottom: 16px;
+}
+
+.candidate-info p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.candidate-info mat-icon {
+  margin-right: 8px;
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  color: #757575;
+}
+
+.candidate-skills {
+  margin-bottom: 16px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.available {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.interviewing {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-field {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  .candidates-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,130 @@
+<div class="job-posting-container">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <div class="header-section">
+    <h1>Job Postings</h1>
+    <button mat-raised-button color="primary" (click)="toggleForm()">
+      <mat-icon>add</mat-icon>
+      Post New Job
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <!-- New Job Form -->
+  <div class="job-form-container" *ngIf="showForm">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Create New Job Posting</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="jobForm" (ngSubmit)="submitJob()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Job Title</mat-label>
+            <input matInput formControlName="title" required>
+            <mat-error *ngIf="jobForm.get('title')?.hasError('required')">
+              Job title is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Job Description</mat-label>
+            <textarea matInput formControlName="description" rows="4" required></textarea>
+            <mat-error *ngIf="jobForm.get('description')?.hasError('required')">
+              Job description is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Requirements</mat-label>
+            <textarea matInput formControlName="requirements" rows="4" required></textarea>
+            <mat-error *ngIf="jobForm.get('requirements')?.hasError('required')">
+              Job requirements are required
+            </mat-error>
+          </mat-form-field>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Location</mat-label>
+              <input matInput formControlName="location" required>
+              <mat-error *ngIf="jobForm.get('location')?.hasError('required')">
+                Location is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Job Type</mat-label>
+              <mat-select formControlName="jobType" required>
+                <mat-option value="Full-time">Full-time</mat-option>
+                <mat-option value="Part-time">Part-time</mat-option>
+                <mat-option value="Contract">Contract</mat-option>
+                <mat-option value="Freelance">Freelance</mat-option>
+                <mat-option value="Internship">Internship</mat-option>
+              </mat-select>
+              <mat-error *ngIf="jobForm.get('jobType')?.hasError('required')">
+                Job type is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Salary Range</mat-label>
+            <input matInput formControlName="salary" required>
+            <mat-error *ngIf="jobForm.get('salary')?.hasError('required')">
+              Salary range is required
+            </mat-error>
+          </mat-form-field>
+
+          <div class="button-container">
+            <button type="button" mat-button (click)="toggleForm()">Cancel</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="jobForm.invalid || loading">
+              Post Job
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Job Listings -->
+  <div class="job-listings">
+    <mat-card *ngFor="let job of jobPostings" class="job-card">
+      <mat-card-header>
+        <mat-card-title>{{ job.title }}</mat-card-title>
+        <mat-card-subtitle>
+          <span class="status-badge" [ngClass]="job.status.toLowerCase()">{{ job.status }}</span>
+          <span class="job-meta">{{ job.location }} • {{ job.jobType }}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>Description:</strong> {{ job.description }}</p>
+        <p><strong>Requirements:</strong> {{ job.requirements }}</p>
+        <p><strong>Salary:</strong> {{ job.salary }}</p>
+        <p><strong>Applicants:</strong> {{ job.applicants }}</p>
+        <p><strong>Posted:</strong> {{ job.created | date }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="viewApplicants(job.id)">
+          <mat-icon>people</mat-icon> View Applicants
+        </button>
+
+        <button mat-button color="warn" *ngIf="job.status === 'Active'" (click)="closeJob(job.id)">
+          <mat-icon>close</mat-icon> Close Job
+        </button>
+
+        <button mat-button color="accent" *ngIf="job.status === 'Closed'" (click)="reopenJob(job.id)">
+          <mat-icon>refresh</mat-icon> Reopen Job
+        </button>
+
+        <button mat-button color="warn" (click)="deleteJob(job.id)">
+          <mat-icon>delete</mat-icon> Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
