@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { FeeStructureComponent } from './fee-structure/fee-structure.component';
 import { HelpComponent } from './help-support/help/help.component';
 import { ContractorsComponent } from './home/contractors/contractors.component';
-
 import { NextStepsComponent } from './home/next-steps/next-steps.component';
 import { NotificationsComponent } from './home/notifications/notifications.component';
 import { PaymentsComponent } from './home/payments/payments.component';
@@ -15,7 +14,6 @@ import { ViewCandidateComponent } from './home/view-candidate/view-candidate.com
 import { JobProfileComponent } from './job-profile/job-profile.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
-
 import { TermsComponent } from './terms/terms.component';
 import { CustomMaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
@@ -38,42 +36,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobprofileviewComponent } from './home/BlueDesk/jobprofileview/jobprofileview.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { JobDetailsComponent } from './home/job-profiles/job-details/job-details.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { ConsultantsearchComponent } from './modules/dashboard/consultantsearch/consultantsearch.component'
-
-
-
-
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ConsultantsearchComponent } from './modules/dashboard/consultantsearch/consultantsearch.component';
+import { HelpSupportModule } from './help-support/help-support.module';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { TermsModule } from './terms/terms.module';
+import { CommonModule } from '@angular/common';
+import { MainModule } from './main/main.module';
+import { RouterModule } from '@angular/router';
 @NgModule({
-  declarations: [
-    AppComponent,
-    LandingComponent,
-    MainComponent,
-    JobProfileComponent,
-    HelpComponent,
-    DashboardComponent,
-    ContractorsComponent,
-    PaymentsComponent,
-    NotificationsComponent,
-    AvailableContractorsComponent,
-    JobProfilesAddComponent,
-    JobProfilesRootComponent,
-    JobProfilesViewComponent,
-    JobDetailsComponent,
-    LogoutDialogComponent,
-    ViewContractorDetailsComponent,
-    JobProfilesMatchComponent,
-    ViewCandidateComponent,
-    TermsComponent,
-    ContractorJobProfilesViewComponent,
-    FeeStructureComponent,
-    NextStepsComponent,
-    SignContractorTermsComponent,
-    ContractorCardComponent,
-    JobprofileviewComponent,
-    NavbarComponent
-  ],
+  declarations: [AppComponent, LandingComponent, MainComponent, JobProfileComponent, HelpComponent, DashboardComponent, ContractorsComponent, PaymentsComponent, NotificationsComponent, AvailableContractorsComponent, JobProfilesAddComponent, JobProfilesRootComponent, JobProfilesViewComponent, JobDetailsComponent, LogoutDialogComponent, ViewContractorDetailsComponent, JobProfilesMatchComponent, ViewCandidateComponent, TermsComponent, ContractorJobProfilesViewComponent, FeeStructureComponent, NextStepsComponent, SignContractorTermsComponent, ContractorCardComponent, JobprofileviewComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -82,19 +55,27 @@ import { ConsultantsearchComponent } from './modules/dashboard/consultantsearch/
     FormsModule,
     CustomMaterialModule,
     SharedModule,
+    HttpClientModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatIconModule,
+    HelpSupportModule,
+    TermsModule,
+    CommonModule,
+    MainModule,
+    RouterModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }),
-    HttpClientModule
+    })
   ],
-  providers: [BASE_URL_PROVIDER,        
-    { provide: HTTP_INTERCEPTORS, useClass: AppAuthHttpInterceptor, multi: true },
-    AuthGuard
-  ],
-  bootstrap: [AppComponent],
-  
+  providers: [BASE_URL_PROVIDER, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AppAuthHttpInterceptor,
+    multi: true
+  }, AuthGuard],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

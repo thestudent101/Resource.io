@@ -92,32 +92,41 @@ export class WizardService {
 
     resendVerificationCode() {
         let email = this.sessionService.getUsername();
-        this.authManagementService.resendCodeForUser(email).catch((resendVerificationCodeError: CognitoError) => {
-            console.log(resendVerificationCodeError);
-            this.errorSubject.next(resendVerificationCodeError.message);
-        });
+        this.authManagementService.resendCodeForUser(email).subscribe(
+            () => {
+                // Success case
+            },
+            (resendVerificationCodeError: CognitoError) => {
+                console.log(resendVerificationCodeError);
+                this.errorSubject.next(resendVerificationCodeError.message);
+            }
+        );
     }
 
     requestPasswordReset(email: string) {
-        this.authManagementService.forgotPassword(email).then(() => {
-            this.sessionService.setUsername(email);
-            this.forgotPasswordSubject.next('create_password');
-        }).catch((forgotPasswordError: CognitoError) => {
-            console.log(forgotPasswordError);
-            this.errorSubject.next(forgotPasswordError.message);
+        this.authManagementService.forgotPassword(email).subscribe({
+            next: () => {
+                this.sessionService.setUsername(email);
+                this.forgotPasswordSubject.next('create_password');
+            },
+            error: (forgotPasswordError: CognitoError) => {
+                console.log(forgotPasswordError);
+                this.errorSubject.next(forgotPasswordError.message);
+            }
         });
     }
 
     resetPassword(code: string, password: string) {
         let email = this.sessionService.getUsername();
-        this.authManagementService.forgotPasswordSubmit(email, code, password)
-            .then(() => {
+        this.authManagementService.forgotPasswordSubmit(email, code, password).subscribe({
+            next: () => {
                 this.forgotPasswordSubject.next('login');
-            })
-            .catch((resetPasswordError: CognitoError) => {
+            },
+            error: (resetPasswordError: CognitoError) => {
                 console.log(resetPasswordError);
                 this.errorSubject.next(resetPasswordError.message);
-            });
+            }
+        });
     }
 
     register() {
@@ -134,7 +143,7 @@ export class WizardService {
             });
     }
 
-    manualLogin() {        
+    manualLogin() {
         this.authManagementService.signIn(this.authData.email, this.authData.password)
             .subscribe(() => {
                 this.loginSubject.next('load_user_details');
@@ -186,7 +195,7 @@ export class WizardService {
         }, (contractorValidationError: any) => {
             console.log(contractorValidationError);
             this.errorSubject.next(contractorValidationError.error.message);
-            
+
         });
     }
 
@@ -240,11 +249,11 @@ export class WizardService {
         this.userManagementService.createUserProfile(userProfile)
             .subscribe((res:any) => {
                 console.log("Response: ", res);
-                
+
                 console.log("User type",type);
-                
+
                 if (type === 'client') this.registerClientSubject.next('cognito_profile');
-                if (type === 'contractor') this.registerContractorSubject.next('cognito_profile');   
+                if (type === 'contractor') this.registerContractorSubject.next('cognito_profile');
             }, (error) => {
                 console.error(error);
                 this.errorSubject.next(error.error.message);
@@ -330,7 +339,7 @@ export class WizardService {
     getClientStep(): ClientRegisterStep{
         return this.clientStep;
     }
-    
+
     getContractorStep(): ContractorRegisterStep{
         return this.contractorStep;
     }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BASE_URL } from 'src/app/app.provider';
 import { AuthenticationManagementService } from 'src/app/authentication-management.service';
 import { ChangePasswordRequest } from './user-profile-models';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -43,7 +44,7 @@ export class UserProfileService {
         })
     }
 
-    changePassword(request: ChangePasswordRequest): Promise<string>{
+    changePassword(request: ChangePasswordRequest): Observable<any> {
         return this.CustAuth.changePassword(request.currentPassword, request.newPassword);
     }
-}   
+}

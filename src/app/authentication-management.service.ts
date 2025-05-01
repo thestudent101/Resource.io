@@ -3,6 +3,7 @@ import { Observable, from, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SessionStorageService } from './shared/session-storage.service';
 import { SupabaseService } from './supabase.service';
+import { CognitoError } from './supabase-error';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class AuthenticationManagementService {
   constructor(
     private sessionStorageService: SessionStorageService,
     private supabaseService: SupabaseService
-  ) { 
+  ) {
     this.loggedIn = this.sessionStorageService.getItem('user-login-state', false);
-    
+
     // Subscribe to Supabase auth changes
     this.supabaseService.user$.subscribe(user => {
       this.loggedIn = !!user;
@@ -99,10 +100,10 @@ export class AuthenticationManagementService {
   }
 
   getAccessTokenAsync(): Promise<string> {
-    return new Promise((resolve) => {
-      const session = this.supabaseService.getClient().auth.session();
-      if (session && session.access_token) {
-        resolve(session.access_token);
+    return new Promise(async (resolve) => {
+      const { data } = await this.supabaseService.getClient().auth.getSession();
+      if (data.session && data.session.access_token) {
+        resolve(data.session.access_token);
       } else {
         resolve('');
       }
@@ -123,7 +124,7 @@ export class AuthenticationManagementService {
             .select('role')
             .eq('id', user.id)
             .single();
-            
+
           if (error) {
             resolve(null);
           } else if (data) {
@@ -189,3 +190,5 @@ export class AuthenticationManagementService {
     });
   }
 }
+
+export { CognitoError };

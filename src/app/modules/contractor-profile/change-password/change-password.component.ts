@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
     newPasswordType = "password";
     confirmPasswordType = "password";
 
-    constructor(private userProfileService: UserProfileService, private router: Router) { 
+    constructor(private userProfileService: UserProfileService, private router: Router) {
         this.changePasswordForm =new FormGroup({})
     }
 
@@ -41,12 +41,15 @@ export class ChangePasswordComponent implements OnInit {
         }
         this.disableButton = true;
         let values = this.changePasswordForm.value;
-        this.userProfileService.changePassword(values).then(success => {
-            this.disableButton = false;
-            this.router.navigateByUrl('/main/user-profile');
-        }).catch((error: CognitoError) => {
-            this.disableButton = false;
-            this.passwordError = error.message;
+        this.userProfileService.changePassword(values).subscribe({
+            next: (success) => {
+                this.disableButton = false;
+                this.router.navigateByUrl('/main/user-profile');
+            },
+            error: (error: CognitoError) => {
+                this.disableButton = false;
+                this.passwordError = error.message;
+            }
         });
     }
 
